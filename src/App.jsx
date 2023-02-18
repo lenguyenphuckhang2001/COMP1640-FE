@@ -12,7 +12,7 @@ import { CreatePost } from './Pages/CreatePost/CreatePost'
 import { Home } from './Pages/Home/Home'
 import { UserInfo } from './Pages/UserInfo/UserInfo'
 import { Question } from './Pages/Question/Question'
-import { Login } from './Pages/Login/Login'
+import { Login } from './Pages/Member/Login'
 import { Logout } from './Pages/Logout/Logout'
 
 const router = createBrowserRouter(
