@@ -1,0 +1,99 @@
+.Login-page {
+  div {
+    font-family: 'itim';
+    background-color: #1e1e1e;
+  }
+  .Auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1e1e1e;
+
+  }
+
+  .Auth-form {
+    width: 508px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: #1e1e1e;
+  }
+
+  .Auth-form-content {
+    .form-group{
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .Auth-form-title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 48px;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #1e1e1e;
+
+  }
+  input {
+    background-color: rgba(12, 23, 45, 1);
+    color: #ffffff;
+    padding: 18px 0px 18px 45px;
+    width: 90%;
+    border: 3px solid white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+  input::placeholder {
+    font-weight: bold;
+    opacity: 1;
+    color: #ffffff;
+  }
+  .icon{
+    position: absolute;
+    top: 53px;
+    left: 10px;
+    z-index: 2;
+    font-size: 30px;
+  }
+  label {
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    color: #ffffff;
+    display: block;
+  }
+  .forgot-password{
+    color: rgba(166, 232, 168, 1);
+    float: right;
+    font-size: 21px;
+  }
+  .d-grid{
+    button{
+      width: 100%;
+      padding: 18px 0px 18px 0px;
+      color: #ffffff;
+      border: 2px;
+      border-radius: 15px;
+      background-color: rgba(239, 80, 95, 1);
+      font-family: 'itim';
+      font-size: 21px;
+
+    }
+  }
+  .register{
+    position: absolute;
+    color: white;
+    top: 98%;
+    font-size: 20px;
+    a{
+      color: rgba(166, 232, 168, 1);
+    }
+  }
+  
+}
