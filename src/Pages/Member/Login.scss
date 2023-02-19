@@ -1,3 +1,9 @@
+*{ 
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+ }
 .Login-page {
   div {
     font-family: 'itim';
@@ -25,6 +31,15 @@
     .form-group{
       position: relative;
       width: 100%;
+      a{
+        position: absolute;
+        z-index: 2;
+        left: 50px;
+        top: 56px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+      }
     }
   }
 
@@ -39,17 +54,19 @@
   input {
     background-color: rgba(12, 23, 45, 1);
     color: #ffffff;
-    padding: 18px 0px 18px 60.05px;
+    padding: 14px 0px 14px 60.05px;
     width: 87%;
     border: 3px solid white;
     border-radius: 15px;
     margin-bottom: 20px;
     margin-top: 5px;
+    font-family: 'itim';
+    font-size: 16px;
   }
   input::placeholder {
-    font-weight: bold;
     opacity: 1;
     color: #ffffff;
+    font-family: 'itim';
   }
   .icon{
     position: absolute;
@@ -57,15 +74,6 @@
     left: 10px;
     z-index: 2;
     font-size: 30px;
-  }
-  a{
-    position: absolute;
-    z-index: 2;
-    left: 50px;
-    top: 56px;
-    color: white;
-    font-size: 20px;
-    display: flex;
   }
   label {
     font-family: 'Itim';
@@ -80,6 +88,7 @@
     color: rgba(166, 232, 168, 1);
     float: right;
     font-size: 21px;
+    margin-bottom: 20px;
   }
   .d-grid{
     button{
