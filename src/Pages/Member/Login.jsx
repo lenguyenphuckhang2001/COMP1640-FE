@@ -11,7 +11,7 @@ export const Login = () => {
           <div className='Auth-form-content'>
             <h3 className='Auth-form-title'>Log In</h3>
             <div className='form-group mt-3'>
-              <label>Email</label>
+              <label className='label-login'>Email</label>
               <span className='icon'><AiFillMail color="white"/>  </span>
               <a>|</a>
               <input type='email' className='form-control mt-1' placeholder='Email' />
@@ -23,7 +23,7 @@ export const Login = () => {
               <input type='password' className='form-control mt-1' placeholder='Password' />
             </div>
             <p className='forgot-password text-right mt-2'>
-              Forgot password?
+            <Link to ="/forgotpass">Forgot Password</Link>
             </p>
             <div className='d-grid gap-2 mt-3'>
               <button type='submit' className='btn btn-primary'>
@@ -33,7 +33,7 @@ export const Login = () => {
           </div>
         </form>
         <p className='register'>
-            Don’t have an account? <a>Sign Up</a>
+            Don’t have an account? <Link to ="/register">Sign Up</Link>
         </p>
       </div>
     </div>
