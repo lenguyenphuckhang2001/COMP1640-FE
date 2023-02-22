@@ -1,13 +1,12 @@
 import React from 'react';
+import { ListPost } from '../../Components/ListPost/Listpost';
+import { Post } from '../../Components/ListPost/Post/Post';
 import './Home.scss';
 export const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <div className='scssClass'>
-        <p>Hello</p>
-        <h2>Hi</h2>
-      </div>
-    </div>
+    <>  
+        <Post/>
+        <ListPost/>
+    </>
   );
 };
