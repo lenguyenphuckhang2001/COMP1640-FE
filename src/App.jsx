@@ -12,8 +12,10 @@ import { CreatePost } from './Pages/CreatePost/CreatePost'
 import { Home } from './Pages/Home/Home'
 import { UserInfo } from './Pages/UserInfo/UserInfo'
 import { Question } from './Pages/Question/Question'
-import { Login } from './Pages/Login/Login'
+import { Login } from './Pages/Member/Login'
 import { Logout } from './Pages/Logout/Logout'
+import { Register } from './Pages/Member/Register'
+import { Forgotpassword } from './Pages/Member/Forgotpassword'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,7 +25,9 @@ const router = createBrowserRouter(
             <Route path='question' element={<Question />} />
             <Route path='user-info' element={<UserInfo />} />
             <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
             <Route path='logout' element={<Logout />} />
+            <Route path='forgotpass' element={<Forgotpassword />} />
         </Route>
     )
 )

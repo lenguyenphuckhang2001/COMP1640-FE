@@ -27,10 +27,12 @@ export const Navbar = () => {
                         </li>
                     </ul>
                 </nav>
-                <main>
-                    <Outlet />
-                </main>
+                
             </header>
+        
+        <main>
+                <Outlet />
+        </main>
         </div>
     )
 }
