@@ -1,0 +1,78 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+.createpost {
+  margin-bottom: 20px;
+  margin-top: 30px;
+  background-color: #0C172D;
+    .center {
+      background-color: #0C172D;
+      .title{
+        margin-top: 15px;
+        margin-left: 25px;
+        font-size: 30px;
+        font-weight: 500;
+        color: white;
+      }
+
+      .ip_title{
+        margin-left: 55px;
+        width: 85%;
+        height: 40px;
+        text-indent: 15px;
+        font-size: 17px;
+      }
+      .post{
+        margin-left: 55px;
+        margin-top: 10px;
+        color: white;
+      }
+      .ip_post{
+        margin-left: 55px;
+        width: 85%;
+        height: 120px;
+        text-indent: 15px;
+        font-size: 17px;
+        font-family:  'FontAwesome' ;
+      }
+      .img{
+        margin-left: 55px;
+        margin-top: 10px;
+        color: white;
+      }
+      .ip_img{
+        margin-left: 55px;
+        width: 85%;
+        height: 120px;
+        font-size: 15px;
+        text-indent: 70px;
+        background-image: url('https://static.thenounproject.com/png/1721254-200.png');
+        background-position: 20px;
+        background-repeat: no-repeat;
+        background-size: 50px;
+      }
+      .bt_post{
+        justify-content: center;
+        width: 85%;
+        margin-left: 55px;
+        margin-top: 20px;
+        border-radius: 20px;
+        color: white;
+        border: none;
+        height: 27px;
+        background-color: red;
+      }
+      .text-icon{
+        margin-left: 55px;
+        width: 85%;
+        text-indent: 20px;
+        background-color: #ffffff;
+        font-size: 23px;
+        border-bottom: 2px solid black;
+        border-radius: 2px 2px 0px 0px;
+        .icon{
+          margin-right: 20px;
+        }
+        
+      }
+    }
+}
