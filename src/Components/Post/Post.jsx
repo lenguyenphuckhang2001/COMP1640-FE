@@ -10,6 +10,7 @@ import { FiShare2 } from 'react-icons/Fi';
 import { MdSaveAlt } from 'react-icons/Md';
 import { TagbarLeft } from '../TagBar/Tagbar-left';
 import { TagbarRight } from '../TagBar/Tagbar-right';
+import { ListPost } from '../ListPost/Listpost';
 export const Post = () => {
   return (
     <Container>
@@ -67,72 +68,7 @@ export const Post = () => {
               </span>
             </div>
           </div>
-          <div className='List-post'>
-            <div className='postcontent'>
-              <div className='postlike'>
-                <span className='upvote'>
-                  <BsFillCaretUpFill />
-                </span>
-                <span>200</span>
-                <span className='downvote'>
-                  <BsFillCaretDownFill />
-                </span>
-              </div>
-              <div className='user-post'>
-                <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
-                <h4>Khoa</h4>
-              </div>
-              <h2 className='title-content'>cxzczxczx</h2>
-              <ul className='tag-content'>
-                <li>#reactjs</li>
-                <li>#java</li>
-              </ul>
-            </div>
-            <div className='dost'>
-              <span>
-                <CgComment />
-              </span>
-              <span>
-                <FiShare2 />
-              </span>
-              <span>
-                <MdSaveAlt />
-              </span>
-            </div>
-          </div>
-          <div className='List-post'>
-            <div className='postcontent'>
-              <div className='postlike'>
-                <span className='upvote'>
-                  <BsFillCaretUpFill />
-                </span>
-                <span>200</span>
-                <span className='downvote'>
-                  <BsFillCaretDownFill />
-                </span>
-              </div>
-              <div className='user-post'>
-                <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
-                <h4>Khoa</h4>
-              </div>
-              <h2 className='title-content'>cxzczxczx</h2>
-              <ul className='tag-content'>
-                <li>#reactjs</li>
-                <li>#java</li>
-              </ul>
-            </div>
-            <div className='dost'>
-              <span>
-                <CgComment />
-              </span>
-              <span>
-                <FiShare2 />
-              </span>
-              <span>
-                <MdSaveAlt />
-              </span>
-            </div>
-          </div>
+        <ListPost/>
         </Col>
         <Col md={3}>
           <TagbarRight />

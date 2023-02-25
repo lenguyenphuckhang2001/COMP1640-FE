@@ -1,0 +1,29 @@
+.tagbar-right{
+    .popular-post{
+        background-color: rgba(12, 23, 45, 1);
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 10px 0px 10px 20px;
+    a{
+        margin-right: 20px;
+        svg{
+        width: 20px;
+        height: 20px;
+        }
+    }
+    }
+    .popular-tag{
+        background-color: rgba(12, 23, 45, 1);
+        color: #ffffff;
+        border-radius: 10px;
+        padding-left: 20px;
+        margin-top: 20px;
+        .tagname{
+            padding: 10px 0px 10px 0px;
+            display: flex;
+            flex-direction: column;
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+}

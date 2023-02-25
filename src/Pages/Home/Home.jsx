@@ -9,7 +9,6 @@ export const Home = () => {
   return (
     <>  
         <Post/>
-        <ListPost/>
     </>
   );
 };
