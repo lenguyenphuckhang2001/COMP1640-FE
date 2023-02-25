@@ -4,7 +4,8 @@ import { AiFillHome, AiFillPlusCircle } from 'react-icons/Ai';
 import { IoMdNotifications } from 'react-icons/Io';
 import { NavLink, Outlet } from 'react-router-dom'
 import './Navbar.scss'
-
+import {QuestionLabels} from '../QuestionLabels/QuestionLabels'
+ 
 export const Navbar = () => {
 
     return (
@@ -43,6 +44,7 @@ export const Navbar = () => {
                     <Outlet />
                 </main>
             </header>
+            <QuestionLabels/>
         </div>
     )
 }
