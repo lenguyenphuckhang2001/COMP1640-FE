@@ -5,6 +5,7 @@ import { IoMdNotifications } from 'react-icons/Io';
 import { NavLink, Outlet } from 'react-router-dom'
 import './Navbar.scss'
 import {QuestionLabels} from '../QuestionLabels/QuestionLabels'
+import {Footer} from '../Footer/Footer'
  
 export const Navbar = () => {
 
@@ -40,11 +41,13 @@ export const Navbar = () => {
                         </p>
                     </ul>
                 </nav>
-                <main>
-                    <Outlet />
-                </main>
+                
             </header>
-            <QuestionLabels/>
+            <main>
+                <Outlet />
+            </main>
+            <div><QuestionLabels/></div>
+            <Footer/>
         </div>
     )
 }
