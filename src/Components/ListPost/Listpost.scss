@@ -1,24 +1,24 @@
 .List-post {
-    background-color: rgba(12, 23, 45, 1);
-    color: #ffffff;
-    border-radius: 10px;
-    margin-top: 20px;
+  background-color: rgba(12, 23, 45, 1);
+  color: #ffffff;
+  border-radius: 10px;
+  margin-top: 20px;
   .postcontent {
     padding-left: 7%;
     position: relative;
     padding-top: 10px;
-    .postlike{
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        left: 0;
-        top: 0;
-        span{
-            svg{
-                width: 25px;
-                height: 25px;
-            }
+    .postlike {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      left: 0;
+      top: 0;
+      span {
+        svg {
+          width: 25px;
+          height: 25px;
         }
+      }
     }
     .user-post {
       display: flex;
@@ -42,16 +42,16 @@
       }
     }
   }
-  .dost{
+  .dost {
     display: flex;
-    span{
-        padding-right: 7%;
-        padding-left: 7%;
-        padding-bottom: 10px;
-        svg{
-            width: 20px;
-            height: 20px;
-        }
+    span {
+      padding-right: 7%;
+      padding-left: 7%;
+      padding-bottom: 10px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }

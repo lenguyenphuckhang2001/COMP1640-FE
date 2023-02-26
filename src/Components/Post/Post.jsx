@@ -68,7 +68,7 @@ export const Post = () => {
               </span>
             </div>
           </div>
-        <ListPost/>
+          <ListPost />
         </Col>
         <Col md={3}>
           <TagbarRight />

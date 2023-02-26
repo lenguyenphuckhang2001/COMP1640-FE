@@ -9,14 +9,14 @@ export const Forgotpassword = () => {
           <div className='Auth-form-content'>
             <h3 className='Auth-form-title-forgotpass'>Forgot Paswword</h3>
             <p className='fg-p'>Dont wory. We can help.</p>
-            <div className='form-group mt-3'>
+            <div className='form-group'>
               <input
                 type='email'
-                className='form-control mt-1'
+                className='form-control-fo'
                 placeholder='Please fill in your email address'
               />
             </div>
-            <p className='forgot-password text-right mt-2'></p>
+            <p className='forgot-password'></p>
             <div className='fg-bt'>
               <span>
                 <p>Rememberd your password?</p>

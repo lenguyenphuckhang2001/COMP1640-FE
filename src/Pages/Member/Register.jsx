@@ -8,20 +8,32 @@ export const Register = () => {
         <form className='Auth-form'>
           <div className='Auth-form-content'>
             <h3 className='Auth-form-title'>Register</h3>
-            <div className='input-group'>
+            <div className='input-group-re'>
               <input required type='text' name='text' autoComplete='off' className='input' />
               <label className='user-label'>Name</label>
             </div>
-            <div className='input-group'>
+            <div className='input-group-re'>
               <input required type='email' name='email' autoComplete='off' className='input' />
               <label className='user-label'>Email</label>
             </div>
-            <div className='input-group'>
-              <input required type='password' name='password' autoComplete='off' className='input' />
+            <div className='input-group-re'>
+              <input
+                required
+                type='password'
+                name='password'
+                autoComplete='off'
+                className='input'
+              />
               <label className='user-label'>Password</label>
             </div>
-            <div className='input-group'>
-              <input required type='password' name='confirmpassword' autoComplete='off' className='input' />
+            <div className='input-group-re'>
+              <input
+                required
+                type='password'
+                name='confirmpassword'
+                autoComplete='off'
+                className='input'
+              />
               <label className='user-label'>Confirm Password</label>
             </div>
             <div className='sm-regis'>
@@ -32,7 +44,7 @@ export const Register = () => {
           </div>
         </form>
         <p className='register'>
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to='/login'>Login</Link>
         </p>
       </div>
     </div>
