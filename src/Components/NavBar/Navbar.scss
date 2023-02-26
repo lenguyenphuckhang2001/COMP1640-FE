@@ -1,68 +1,67 @@
-@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css" ;
+@import '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css';
 
 .Navbar_item {
-    background-color:#0C172D;
-    height: 55px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    p{
-        .item{
-            color: white;
-        }
+  background-color: #0c172d;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    .item {
+      color: white;
     }
-    .icon_logo{
-        margin-left: 15px;
-        margin-top: 10px;
-        .item{
-            color: blue;
-            font-size: 25px;
-            margin-left: -120;
-        }
+  }
+  .icon_logo {
+    margin-left: 15px;
+    margin-top: 10px;
+    .item {
+      color: blue;
+      font-size: 25px;
+      margin-left: -120;
     }
-    .text_logo{
-        margin-left:505px;
-        margin-top: 16px;
-        .item{
-            text-decoration: none;
-            font-size: 23px;
-            margin-left: -524px;
-        }
+  }
+  .text_logo {
+    margin-left: 505px;
+    margin-top: 16px;
+    .item {
+      text-decoration: none;
+      font-size: 23px;
+      margin-left: -524px;
     }
-    .icon_home{
-        margin-left: -406px;
-        font-size: 35px;
-        margin-top: 5px;
+  }
+  .icon_home {
+    margin-left: -406px;
+    font-size: 35px;
+    margin-top: 5px;
+  }
+  .search_item {
+    .item_search {
+      margin-left: 13px;
+      margin-top: 16px;
+      border: none;
+      border-radius: 50px;
+      width: 710px;
+      height: 30px;
+      text-indent: 20px;
+      font-size: 15px;
+      font-family: 'FontAwesome';
     }
-    .search_item{
-        .item_search{
-            margin-left: 13px;
-            margin-top: 16px;
-            border: none;
-            border-radius: 50px;
-            width: 710px;
-            height: 30px;
-            text-indent: 20px;
-            font-size: 15px;
-            font-family: 'FontAwesome';
-        }
-
-    }
-    .createpost_icon{
-        font-size: 35px;
-       margin-top: 7px;
-    }
-    .notification_icon{
-        font-size: 35px;
-         margin-top: 23px;
-    }
-    .question_icon{
-        font-size: 30px;
-          margin-top: 10px;
-    }
-    .userinfo_icon{
-        font-size: 33px;
-         margin-top: 5px;
-        margin-right: 200px;
-    }
+  }
+  .createpost_icon {
+    font-size: 35px;
+    margin-top: 7px;
+  }
+  .notification_icon {
+    font-size: 35px;
+    margin-top: 23px;
+  }
+  .question_icon {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+  .userinfo_icon {
+    font-size: 33px;
+    margin-top: 5px;
+    margin-right: 200px;
+  }
 }
