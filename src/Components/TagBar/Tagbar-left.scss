@@ -1,0 +1,14 @@
+.tagbar{
+    background-color: rgba(12, 23, 45, 1);
+    color: #ffffff;
+    border-radius: 10px;
+    padding-left: 20px;
+    .tagname{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        color: #ffffff;
+        text-decoration: none;
+        padding-bottom: 10px;
+    }
+}

@@ -16,6 +16,7 @@ import { Login } from './Pages/Member/Login'
 import { Logout } from './Pages/Logout/Logout'
 import { Register } from './Pages/Member/Register'
 import { Forgotpassword } from './Pages/Member/Forgotpassword'
+import { ListPost } from './Components/ListPost/Listpost'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
             <Route path='register' element={<Register />} />
             <Route path='logout' element={<Logout />} />
             <Route path='forgotpass' element={<Forgotpassword />} />
+            <Route path='listpost' element={<ListPost/>} />
         </Route>
     )
 )

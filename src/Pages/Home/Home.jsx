@@ -1,13 +1,14 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import { ListPost } from '../../Components/ListPost/Listpost';
+import { Post } from '../../Components/Post/Post';
+import { TagbarLeft } from '../../Components/TagBar/Tagbar-left';
+import { TagbarRight } from '../../Components/TagBar/Tagbar-right';
 import './Home.scss';
 export const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <div className='scssClass'>
-        <p>Hello</p>
-        <h2>Hi</h2>
-      </div>
-    </div>
+    <>  
+        <Post/>
+    </>
   );
 };
