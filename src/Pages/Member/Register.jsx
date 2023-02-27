@@ -44,7 +44,7 @@ export const Register = () => {
           </div>
         </form>
         <p className='register'>
-          Already have an account? <Link to='/login'>Login</Link>
+          Already have an account? <Link to='/Account/login'>Login</Link>
         </p>
       </div>
     </div>

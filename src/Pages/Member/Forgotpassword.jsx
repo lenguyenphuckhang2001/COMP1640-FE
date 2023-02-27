@@ -20,7 +20,7 @@ export const Forgotpassword = () => {
             <div className='fg-bt'>
               <span>
                 <p>Rememberd your password?</p>
-                <Link to='/login' className='fg-link'>
+                <Link to='/Account/login' className='fg-link'>
                   Back to login
                 </Link>
               </span>

@@ -2,13 +2,17 @@
     background-color: rgba(12, 23, 45, 1);
     color: #ffffff;
     border-radius: 10px;
-    padding-left: 20px;
+    .tag{
+        border-bottom: 1px solid #4E5356;
+        text-align: center;
+        padding-bottom: 3px;
+    }
     .tagname{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
+        display: inline-block;
         color: #ffffff;
         text-decoration: none;
-        padding-bottom: 10px;
+        width: 33%;
+        margin-bottom: 20px;
+        text-align: center;
     }
 }

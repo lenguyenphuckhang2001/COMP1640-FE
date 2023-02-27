@@ -2,13 +2,11 @@ import React from 'react';
 import { BsFillGearFill, BsFillQuestionCircleFill, BsPersonCircle } from 'react-icons/Bs';
 import { AiFillHome, AiFillPlusCircle } from 'react-icons/Ai';
 import { IoMdNotifications } from 'react-icons/Io';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink,} from 'react-router-dom';
 import './Navbar.scss';
-import { Footer } from '../Footer/Footer';
 
 export const Navbar = () => {
   return (
-    <div>
       <header>
         <nav>
           <ul className='Navbar_item'>
@@ -53,21 +51,13 @@ export const Navbar = () => {
               </NavLink>
             </p>
             <p className='userinfo_icon'>
-              <NavLink className='item' to='/user-info'>
+              <NavLink className='item' to='Account/user-info'>
                 <BsPersonCircle />
               </NavLink>
             </p>
           </ul>
         </nav>
       </header>
-      <main style={{
-        backgroundColor: '#000000',
-      }}>
-        <Outlet />
-      </main>
-      {/* <div><QuestionLabels/></div> */}
-      <Footer />
-    </div>
   );
 };
 export default Navbar;
