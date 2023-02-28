@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Col } from 'react-bootstrap';
 import { BiUnderline } from 'react-icons/Bi';
 import { BiItalic } from 'react-icons/Bi';
@@ -6,7 +7,27 @@ import { BiBold } from 'react-icons/Bi';
 
 import './CreatePost.scss';
 
+
+
 export const CreatePost = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const handleFileInputChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleFileUpload = () => {
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    // You can send the form data to a server-side endpoint here
+    console.log(formData);
+  };
+
   return (
     <Col md={{ span: 6, offset: 3 }}>
       <div className='createpost'>
@@ -14,34 +35,39 @@ export const CreatePost = () => {
           <form>
             <p className='title'> Create a post</p>
             <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
-            <p className='post'>Post</p>
+            <p className='question'>Question</p>
             <div className='text-icon'>
-              <span className='icon'> 
+              <a className='icon' href='#'>
                 <BiBold />
-              </span>
-              <span className='icon'>
+              </a>
+              <a className='icon' href='#'>
                 <BiItalic />
-              </span>
-              <span className='icon'>
+              </a>
+              <a className='icon' href='#'>
                 <BiUnderline />
-              </span>
+              </a>
             </div>
             <input
-              className='ip_post'
+              className='ip_question'
               type='text'
               id='fname'
               name='fname'
               placeholder='&#xf007;Write description'
             />
-            <p className='img'>IMG</p>
-            <input
-              className='ip_img'
-              type='text'
-              id='fname'
-              name='fname'
-              placeholder='Upload or drop file here'
-            />
+            
+            
+            <div className='UploadFile'>
+              <p>File Upload</p>
+              <input type='file' onChange={handleFileInputChange} />
+              <button onClick={handleFileUpload}>Upload File</button>
+            </div>
             <br />
+            <div className='checkbox'>
+              <input type='checkbox' checked={isChecked} onChange={handleCheckboxChange} />
+              <label>I agree to the terms</label>
+            </div>
+
+
             <button className='bt_post'>Post</button>
           </form>
         </div>
