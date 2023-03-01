@@ -7,15 +7,33 @@ import { BiBold } from 'react-icons/Bi';
 
 import './CreatePost.scss';
 
+export const CreatePost = (props) => {
 
+  
+  // Set tag
+  const [tags, setTags] = useState(props.tags || []);
+  const [inputValue, setInputValue] = useState("");
 
-export const CreatePost = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [isChecked, setIsChecked] = useState(false);
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
   };
 
+  const handleInputKeyDown = (event) => {
+    if (event.key === "Enter" && inputValue.trim() !== "") {
+      const newTags = [...tags];
+      newTags.push(inputValue.trim());
+      setTags(newTags);
+      setInputValue("");
+    }
+  };
+
+  const handleRemoveTag = (index) => {
+    const newTags = [...tags];
+    newTags.splice(index, 1);
+    setTags(newTags);
+  };
+
+  //Set FileUpload
   const handleFileInputChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -28,8 +46,20 @@ export const CreatePost = () => {
     console.log(formData);
   };
 
+
+  //Set checkbox
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  
   return (
+
     <Col md={{ span: 6, offset: 3 }}>
+      {/* createpost content */}
       <div className='createpost'>
         <div className='center'>
           <form>
@@ -54,22 +84,46 @@ export const CreatePost = () => {
               name='fname'
               placeholder='&#xf007;Write description'
             />
-            
-            
+            {/* function upload */}
+
             <div className='UploadFile'>
               <p>File Upload</p>
               <input type='file' onChange={handleFileInputChange} />
-              <button onClick={handleFileUpload}>Upload File</button>
+              <button disabled={!selectedFile} onClick={handleFileUpload}>Upload File</button>
             </div>
             <br />
+            {/* function checkbox */}
             <div className='checkbox'>
               <input type='checkbox' checked={isChecked} onChange={handleCheckboxChange} />
               <label>I agree to the terms</label>
             </div>
-
-
+            {/* button */}
             <button className='bt_post'>Post</button>
           </form>
+          {/* Tag */}
+          <div className='add-tag-input'>
+          <div>
+                <input
+                  type='text'
+                  placeholder='Add tag...'
+                  value={inputValue}
+                  onKeyDown={handleInputKeyDown}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div >
+                <ul>
+                  {tags.map((tag, index) => (
+                    <li key={index}>
+                      {tag}
+                      <button onClick={() => handleRemoveTag(index)}>x</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+            </div>
+            
         </div>
       </div>
     </Col>
