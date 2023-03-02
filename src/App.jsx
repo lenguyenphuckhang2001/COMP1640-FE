@@ -17,19 +17,19 @@ import { Logout } from './Pages/Logout/Logout';
 import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
 import { ListPost } from './Components/ListPost/Listpost';
+import Index from './Index';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Navbar />}>
+    <Route path='/' element={<Index/>}>
       <Route path='/' element={<Home />} />
       <Route path='create-post' element={<CreatePost />} />
       <Route path='question' element={<Question />} />
-      <Route path='user-info' element={<UserInfo />} />
-      <Route path='login' element={<Login />} />
-      <Route path='register' element={<Register />} />
+      <Route path='Account/user-info' element={<UserInfo />} />
+      <Route path='Account/login' element={<Login />} />
+      <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
-      <Route path='forgotpass' element={<Forgotpassword />} />
-      <Route path='listpost' element={<ListPost />} />
+      <Route path='Account/forgotpass' element={<Forgotpassword />} />
     </Route>,
   ),
 );

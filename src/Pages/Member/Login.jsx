@@ -2,7 +2,7 @@ import React from 'react';
 import { AiFillMail } from 'react-icons/Ai';
 import { RiLockPasswordLine } from 'react-icons/Ri';
 import './Login.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 export const Login = () => {
   return (
     <div className='Login-page'>
@@ -27,7 +27,7 @@ export const Login = () => {
               <input type='password' className='form-controler' placeholder='Password' />
             </div>
             <p className='forgot-password'>
-              <Link to='/forgotpass'>Forgot Password</Link>
+              <NavLink to='/Account/forgotpass'>Forgot Password</NavLink>
             </p>
             <div className='d-lg'>
               <button type='submit' className='btn btn-primary'>
@@ -37,7 +37,7 @@ export const Login = () => {
           </div>
         </form>
         <p className='register'>
-          Don’t have an account? <Link to='/register'>Sign Up</Link>
+          Don’t have an account? <NavLink to='/Account/register'>Sign Up</NavLink>
         </p>
       </div>
     </div>
