@@ -1,152 +1,211 @@
-@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+@import '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css';
 
 .createpost {
   margin-bottom: 20px;
   margin-top: 30px;
-  background-color: #0C172D;
+  background-color: #0c172d;
   padding-bottom: 25px;
-    .center {
-      background-color: #0C172D;
-      .title{
-        margin-top: 15px;
-        margin-left: 25px;
-        font-size: 30px;
-        font-weight: 500;
-        color: white;
+  .center {
+    background-color: #0c172d;
+    .title {
+      margin-top: 15px;
+      margin-left: 25px;
+      font-size: 30px;
+      font-weight: 500;
+      color: white;
+    }
+
+    .ip_title {
+      margin-left: 55px;
+      width: 85%;
+      height: 40px;
+      text-indent: 15px;
+      font-size: 17px;
+      border-radius: 5px;
+      background-color: rgb(193, 193, 189);
+      &::placeholder{
+          color: rgba(0, 0, 0, 0.635);
+        }
+    }
+    .question {
+      margin-left: 55px;
+      margin-top: 10px;
+      color: white;
+    }
+    .ip_question {
+      margin-left: 55px;
+      width: 85%;
+      height: 120px;
+      text-indent: 15px;
+      font-size: 17px;
+      font-family: 'FontAwesome';
+      background-color: rgb(193, 193, 189);
+      border-radius: 0px 0px 5px 5px;
+      &::placeholder{
+          color: rgba(0, 0, 0, 0.635);
+        }
+    }
+    // file upload and down load
+    .file-upload-and-download {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+
+      .title {
+        margin-bottom: 20px;
       }
 
-      .ip_title{
-        margin-left: 55px;
-        width: 85%;
-        height: 40px;
-        text-indent: 15px;
-        font-size: 17px;
-        border-radius: 5px;
-        background-color: rgb(193, 193, 189);
-      }
-      .question{
-        margin-left: 55px;
-        margin-top: 10px;
-        color: white;
-      }
-      .ip_question{
-        margin-left: 55px;
-        width: 85%;
-        height: 120px;
-        text-indent: 15px;
-        font-size: 17px;
-        font-family:  'FontAwesome' ;
-        background-color: rgb(193, 193, 189);
-        border-radius: 0px 0px 5px 5px;
-        
-      }
-      .UploadFile{
-        margin-left: 55px;
-        margin-top: 10px;
-        color: white;
-        border-radius: 3px;
-        button{
-          border-radius: 3px;
-          color:  rgb(67, 67, 65);
-          width: 15%;
-        }
-        input{
-          color:  rgb(193, 193, 189);
-        }
-      }
-      .checkbox{
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        input{
-          margin-right: 5px;
-        }
-        label{
-          color:  rgb(193, 193, 189);
+      .file-input {
+        margin-bottom: 20px;
 
+        label {
+          display: block;
+          margin-bottom: 10px;
+          color: rgb(255 255 255 / 31%);
+        }
+
+        input[type='file'] {
+          display: block;
+          color: rgb(255 255 255 / 31%);
         }
       }
-      
-      
-      .bt_post{
-        justify-content: center;
-        width: 85%;
-        margin-left: 55px;
-        margin-top: 20px;
-        border-radius: 20px;
-        color: white;
-        border: none;
-        height: 27px;
-        background-color: red;
-      }
-      .text-icon{
-        margin-left: 55px;
-        width: 85%;
-        text-indent: 20px;
-        background-color: #ffffff;
-        font-size: 23px;
-        border-bottom: 2px solid black;
-        border-radius: 5px 5px 2px 2px;
-        background-color: rgb(193, 193, 189);
-        .icon{
-          margin-right: 20px;
-          color: black;
-          text-decoration: none;
-        }
-        
-      }
-      .add-tag-input {
+
+      .button-group {
         display: flex;
-        flex-direction: column;
-      
-        ul {
-          display: flex;
-          flex-wrap: wrap;
-          list-style: none;
-          margin-left: 51px;
-          padding: 0;
-      
-          li {
-            display: inline-block;
-            margin: 4px;
-            padding: 4px 8px;
-            background-color: #eee;
-            border-radius: 4px;
+
+        button {
+          padding: 10px 20px;
+          margin-right: 10px;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .upload-button {
+          background-color: #007aff;
+          color: #fff;
+        }
+
+        .download-button {
+          background-color: #28a745;
+          color: #fff;
+        }
+      }
+    }
+
+    //checkbox
+    .checkbox {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      input {
+        margin-right: 5px;
+      }
+      label {
+        color: rgb(193, 193, 189);
+      }
+    }
+
+    .bt_post {
+      justify-content: center;
+      width: 85%;
+      margin-left: 55px;
+      margin-top: 20px;
+      border-radius: 20px;
+      color: white;
+      border: none;
+      height: 27px;
+      background-color: red;
+    }
+    .text-icon {
+      margin-left: 55px;
+      width: 85%;
+      text-indent: 20px;
+      font-size: 23px;
+      border-bottom: 2px solid black;
+      border-radius: 5px 5px 2px 2px;
+      background-color: rgb(193, 193, 189);
+      .icon {
+        margin-right: 20px;
+        color: black;
+        text-decoration: none;
+      }
+    }
+    .button_item {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 13px;
+      .upload_button {
+        background-color: #6c757d33;
+        color: black;
+        margin-right: 65px;
+        margin-top: -6%;
+        border-radius: 10px;
+        width: 12%;
+        height: 30px;
+      }
+    }
+    .add-tag-input {
+      display: flex;
+      flex-direction: column;
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-left: 51px;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          margin: 4px;
+          padding: 4px 8px;
+          background-color: #eee;
+          border-radius: 4px;
+          font-size: 14px;
+          line-height: 1.5;
+
+          button {
+            margin-left: 4px;
+            border: none;
+            background-color: transparent;
+            color: #999;
             font-size: 14px;
-            line-height: 1.5;
-      
-            button {
-              margin-left: 4px;
-              border: none;
-              background-color: transparent;
-              color: #999;
-              font-size: 14px;
-              cursor: pointer;
-      
-              &:hover {
-                color: #333;
-              }
+            cursor: pointer;
+
+            &:hover {
+              color: #333;
             }
           }
         }
-      
-        input {
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          padding: 8px;
-          font-size: 14px;
-          line-height: 1.5;
-          margin-left: 55px;
-          // margin-top: 8px;
-          transition: border-color 0.2s;
-      
-          &:focus {
-            outline: none;
-            border-color: #007bff;
-          }
+      }
+
+      input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-left: 55px;
+        // margin-top: 8px;
+        transition: border-color 0.2s;
+        margin-top: 2%;
+        width: 35%;
+        height: 30px;
+        background-color: #adb5bd;
+     
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+        }
+        &::placeholder{
+          color: rgba(0, 0, 0, 0.635);
         }
       }
-      
-      
     }
+  }
 }
