@@ -70,10 +70,26 @@ export const CreatePost = (props) => {
 
   //Set checkbox
 
-  const [selectedCheck, setSelectedCheck] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  const [postText, setPostText] = useState('');
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+
+  const handlePostTextChange = (event) => {
+    setPostText(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (isChecked) {
+      // Send the post to a server-side endpoint
+      console.log(`Submitting post: ${postText}`);
+    } else {
+      console.log('Checkbox must be checked to submit post');
+    }
   };
 
   return (
@@ -106,33 +122,33 @@ export const CreatePost = (props) => {
 
             {/* Button UploadFile */}
             <div className='button_item'>
-            <button className='upload_button' onClick={handleFileUpload}>
-                  Upload File
-                </button>
+              <button className='upload_button' onClick={handleFileUpload}>
+                Upload File
+              </button>
             </div>
 
             {/* Add Tag */}
             <div className='add-tag-input'>
-            <div>
-              <input
-                type='text'
-                placeholder='Add tag...'
-                value={inputValue}
-                onKeyDown={handleInputKeyDown}
-                onChange={handleInputChange}
-              />
+              <div>
+                <input
+                  type='text'
+                  placeholder='Add tag...'
+                  value={inputValue}
+                  onKeyDown={handleInputKeyDown}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div>
+                <ul>
+                  {tags.map((tag, index) => (
+                    <li key={index}>
+                      {tag}
+                      <button onClick={() => handleRemoveTag(index)}>x</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <ul>
-                {tags.map((tag, index) => (
-                  <li key={index}>
-                    {tag}
-                    <button onClick={() => handleRemoveTag(index)}>x</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
             {/* function upload */}
 
             <div className='file-upload-and-download'>
@@ -152,12 +168,24 @@ export const CreatePost = (props) => {
             </div>
             <br />
             {/* function checkbox */}
-            <div className='checkbox'>
-              <input type='checkbox' checked={isChecked} onChange={handleCheckboxChange} />
-              <label>I agree to the terms</label>
+            <div className='post-form'>
+              <form onSubmit={handleSubmit}>
+                <div className='form-group'>
+                  <input
+                    type='checkbox'
+                    id='checkbox'
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label htmlFor='checkbox'>I agree to the terms and conditions</label>
+                </div>
+                <div className='button_post'>
+                <button type='submit' disabled={!isChecked}>
+                  Post
+                </button>
+                </div>
+              </form>
             </div>
-            {/* button */}
-            <button className='bt_post'>Post</button>
           </form>
         </div>
       </div>

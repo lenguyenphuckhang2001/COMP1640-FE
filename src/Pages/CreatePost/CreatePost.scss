@@ -50,7 +50,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+
 
       .title {
         margin-bottom: 20px;
@@ -97,17 +97,54 @@
     }
 
     //checkbox
-    .checkbox {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      input {
-        margin-right: 5px;
+    .post-form {
+      .form-group {
+        display: flex;
+        justify-content: center;
+        input{
+          margin-right: 10px;
+          margin-bottom: 3px;
+        }
+    
+        label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: rgba(255, 255, 255, 0.31);
+          font-size: 15px;
+    
+          input[type="checkbox"] {
+            margin-right: 5px;
+          }
+        }
+    
       }
-      label {
-        color: rgb(193, 193, 189);
+    
+      .button_post{
+        display: flex;
+        justify-content: center;
+        button {
+          width: 85%;
+          height: 35px;
+          padding: 7px;
+          font-size: 16px;
+          color: #fff;
+          background-color: red;
+          border: none;
+          border-radius: 15px;
+          cursor: pointer;
+      
+          &:hover {
+            background-color: red;
+          }
+      
+          &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+          }
+        }
       }
     }
+    
 
     .bt_post {
       justify-content: center;
@@ -190,7 +227,6 @@
         font-size: 14px;
         line-height: 1.5;
         margin-left: 55px;
-        // margin-top: 8px;
         transition: border-color 0.2s;
         margin-top: 2%;
         width: 35%;
