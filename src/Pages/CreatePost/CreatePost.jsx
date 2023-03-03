@@ -1,35 +1,39 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
 import { Col } from 'react-bootstrap';
 import { BiUnderline } from 'react-icons/Bi';
 import { BiItalic } from 'react-icons/Bi';
 import { BiBold } from 'react-icons/Bi';
-
 import './CreatePost.scss';
 
 export const CreatePost = (props) => {
   // Set tag
-  const [tags, setTags] = useState(props.tags || []);
-  const [inputValue, setInputValue] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleInputKeyDown = (event) => {
-    if (event.key === 'Enter' && inputValue.trim() !== '') {
-      const newTags = [...tags];
-      newTags.push(inputValue.trim());
-      setTags(newTags);
-      setInputValue('');
+  const handleTagSelectChange = (event) => {
+    const options = event.target.options;
+    const selectedTags = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        selectedTags.push(options[i].value);
+      }
     }
+    setSelectedTags(selectedTags);
   };
 
-  const handleRemoveTag = (index) => {
-    const newTags = [...tags];
-    newTags.splice(index, 1);
-    setTags(newTags);
+  //test tag
+  const options = [
+    { label: 'Javascripts', value: 'Javascripts' },
+
+    { label: 'Html', value: 'Html' },
+
+    { label: 'Scss', value: 'Scss' },
+  ];
+
+  const [value, setValue] = React.useState('Language');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
   //Set FileUpload
@@ -127,28 +131,23 @@ export const CreatePost = (props) => {
               </button>
             </div>
 
-            {/* Add Tag */}
-            <div className='add-tag-input'>
-              <div>
-                <input
-                  type='text'
-                  placeholder='Add tag...'
-                  value={inputValue}
-                  onKeyDown={handleInputKeyDown}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div>
-                <ul>
-                  {tags.map((tag, index) => (
-                    <li key={index}>
-                      {tag}
-                      <button onClick={() => handleRemoveTag(index)}>x</button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Select Tag */}
+
+            <div className='select-tag-dropdown'>
+              <select multiple value={selectedTags} onChange={handleTagSelectChange}>
+                <option value='JavaScripts'>JavaScripts</option>
+                <option value='ReactJs'>ReactJs</option>
+                <option value='SCSS'>SCSS</option>
+                <option value='Bootraps'>Bootraps</option>
+                <option value='Chat GPT'>Chat GPT</option>
+              </select>
+              <ul>
+                {selectedTags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
             </div>
+
             {/* function upload */}
 
             <div className='file-upload-and-download'>
@@ -180,13 +179,29 @@ export const CreatePost = (props) => {
                   <label htmlFor='checkbox'>I agree to the terms and conditions</label>
                 </div>
                 <div className='button_post'>
-                <button type='submit' disabled={!isChecked}>
-                  Post
-                </button>
+                  <button type='submit' disabled={!isChecked}>
+                    Post
+                  </button>
                 </div>
               </form>
             </div>
           </form>
+          {/* test tag */}
+          <div className='add-tag'>
+            <label>
+              <div className='text'>Do you want to choose language</div>
+
+              <select value={value} onChange={handleChange}>
+                {options.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </label>
+
+            <div className='tag_test'>
+              <p> {value}</p>
+            </div>
+          </div>
         </div>
       </div>
     </Col>
