@@ -1,0 +1,48 @@
+.MainPost {
+  color: #ffffff;
+  background-color: rgba(12, 23, 45, 1);
+  border-radius: 5px;
+  position: relative;
+  .title {
+    display: block;
+    margin-left: 7%;
+    padding-top: 2%;
+  }
+  .postdost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 1.5%;
+    top: 8%;
+    span {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  .infopost {
+    display: inline-flex;
+    margin-left: 12%;
+    p {
+      padding-right: 12px;
+    }
+  }
+  .post {
+    padding: 0 7%;
+    margin-top: 3%;
+    font-size: 20px;
+    .file{
+        width: 100%;
+        text-align: center;
+    }
+    .tag {
+      display: flex;
+      padding: 0;
+      li {
+        list-style-type: none;
+        padding-right: 3%;
+      }
+    }
+  }
+}
