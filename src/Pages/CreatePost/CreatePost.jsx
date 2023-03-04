@@ -1,4 +1,5 @@
 import React from 'react';
+import JSZip from 'jszip';
 import { useState } from 'react';
 import { Col } from 'react-bootstrap';
 import { BiUnderline } from 'react-icons/Bi';
@@ -8,22 +9,13 @@ import './CreatePost.scss';
 
 export const CreatePost = (props) => {
   // Set tag
-  const [selectedTags, setSelectedTags] = useState([]);
 
-  const handleTagSelectChange = (event) => {
-    const options = event.target.options;
-    const selectedTags = [];
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].selected) {
-        selectedTags.push(options[i].value);
-      }
-    }
-    setSelectedTags(selectedTags);
-  };
-
-  //test tag
   const options = [
     { label: 'Javascripts', value: 'Javascripts' },
+
+    { label: 'ReactJs', value: 'ReactJs' },
+
+    { label: 'Bootraps', value: 'Bootraps' },
 
     { label: 'Html', value: 'Html' },
 
@@ -37,39 +29,36 @@ export const CreatePost = (props) => {
   };
 
   //Set FileUpload
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [file, setFile] = useState(null);
 
-  const handleFileInputChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
   };
 
-  const handleFileUpload = async () => {
-    const formData = new FormData();
-    formData.append('file', selectedFile);
-
-    // Send the form data to a server-side endpoint to handle the file upload
-    const response = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData,
-    });
-
-    console.log(await response.json());
-  };
-
-  const handleFileDownload = async () => {
-    // Send a request to a server-side endpoint to download the file as a zip archive
-    const response = await fetch('/api/download', {
-      method: 'GET',
-      responseType: 'blob',
-    });
-
-    // Create a URL for the downloaded file and open it in a new window
-    const url = window.URL.createObjectURL(await response.blob());
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'download.zip');
-    document.body.appendChild(link);
-    link.click();
+  const handleUploadAndDownload = () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const zip = new JSZip();
+          zip.file(file.name, blob);
+          zip.generateAsync({ type: 'blob' }).then((content) => {
+            const url = window.URL.createObjectURL(content);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${file.name}.zip`);
+            document.body.appendChild(link);
+            link.click();
+          });
+        });
+    } else {
+      alert('Please choose a file first');
+    }
   };
 
   //Set checkbox
@@ -124,47 +113,44 @@ export const CreatePost = (props) => {
               placeholder='&#xf007; Write description'
             />
 
-            {/* Button UploadFile */}
-            <div className='button_item'>
-              <button className='upload_button' onClick={handleFileUpload}>
-                Upload File
+            {/* select tag */}
+            <div className='add-tag'>
+              <label>
+                <div className='text'>Do you want to choose language</div>
+
+                <select value={value} onChange={handleChange}>
+                  {options.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              </label>
+
+              <div className='tag_test'>
+                <p> {value}</p>
+              </div>
+            </div>
+
+            {/* function upload and download */}
+            <div className='file-upload-and-download'>
+              <label htmlFor='file-input' className='file-upload-and-download__label'>
+                <input
+                  type='file'
+                  id='file-input'
+                  className='file-upload-and-download__input'
+                  onChange={handleFileChange}
+                />
+                <span className='file-upload-and-download__text'>
+                  {file ? file.name : 'Choose file'}
+                </span>
+              </label>
+              <button
+                className='file-upload-and-download__button'
+                onClick={handleUploadAndDownload}
+              >
+                Upload and Download as ZIP
               </button>
             </div>
 
-            {/* Select Tag */}
-
-            <div className='select-tag-dropdown'>
-              <select multiple value={selectedTags} onChange={handleTagSelectChange}>
-                <option value='JavaScripts'>JavaScripts</option>
-                <option value='ReactJs'>ReactJs</option>
-                <option value='SCSS'>SCSS</option>
-                <option value='Bootraps'>Bootraps</option>
-                <option value='Chat GPT'>Chat GPT</option>
-              </select>
-              <ul>
-                {selectedTags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* function upload */}
-
-            <div className='file-upload-and-download'>
-              <h1 className='title'>File Upload and Download</h1>
-              <div className='file-input'>
-                <label htmlFor='file'>Choose a file:</label>
-                <input type='file' id='file' onChange={handleFileInputChange} />
-              </div>
-              <div className='button-group'>
-                <button className='upload-button' onClick={handleFileUpload}>
-                  Upload File
-                </button>
-                <button className='download-button' onClick={handleFileDownload}>
-                  Download File
-                </button>
-              </div>
-            </div>
             <br />
             {/* function checkbox */}
             <div className='post-form'>
@@ -186,22 +172,6 @@ export const CreatePost = (props) => {
               </form>
             </div>
           </form>
-          {/* test tag */}
-          <div className='add-tag'>
-            <label>
-              <div className='text'>Do you want to choose language</div>
-
-              <select value={value} onChange={handleChange}>
-                {options.map((option) => (
-                  <option value={option.value}>{option.label}</option>
-                ))}
-              </select>
-            </label>
-
-            <div className='tag_test'>
-              <p> {value}</p>
-            </div>
-          </div>
         </div>
       </div>
     </Col>
