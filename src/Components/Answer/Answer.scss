@@ -1,14 +1,10 @@
-.MainPost {
+.MainAnswer {
   color: #ffffff;
   background-color: rgba(12, 23, 45, 1);
   border-radius: 5px;
   position: relative;
-  .title {
-    display: block;
-    margin-left: 7%;
-    padding-top: 2%;
-  }
-  .postdost {
+  margin-top: 5%;
+  .answerdost {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -22,33 +18,18 @@
       }
     }
   }
-  .infopost {
-    display: inline-flex;
-    margin-left: 12%;
-    p {
-      padding-right: 12px;
-    }
-  }
-  .post {
+  .answer {
     padding: 0 7%;
     margin-top: 3%;
     font-size: 20px;
     display: inline-block;
-    .file{
-        width: 100%;
-        text-align: center;
+    .infoanswer{
+        font-size: 16px;
+        line-height: 10px;
+        float: left;
     }
-    .tag {
-      display: flex;
-      padding: 0;
-      margin: 0 auto;
-      li {
-        list-style-type: none;
-        padding-right: 3%;
-      }
-    }
-    .user-post{
-      display: inline-flex;
+    .user-answer{
+        display: inline-flex;
       float: right;
       img{
         width: 35px;

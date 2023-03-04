@@ -1,7 +1,6 @@
 import React from 'react';
 import "./PostDetail.scss"
-import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/Bs';
-import {CiSaveDown2} from 'react-icons/Ci';
+import { BsFillCaretUpFill, BsFillCaretDownFill, BsBookmark } from 'react-icons/Bs';
 export const PostDetail = () => {
   return (
     <div className='MainPost'>
@@ -16,7 +15,7 @@ export const PostDetail = () => {
                   <BsFillCaretDownFill />
                 </span>
                 <span>
-                <CiSaveDown2/>
+                <BsBookmark/>
                 </span>
               
             </div>
@@ -26,13 +25,10 @@ export const PostDetail = () => {
             </div>
             <div className='post'>
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h4>
-                <div className='file'>
-                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFU7U2h0umyF0P6E_yhTX45sGgPEQAbGaJ4g&usqp=CAU'/>
+                <div className='user-post'>
+                  <img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'/>
+                  <p>Khoa</p>
                 </div>
-                <ul className='tag'>
-                  <li>#html</li>
-                  <li>#reactjs</li>
-                </ul>
             </div>
         </div>
     </div>
