@@ -9,6 +9,27 @@ import './CreatePost.scss';
 
 export const CreatePost = (props) => {
   //set keybroard
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
+
+  function handleBoldClick() {
+    setIsBold((prevState) => !prevState);
+  }
+
+  function handleItalicClick() {
+    setIsItalic((prevState) => !prevState);
+  }
+
+  function handleUnderlineClick() {
+    setIsUnderline((prevState) => !prevState);
+  }
+
+  const textStyle = {
+    fontWeight: isBold ? 'bold' : 'normal',
+    fontStyle: isItalic ? 'italic' : 'normal',
+    textDecoration: isUnderline ? 'underline' : 'none',
+  };
 
   // Set tag
 
@@ -114,22 +135,24 @@ export const CreatePost = (props) => {
             <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
             <p className='question'>Question</p>
             <div className='text-icon'>
-              <a className='icon' href='#'>
+              <div></div>
+              <button className='icon' onClick={handleBoldClick}>
                 <BiBold />
-              </a>
-              <a className='icon' href='#'>
+              </button>
+              <button className='icon' onClick={handleItalicClick}>
                 <BiItalic />
-              </a>
-              <a className='icon' href='#'>
+              </button>
+              <button className='icon' onClick={handleUnderlineClick}>
                 <BiUnderline />
-              </a>
+              </button>
             </div>
             <input
               className='ip_question'
               type='text'
               id='frame'
               name='frame'
-              placeholder='&#xf007; Write description'
+              style={textStyle}
+              placeholder=' Write description....'
             />
 
             {/* select tag */}
