@@ -8,6 +8,8 @@ import { BiBold } from 'react-icons/Bi';
 import './CreatePost.scss';
 
 export const CreatePost = (props) => {
+  //set keybroard
+
   // Set tag
 
   const options = [
@@ -30,6 +32,22 @@ export const CreatePost = (props) => {
 
   //Set FileUpload
   const [file, setFile] = useState(null);
+
+  function handleUpload() {
+    const formData = new FormData();
+    formData.append('file', file);
+    fetch('url', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log('success', result);
+      })
+      .catch((error) => {
+        console.error('Error', error);
+      });
+  }
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -90,6 +108,7 @@ export const CreatePost = (props) => {
       {/* createpost content */}
       <div className='createpost'>
         <div className='center'>
+          {/* <FileUpload/> */}
           <form>
             <p className='title'> Create a post</p>
             <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
@@ -143,12 +162,14 @@ export const CreatePost = (props) => {
                   {file ? file.name : 'Choose file'}
                 </span>
               </label>
-              <button
-                className='file-upload-and-download__button'
-                onClick={handleUploadAndDownload}
-              >
-                Upload and Download as ZIP
-              </button>
+              <div className='file-up-and-down'>
+                <form className='upload__form' onSubmit={handleUpload}>
+                  <button>Upload</button>
+                </form>
+                <button className='download__button' onClick={handleUploadAndDownload}>
+                  Download as ZIP
+                </button>
+              </div>
             </div>
 
             <br />

@@ -116,13 +116,16 @@
       margin-left: 1rem;
     }
   
-    &__button {
+    .file-up-and-down{
+      display: flex;
+      .download__button {
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 0.5rem;
       background-color: #297ad1;
       color: #fff;
       cursor: pointer;
+      
   
       &:hover {
         background-color: #0069d9;
@@ -131,6 +134,28 @@
       &:active {
         background-color: #005cbf;
       }
+    }
+    .upload__form{
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #297ad1;
+      color: #fff;
+      margin-right: 10px;
+      cursor: pointer;
+      button{
+        color: white;
+        background-color: #297ad1;
+      }
+  
+      &:hover {
+        background-color: #0069d9;
+      }
+  
+      &:active {
+        background-color: #005cbf;
+      }
+    }
     }
   }
   
