@@ -1,79 +1,309 @@
-@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+@import '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css';
 
 .createpost {
   margin-bottom: 20px;
   margin-top: 30px;
-  background-color: #0C172D;
+  background-color: #0c172d;
   padding-bottom: 25px;
-    .center {
-      background-color: #0C172D;
-      .title{
-        margin-top: 15px;
-        margin-left: 25px;
-        font-size: 30px;
-        font-weight: 500;
-        color: white;
-      }
+  .center {
+    background-color: #0c172d;
+    .title {
+      margin-top: 15px;
+      margin-left: 25px;
+      font-size: 30px;
+      font-weight: 500;
+      color: white;
+    }
 
-      .ip_title{
-        margin-left: 55px;
-        width: 85%;
-        height: 40px;
-        text-indent: 15px;
-        font-size: 17px;
-      }
-      .post{
-        margin-left: 55px;
-        margin-top: 10px;
-        color: white;
-      }
-      .ip_post{
-        margin-left: 55px;
-        width: 85%;
-        height: 120px;
-        text-indent: 15px;
-        font-size: 17px;
-        font-family:  'FontAwesome' ;
-      }
-      .img{
-        margin-left: 55px;
-        margin-top: 10px;
-        color: white;
-      }
-      .ip_img{
-        margin-left: 55px;
-        width: 85%;
-        height: 120px;
-        font-size: 15px;
-        text-indent: 70px;
-        background-image: url('https://static.thenounproject.com/png/1721254-200.png');
-        background-position: 20px;
-        background-repeat: no-repeat;
-        background-size: 50px;
-      }
-      .bt_post{
-        justify-content: center;
-        width: 85%;
-        margin-left: 55px;
-        margin-top: 20px;
-        border-radius: 20px;
-        color: white;
-        border: none;
-        height: 27px;
-        background-color: red;
-      }
-      .text-icon{
-        margin-left: 55px;
-        width: 85%;
-        text-indent: 20px;
-        background-color: #ffffff;
-        font-size: 23px;
-        border-bottom: 2px solid black;
-        border-radius: 2px 2px 0px 0px;
-        .icon{
-          margin-right: 20px;
-        }
-        
+    .ip_title {
+      margin-left: 55px;
+      width: 85%;
+      height: 40px;
+      text-indent: 15px;
+      font-size: 17px;
+      border-radius: 5px;
+      background-color: rgb(193, 193, 189);
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.635);
       }
     }
+    .question {
+      margin-left: 55px;
+      margin-top: 10px;
+      color: white;
+    }
+    .ip_question {
+      margin-left: 55px;
+      width: 85%;
+      height: 120px;
+      text-indent: 15px;
+      font-size: 17px;
+      font-family: 'FontAwesome';
+      background-color: rgb(193, 193, 189);
+      border-radius: 0px 0px 5px 5px;
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.635);
+      }
+    }
+
+    // select tag
+    .add-tag{
+  margin-top: 2%;
+  margin-left: 55px;
+  label{
+    display: flex;
+    justify-content:left;
+    color: white;
+    margin-right: 10px;
+    .text{
+      margin-right: 10px;
+    }
+    select{
+      border-radius: 5px;
+      option{
+        display: flex;
+        text-align: center;
+      }
+    }
+  }
+  .tag_test{
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+    margin-top: 1%;
+    p{
+    display: flex;
+    justify-content: center;
+    background-color: #007aff;
+    width: 15%;
+    height: 25px;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+  }
+}
+    // file upload and down load
+    .file-upload-and-download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+  
+    &__label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 45%;
+      height: 10rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ffffff53 ;
+       border-style: dashed;
+      border-radius: 0.5rem;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #244780;
+      }
+    }
+  
+    &__input {
+      display: none;
+    }
+  
+    &__text {
+      margin-left: 1rem;
+    }
+  
+    .file-up-and-down{
+      display: flex;
+      .download__button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #297ad1;
+      color: #fff;
+      cursor: pointer;
+      
+  
+      &:hover {
+        background-color: #0069d9;
+      }
+  
+      &:active {
+        background-color: #005cbf;
+      }
+    }
+    .upload__form{
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #297ad1;
+      color: #fff;
+      margin-right: 10px;
+      cursor: pointer;
+      button{
+        color: white;
+        background-color: #297ad1;
+      }
+  
+      &:hover {
+        background-color: #0069d9;
+      }
+  
+      &:active {
+        background-color: #005cbf;
+      }
+    }
+    }
+  }
+  
+
+    //checkbox
+    .post-form {
+      .form-group {
+        display: flex;
+        justify-content: center;
+        input {
+          margin-right: 10px;
+          margin-bottom: 3px;
+        }
+
+        label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: rgba(255, 255, 255, 0.31);
+          font-size: 15px;
+
+          input[type='checkbox'] {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .button_post {
+        display: flex;
+        justify-content: center;
+        button {
+          width: 85%;
+          height: 35px;
+          padding: 7px;
+          font-size: 16px;
+          color: #fff;
+          background-color: red;
+          border: none;
+          border-radius: 15px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: red;
+          }
+
+          &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    .bt_post {
+      justify-content: center;
+      width: 85%;
+      margin-left: 55px;
+      margin-top: 20px;
+      border-radius: 20px;
+      color: white;
+      border: none;
+      height: 27px;
+      background-color: red;
+    }
+    .icon_item {
+      margin-left: 55px;
+      width: 85%;
+      text-indent: 20px;
+      font-size: 23px;
+      border-bottom: 2px solid black;
+      border-radius: 5px 5px 2px 2px;
+      background-color: rgb(193, 193, 189);
+      .icon {
+        margin-right: 10px;
+        color: black;
+        text-decoration: none;
+        background-color:rgb(193, 193, 189) ;
+      }
+    }
+    .button_item {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 13px;
+      .upload_button {
+        background-color: #6c757d33;
+        color: black;
+        margin-right: 65px;
+        margin-top: -6%;
+        border-radius: 10px;
+        width: 12%;
+        height: 30px;
+      }
+    }
+
+    .select-tag-dropdown {
+  display: flex;
+  flex-direction: inherit;
+  align-items: center;
+  margin-top: 3%;
+  margin-left: 8%;
+
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    width: 28%;
+    height: 143px;
+    appearance: none;
+    background-color: #f5f5f5;
+    color: #555;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    option{
+      margin-top: 5px;
+    }
+    
+    &:hover {
+      background-color: #eee;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px #007bff;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-top: 18%;
+    margin-left: 4%;
+
+    li {
+      margin-bottom: 5px;
+      padding: 5px;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+  }
+}
+
+
+
+  }
 }
