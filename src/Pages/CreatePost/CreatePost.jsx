@@ -9,26 +9,29 @@ import './CreatePost.scss';
 
 export const CreatePost = (props) => {
   //set keybroard
-  const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
+  const [bold, setBold] = useState(false);
+  const [italic, setItalic] = useState(false);
+  const [underline, setUnderline] = useState(false);
 
-  function handleBoldClick() {
-    setIsBold((prevState) => !prevState);
-  }
+  const handleBoldClick = (e) => {
+    e.preventDefault()
+    setBold(!bold);
+  };
 
-  function handleItalicClick() {
-    setIsItalic((prevState) => !prevState);
-  }
+  const handleItalicClick = (e) => {
+    e.preventDefault()
+    setItalic(!italic);
+  };
 
-  function handleUnderlineClick() {
-    setIsUnderline((prevState) => !prevState);
-  }
+  const handleUnderlineClick = (e) => {
+    e.preventDefault()
+    setUnderline(!underline);
+  };
 
   const textStyle = {
-    fontWeight: isBold ? 'bold' : 'normal',
-    fontStyle: isItalic ? 'italic' : 'normal',
-    textDecoration: isUnderline ? 'underline' : 'none',
+    fontWeight: bold ? 'bold' : 'normal',
+    fontStyle: italic ? 'italic' : 'normal',
+    textDecoration: underline ? 'underline' : 'none',
   };
 
   // Set tag
@@ -129,31 +132,22 @@ export const CreatePost = (props) => {
       {/* createpost content */}
       <div className='createpost'>
         <div className='center'>
-          {/* <FileUpload/> */}
           <form>
             <p className='title'> Create a post</p>
             <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
             <p className='question'>Question</p>
-            <div className='text-icon'>
-              <div></div>
-              <button className='icon' onClick={handleBoldClick}>
+            <div className='icon_item'>
+              <button className='icon' onClick = {(e)=>{handleBoldClick(e)}}>
                 <BiBold />
               </button>
-              <button className='icon' onClick={handleItalicClick}>
+              <button className='icon' onClick = {(e)=>{handleItalicClick(e)}}>
                 <BiItalic />
               </button>
-              <button className='icon' onClick={handleUnderlineClick}>
+              <button className='icon' onClick = {(e)=>{handleUnderlineClick(e)}}>
                 <BiUnderline />
               </button>
             </div>
-            <input
-              className='ip_question'
-              type='text'
-              id='frame'
-              name='frame'
-              style={textStyle}
-              placeholder=' Write description....'
-            />
+            <input className='ip_question' style={textStyle} placeholder=' Write description....' />
 
             {/* select tag */}
             <div className='add-tag'>
