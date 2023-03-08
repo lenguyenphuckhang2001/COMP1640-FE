@@ -128,7 +128,7 @@ export const CreatePost = (props) => {
   };
 
   return (
-    <Col md={{ span: 6, offset: 3 }}>
+    <Col md={{ span: 6 }}>
       {/* createpost content */}
       <div className='createpost'>
         <div className='center'>
