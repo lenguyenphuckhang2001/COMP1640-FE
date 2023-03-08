@@ -1,0 +1,50 @@
+.board {
+  background: #0c172d;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  .user-add {
+    background: #0c172d;
+    border-radius: 20px 20px 0 0;
+    padding-top: 10px;
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      color: #fefefe;
+      text-align: center;
+    }
+  }
+  .content-add {
+    background: #3d537d;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 10px;
+    p {
+      color: #fefefe;
+      margin-top: 5px;
+    }
+  }
+  .info-list {
+    background: #3d537d;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    .list-1 {
+      background: #3d537d;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: #fefefe solid 2px;
+      padding-top: 10px;
+      p {
+        color: #fefefe;
+      }
+    }
+  }
+}

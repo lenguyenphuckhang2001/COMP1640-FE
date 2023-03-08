@@ -18,10 +18,11 @@ import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
 import { ListPost } from './Components/ListPost/Listpost';
 import Index from './Index';
+import { Admin } from './Pages/Admin/Admin';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Index/>}>
+    <Route path='/' element={<Index />}>
       <Route path='/' element={<Home />} />
       <Route path='create-post' element={<CreatePost />} />
       <Route path='question' element={<Question />} />
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
+      <Route path='admin' element={<Admin />} />
     </Route>,
   ),
 );
