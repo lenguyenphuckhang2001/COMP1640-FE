@@ -14,7 +14,7 @@ import {
 
 export const Admin = () => {
   return (
-    <Col md={{ span: 6, offset: 3 }}>
+    <Col md={{ span: 6 }}>
       <div className='board'>
         <div className='user-add'>
           <h1>User</h1>
