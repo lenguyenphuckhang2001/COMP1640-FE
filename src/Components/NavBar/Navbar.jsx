@@ -66,7 +66,7 @@ export const Navbar = () => {
             {showDropdown && (
               <div className="navbar__dropdown">
                 <NavLink className='user_item' to='Account/user-info'>User-Info</NavLink>
-                <NavLink className='logout' to='logout'>Logout</NavLink>
+                <NavLink className='login' to='Account/login'>Login</NavLink>
               </div>
             )}
             </div>
