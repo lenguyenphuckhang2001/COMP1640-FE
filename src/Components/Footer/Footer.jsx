@@ -22,7 +22,7 @@ export const Footer = () => {
         </div>
         <div className='container'>
           <div className='row footer'>
-            <div className='col-12 col-md-3'>
+            <div className='col-6 col-md-3'>
               <div className='about'>
                 <ul className='about_item'>
                   <p>ABOUT US</p>
@@ -42,7 +42,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className='col-12 col-md-3'>
+            <div className='col-6 col-md-3'>
               <div className='service'>
                 <ul className='service_item'>
                   <p>SERVICE</p>
@@ -62,7 +62,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className='col-12 col-md-3'>
+            <div className='col-6 col-md-3'>
               <div className='adress'>
                 <ul className='adress_item'>
                   <p>ADRESS</p>
@@ -102,7 +102,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className='col-12 col-md-3'>
+            <div className='col-6 col-md-3'>
               <div className='social'>
                 <ul className='social_item'>
                   <p>SOCIAL MEDIA</p>
