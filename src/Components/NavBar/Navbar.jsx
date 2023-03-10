@@ -27,7 +27,7 @@ export const Navbar = () => {
                 </div>
               </div>
 
-              <div className='col-12 col-md-1'>
+              <div className='col-2 col-md-1 mb-2'>
                 <div className='home'>
                   <NavLink to='/'>
                     <AiFillHome />
@@ -35,13 +35,13 @@ export const Navbar = () => {
                 </div>
               </div>
 
-              <div className='col-12 col-md-6'>
+              <div className='col-10 col-md-6'>
                 <div className='search'>
                   <input placeholder='&#xf002;  Search for anything.....'></input>
                 </div>
               </div>
 
-              <div className='col-12 col-md-3'>
+              <div className='col-12 col-md-3 '>
                 <div className='list_item'>
                   <div className='post'>
                     <NavLink to='/create-post'>

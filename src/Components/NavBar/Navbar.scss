@@ -1,5 +1,5 @@
 @import '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css';
-
+@import '../CommonScss/Responsive.scss';
 .navbar {
   background-color: #0c172d;
   .logo {
@@ -49,12 +49,12 @@
   }
   .navbar__dropdown {
     position: absolute;
-    top: 22px;
-    right: 65px;
+    top: 40%;
+    right: 5%;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
-    width: 135px;
+    width: 120px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -78,4 +78,87 @@
       }
     }
   }
+}
+@include responsive('extra-large') {
+  .navbar{
+    .logo{
+      margin-left: 10%;
+    }
+    .navbar__dropdown{
+      top: 22px;
+      right: 20px;
+    }
+  }
+  
+}
+@include responsive('large') {
+  .navbar{
+    .navbar__dropdown{
+      width: 90px;
+      height: 100px;
+      top: 80%;
+      right: 10%;
+    }
+    .logo{
+      margin-left: 10%;
+    }
+  }
+ 
+}
+@include responsive('medium') {
+  .navbar{
+    .list_item{
+      display: flex;
+    justify-content: center;
+    }
+    .search{
+      width: 80%;
+    }
+    .navbar__dropdown{
+      top: 70%;
+    }
+    .logo{
+      margin-left: 7%;
+    }
+    .home{
+      margin-left: 50%;
+    }
+  }
+}
+@include responsive('small') {
+.navbar{
+  .list_item{
+    display: flex;
+  justify-content: center;
+  }
+  .navbar__dropdown{
+    width: 90px;
+    height: 90px;
+    top: 70%;
+    padding: 0px;
+  }
+}
+}
+@include responsive('extra-small') {
+  .navbar{
+    .list_item{
+      display: flex;
+    justify-content: center;
+    }
+    .navbar__dropdown{
+      width: 90px;
+      height: 90px;
+      top: 70%;
+      padding: 0px;
+    }
+  }
+}
+@include responsive('too-small'){
+.navbar{
+  .navbar__dropdown{
+    top: 70%;
+      padding: 0px;
+      left: 80%;
+  }
+}
 }
