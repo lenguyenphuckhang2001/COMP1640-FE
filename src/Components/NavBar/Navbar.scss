@@ -1,67 +1,81 @@
 @import '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css';
 
-.Navbar_item {
+.navbar {
   background-color: #0c172d;
-  height: 55px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  p {
-    .item {
+  .logo {
+    display: flex;
+    margin-left: 10%;
+    .icon {
+      font-size: 17px;
+      color: blue;
+    }
+    .text {
+      text-decoration: none;
+      margin-left: 2px;
+      color: white;
+      font-size: 20px;
+    }
+  }
+  .home {
+    font-size: 30px;
+    a {
       color: white;
     }
   }
-  .icon_logo {
-    margin-left: 15px;
-    margin-top: 10px;
-    .item {
-      color: blue;
-      font-size: 25px;
-      margin-left: -120;
-    }
-  }
-  .text_logo {
-    margin-left: 505px;
-    margin-top: 16px;
-    .item {
-      text-decoration: none;
-      font-size: 23px;
-      margin-left: -524px;
-    }
-  }
-  .icon_home {
-    margin-left: -406px;
-    font-size: 35px;
-    margin-top: 5px;
-  }
-  .search_item {
-    .item_search {
-      margin-left: 13px;
-      margin-top: 16px;
-      border: none;
-      border-radius: 50px;
-      width: 710px;
-      height: 30px;
+  .search {
+    input {
+      width: 100%;
+      border-radius: 20px;
       text-indent: 20px;
-      font-size: 15px;
+      font-size: 20px;
       font-family: 'FontAwesome';
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+    a {
+      color: white;
     }
   }
-  .createpost_icon {
-    font-size: 35px;
-    margin-top: 7px;
-  }
-  .notification_icon {
-    font-size: 35px;
-    margin-top: 23px;
-  }
-  .question_icon {
+  .list_item {
+    display: flex;
     font-size: 30px;
-    margin-top: 10px;
+    a {
+      color: white;
+    }
+    .info {
+      margin-left: 10px;
+    }
   }
-  .userinfo_icon {
-    font-size: 33px;
-    margin-top: 5px;
-    margin-right: 200px;
+  .navbar__dropdown {
+    position: absolute;
+    top: 22px;
+    right: 65px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    width: 135px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .user_item {
+      color: #333;
+      text-decoration: none;
+      padding: 5px 20px;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+    .login {
+      color: #333;
+      text-decoration: none;
+      padding: 5px 20px;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
   }
 }
