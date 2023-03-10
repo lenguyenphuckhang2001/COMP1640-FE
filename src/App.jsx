@@ -17,6 +17,7 @@ import { Logout } from './Pages/Logout/Logout';
 import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
 import { ListPost } from './Components/ListPost/Listpost';
+import { QaManagement } from './Pages/QaManagement/QaManagement'
 import Index from './Index';
 
 const router = createBrowserRouter(
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
+      <Route path='Qamanagement' element={<QaManagement />} />
     </Route>,
   ),
 );
