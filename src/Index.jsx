@@ -5,7 +5,7 @@ import Footer from './Components/Footer/Footer';
 import Navbar from './Components/NavBar/Navbar';
 import { TagbarLeft } from './Components/TagBar/Tagbar-left';
 import { TagbarRight } from './Components/TagBar/Tagbar-right';
-import './index.scss'
+import './index.scss';
 export const Index = () => {
   let params = useLocation();
   console.log(params);
@@ -15,9 +15,19 @@ export const Index = () => {
       <main>
         <Container>
           <Row>
-            {params['pathname'].includes('Account') ? console.log('oke') : <TagbarLeft />}
+            {params['pathname'].includes('Account') ||
+            params['pathname'].includes('change-password') ? (
+              console.log('oke')
+            ) : (
+              <TagbarLeft />
+            )}
             <Outlet />
-            {params['pathname'].includes('Account') ? console.log('oke') : <TagbarRight />}
+            {params['pathname'].includes('Account') ||
+            params['pathname'].includes('change-password') ? (
+              console.log('oke')
+            ) : (
+              <TagbarRight />
+            )}
           </Row>
         </Container>
       </main>
