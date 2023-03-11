@@ -14,6 +14,7 @@ import { UserInfo } from './Pages/UserInfo/UserInfo';
 import { Saved } from './Pages/UserInfo/Saved/Saved';
 import { History } from './Pages/UserInfo/History/History';
 import { Edit } from './Pages/UserInfo/Edit/Edit';
+import { ChangePassword } from './Pages/UserInfo/Edit/ChangePassword/ChangePassword';
 import { Question } from './Pages/Question/Question';
 import { Login } from './Pages/Member/Login';
 import { Logout } from './Pages/Logout/Logout';
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
         <Route path='history' element={<History />} />
         <Route path='edit' element={<Edit />} />
       </Route>
+      <Route path='change-password' element={<ChangePassword />} />
       <Route path='Account/login' element={<Login />} />
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />

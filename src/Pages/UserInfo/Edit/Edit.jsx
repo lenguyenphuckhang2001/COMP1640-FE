@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Edit.scss';
-import { Outlet } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 export const Edit = () => {
   return (
@@ -20,6 +20,9 @@ export const Edit = () => {
         <input type='text' required />
         <button>Submit</button>
       </form>
+      <div className='change-pass'>
+        <Link to='/change-password'>ChangePassword</Link>
+      </div>
     </div>
   );
 };

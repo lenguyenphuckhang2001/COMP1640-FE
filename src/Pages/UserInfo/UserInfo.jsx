@@ -54,9 +54,9 @@ export const UserInfo = () => {
         </div>
         <div className='col-md-8 pb'>
           <div className='post-bar'>
-            <NavLink to='/user-info/edit'>Edit</NavLink>
-            <NavLink to='/user-info/history'>History</NavLink>
-            <NavLink to='/user-info/saved'>Saved</NavLink>
+            <NavLink to='/Account/user-info/edit'>Edit</NavLink>
+            <NavLink to='/Account/user-info/history'>History</NavLink>
+            <NavLink to='/Account/user-info/saved'>Saved</NavLink>
           </div>
           <main>
             <Outlet />
