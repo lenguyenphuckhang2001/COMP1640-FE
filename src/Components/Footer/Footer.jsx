@@ -79,7 +79,7 @@ export const Footer = () => {
                       <p>
                         <MdOutlineEmail />
                       </p>
-                      Exmample@gmail.com
+                      Blue@gmail.com
                     </a>
                   </li>
                   <li className='footer_item'>
@@ -87,7 +87,7 @@ export const Footer = () => {
                       <p>
                         <BiPhoneCall />
                       </p>
-                      +84 979 822 999
+                      0979 822 999
                     </a>
                   </li>
                   <li className='footer_item'>
@@ -95,7 +95,7 @@ export const Footer = () => {
                       <p>
                         <ImSkype />
                       </p>
-                      skype:you_online
+                      skype:online
                     </a>
                   </li>
                 </ul>

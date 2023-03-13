@@ -2,6 +2,7 @@
 @import '../CommonScss/Responsive.scss';
 .navbar {
   background-color: #0c172d;
+
   .logo {
     display: flex;
     margin-left: 10%;
@@ -25,12 +26,14 @@
   .search {
     input {
       width: 100%;
-      border-radius: 20px;
-      text-indent: 20px;
+      border-radius: 10px;
+      text-indent: 10px;
       font-size: 20px;
       font-family: 'FontAwesome';
       &::placeholder {
         font-size: 15px;
+        display: flex;
+        justify-content: center;
       }
     }
     a {
@@ -40,6 +43,18 @@
   .list_item {
     display: flex;
     font-size: 30px;
+    .post{
+      padding: 0px 10px;
+    }
+    .question{
+      padding: 0px 10px;
+    }
+    .notification{
+      padding: 0px 10px;
+    }
+    .info{
+      padding: 0px 10px;
+    }
     a {
       color: white;
     }
@@ -48,16 +63,18 @@
     }
   }
   .navbar__dropdown {
+    z-index: 999;
     position: absolute;
-    top: 40%;
-    right: 5%;
+    top: 20px;
+    right: 30px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
-    width: 120px;
+    width: 110px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-radius: 5px;
 
     .user_item {
       color: #333;
@@ -81,12 +98,9 @@
 }
 @include responsive('extra-large') {
   .navbar{
-    .logo{
-      margin-left: 10%;
-    }
     .navbar__dropdown{
-      top: 22px;
-      right: 20px;
+      top: 54px;
+      right: 42px;
     }
   }
   
@@ -94,10 +108,8 @@
 @include responsive('large') {
   .navbar{
     .navbar__dropdown{
-      width: 90px;
-      height: 100px;
-      top: 80%;
-      right: 10%;
+      top: 50px;
+      right: 2px;
     }
     .logo{
       margin-left: 10%;
@@ -107,15 +119,26 @@
 }
 @include responsive('medium') {
   .navbar{
+    
     .list_item{
-      display: flex;
-    justify-content: center;
+    .post{
+      padding: 0px 7px;
+    }
+    .question{
+      padding: 0px 7px;
+    }
+    .notification{
+      padding: 0px 7px;
+    }
+    .info{
+      padding: 0px 7px;
+    }
     }
     .search{
-      width: 80%;
+      width: 100%;
     }
     .navbar__dropdown{
-      top: 70%;
+      top: 50px;
     }
     .logo{
       margin-left: 7%;
@@ -128,37 +151,75 @@
 @include responsive('small') {
 .navbar{
   .list_item{
-    display: flex;
-  justify-content: center;
+  .post{
+    padding: 0px 5px;
+  }
+  .question{
+    padding: 0px 5px;
+  }
+  .notification{
+    padding: 0px 5px;
+  }
+  .info{
+    padding: 0px 5px;
+  }
   }
   .navbar__dropdown{
     width: 90px;
     height: 90px;
-    top: 70%;
+    top: 82px;
+    right: 25px;
     padding: 0px;
   }
 }
 }
 @include responsive('extra-small') {
   .navbar{
-    .list_item{
-      display: flex;
-    justify-content: center;
+
+      .search{
+        input{
+          &::placeholder {
+            font-size: 13px;
+          }
+        }
     }
     .navbar__dropdown{
       width: 90px;
       height: 90px;
-      top: 70%;
+      top: 82px;
+      right: 2px;
       padding: 0px;
     }
   }
 }
 @include responsive('too-small'){
 .navbar{
+  .search{
+    input{
+      &::placeholder {
+        font-size: 11px;
+      }
+    }
+
+  }
   .navbar__dropdown{
-    top: 70%;
+    top: 82px;
+    right: 2px;
       padding: 0px;
-      left: 80%;
+  }
+  .list_item{
+    .post{
+      padding: 0px 0px;
+    }
+    .question{
+      padding: 0px 0px;
+    }
+    .notification{
+      padding: 0px 0px;
+    }
+    .info{
+      padding: 0px 0px;
+    }
   }
 }
 }
