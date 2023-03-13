@@ -1,0 +1,53 @@
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+$gradient: linear-gradient(35deg, red, purple);
+$option: rgb(12, 23, 45);
+
+.sort {
+    display: flex;
+    color: #ffffff;
+    padding-bottom: 4%;
+    border-bottom: 1px solid #2B2D3E;
+    width: 100%;
+    margin-top: 3%;
+    p{
+        width: 18%;
+        float: right;
+    }
+    .qtyanswer{
+        float: left;
+        width: 40%;
+    }
+  .form-sl {
+    background-color: rgb(12, 23, 45);
+    width: 42%;
+    float: right;
+    select {
+        text-align: center;
+      appearance: none;
+      border: 0;
+      outline: 0;
+      font: inherit;
+      width: 100%;
+      height: 100%;
+      padding: 0 4em 0 1em;
+      background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+          no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, $glass-icon 3em, $glass 3em);
+      color: white;
+      border-radius: 0.25em;
+      box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      option {
+        color: inherit;
+        background-color: $option;
+      }
+      &:focus {
+        outline: none;
+      }
+      &::-ms-expand {
+        display: none;
+      }
+    }
+  }
+}

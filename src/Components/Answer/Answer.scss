@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+.MainAnswer {
+  color: #ffffff;
+  background-color: rgba(12, 23, 45, 1);
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5%;
+  .answerdost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 1.5%;
+    top: 8%;
+    span {
+      margin-bottom: 3px;
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  .answer {
+    padding: 0 8%;
+    margin-top: 3%;
+    font-size: 20px;
+    display: inline-block;
+    p{
+      font-size: 18px;
+      line-height: normal;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .infoanswer{
+        font-size: 16px;
+        line-height: 10px;
+        float: left;
+    }
+    .user-answer{
+        display: inline-flex;
+      float: right;
+      img{
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

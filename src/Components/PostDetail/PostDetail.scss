@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+.MainPost {
+  color: #ffffff;
+  background-color: rgba(12, 23, 45, 1);
+  border-radius: 5px;
+  position: relative;
+  font-family: 'PT Serif';
+  .title {
+    display: block;
+    margin-left: 7%;
+    padding-top: 2%;
+  }
+  .postdost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 1.5%;
+    top: 8%;
+    span {
+      margin-bottom: 3px;
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  .infopost {
+    display: inline-flex;
+    margin-left: 12%;
+    p {
+      padding-right: 12px;
+    }
+  }
+  .post {
+    padding: 0 8%;
+    font-size: 20px;
+    display: inline-block;
+    .file{
+        width: 100%;
+        text-align: center;
+    }
+    p{
+      font-size: 18px;
+      line-height: normal;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .tag {
+      display: flex;
+      padding: 0;
+      margin: 0 auto;
+      li {
+        list-style-type: none;
+        padding-right: 3%;
+      }
+    }
+    .user-post{
+      display: inline-flex;
+      float: right;
+      img{
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

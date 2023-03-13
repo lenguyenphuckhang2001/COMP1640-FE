@@ -19,6 +19,7 @@ import { Forgotpassword } from './Pages/Member/Forgotpassword';
 import { ListPost } from './Components/ListPost/Listpost';
 import { QaManagement } from './Pages/QaManagement/QaManagement'
 import Index from './Index';
+import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
       <Route path='Qamanagement' element={<QaManagement />} />
+      <Route path='QuestionDetail' element={<QuestionDetail/>} />
     </Route>,
   ),
 );
