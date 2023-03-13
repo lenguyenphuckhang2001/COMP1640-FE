@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
 .MainPost {
   color: #ffffff;
   background-color: rgba(12, 23, 45, 1);
   border-radius: 5px;
   position: relative;
+  font-family: 'PT Serif';
   .title {
     display: block;
     margin-left: 7%;
@@ -30,13 +33,17 @@
     }
   }
   .post {
-    padding: 0 7%;
-    margin-top: 3%;
+    padding: 0 8%;
     font-size: 20px;
     display: inline-block;
     .file{
         width: 100%;
         text-align: center;
+    }
+    p{
+      font-size: 18px;
+      line-height: normal;
+      font-family: 'Courier New', Courier, monospace;
     }
     .tag {
       display: flex;

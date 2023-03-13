@@ -18,11 +18,11 @@ export const Answer = () => {
           </span>
         </div>
         <div className='answer'>
-          <h4>
+          <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown
             printer took a galley of type and scrambled it to make a type specimen book.
-          </h4>
+          </p>
           <div className='infoanswer'>
             <p>Create At: 10/1/2021</p>
             <p>Modified At: 20/1/2021</p>
