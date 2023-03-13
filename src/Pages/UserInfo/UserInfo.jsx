@@ -1,20 +1,8 @@
 import React from 'react';
 import './UserInfo.scss';
-import { BiLogIn } from 'react-icons/bi';
-import { BiLogOut } from 'react-icons/bi';
+import { BiLogIn, BiLogOut } from 'react-icons/Bi';
 import 'bootstrap/dist/css/bootstrap.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  NavLink,
-  createBrowserRouter,
-  createRoutesFromElements,
-  Outlet,
-} from 'react-router-dom';
-import { Saved } from './Saved/Saved';
-
+import { NavLink, Outlet } from 'react-router-dom';
 
 export const UserInfo = () => {
   return (
