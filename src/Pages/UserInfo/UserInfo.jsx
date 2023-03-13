@@ -21,7 +21,8 @@ export const UserInfo = () => {
           </p>
         </ul>
       </div>
-      <div className='row'>
+      <div className='Userpage-info'>
+        <div className='row'>
         <div className='col-md-3'>
           <img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745' />
           <p>John Handsome</p>
@@ -51,6 +52,8 @@ export const UserInfo = () => {
           </main>
         </div>
       </div>
+      </div>
+      
     </>
   );
 };
