@@ -8,42 +8,20 @@ import JoditEditor from 'jodit-react';
 export const Answerpost = () => {
   const editor = useRef(null);
 	const [content, setContent] = useState('');
-  const config = {
-		readonly: false, 
-	};
+  console.log(content)
   return (
     <div className='answer-form'>
     <h4>Your Answer</h4>
-      {/* <form className='post-a-form'>
-        <div className='dost'>
-          <div className='change-style'>
-            <span>
-              <RxFontBold />
-            </span>
-            <span>
-              <RxFontItalic />
-            </span>
-          </div>
-          <div className='post-file'>
-            <span>
-              <BsLink />
-            </span>
-            <span>
-              <BsCardImage />
-            </span>
-          </div>
-        </div>
-        <textarea placeholder="Enter your summary of poem"/>
-        <button>Submit</button>
-      </form> */}
-      <JoditEditor
+    <JoditEditor
 			ref={editor}
 			value={content}
-      config={config}
+      config={{ theme: "dark" }}
 			tabIndex={1} // tabIndex of textarea
 			onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
 			onChange={newContent => {}}
-		/>
+		  />
+
+      
     </div>
   );
 };
