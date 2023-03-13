@@ -1,0 +1,49 @@
+.edit-info {
+  max-width: 700px;
+  text-align: center;
+  background-color: #0c172d;
+  margin: 30px 30px 20px 60px;
+  padding: 10px 50px 10px 50px;
+  border-radius: 20px;
+  label {
+    text-align: left;
+    display: block;
+    color: #ddfcff;
+  }
+  h2 {
+    font-size: 36px;
+    color: #ef505f;
+    margin-bottom: 30px;
+  }
+  input {
+    width: 100%;
+    padding: 6px px;
+    margin: 10px 0;
+    border: none;
+    box-sizing: border-box;
+    display: block;
+  }
+  button {
+    background-color: #ef505f;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 40%;
+  }
+  button:hover {
+    background-color: #93121f;
+    transition: 0.5s;
+    color: #ddfcff;
+  }
+  .change-pass {
+    a {
+      text-decoration: none;
+      color: #ef505f;
+      cursor: pointer;
+    }
+    a:hover {
+      color: #ddfcff;
+      transition: 0.3s;
+    }
+  }
+}
