@@ -1,16 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 .footer {
   background-color: #0c172d;
-  padding: 5px;
-  .container {
-    background-color: #0c172d;
-  }
+  padding-top: 10px;
+  padding-bottom: 10px;
   .logo {
-    background-color: #0c172d;
     justify-content: flex-start;
     display: flex;
     color: blue;
     font-size: 25px;
+    padding-top: 5px;
     .text {
       margin-top: -6px;
       margin-left: 2px;
@@ -20,8 +18,8 @@
   }
 
   .footer {
-    padding-left: 8%;
-    padding-right: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
 
     .about {
       .about_item {

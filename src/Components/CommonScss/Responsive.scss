@@ -1,0 +1,26 @@
+@mixin responsive($screen) {
+  @if (map-has-key($map: $breakpoints, $key: $screen)) {
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $screen,
+    );
+    @media screen and (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Khong ton tai";
+  }
+}
+
+$breakpoints: (
+  'extra-large': 1200px,
+  'large': 992px,
+  'medium': 768px,
+  'small': 576px,
+  'extra-small': 480px,
+  'too-small':375px,
+);
+.empty-space {
+  height: 150px;
+  background-color: #f5f5f5;
+}
