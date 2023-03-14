@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsFillGearFill } from 'react-icons/Bs';
 import { AiOutlineHome } from 'react-icons/Ai';
 import { ImSkype } from 'react-icons/Im';
 import { MdOutlineEmail } from 'react-icons/Md';
@@ -15,11 +14,7 @@ import './Footer.scss';
 export const Footer = () => {
   return (
     <footer className='footer'>
-      <div className='container'>
-        <div className='logo'>
-          <BsFillGearFill />
-          <p className='text'>BlueFoum</p>
-        </div>
+      <div>
         <div className='container'>
           <div className='row footer'>
             <div className='col-6 col-md-3'>
