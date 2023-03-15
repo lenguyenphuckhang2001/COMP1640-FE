@@ -14,17 +14,17 @@ export const CreatePost = (props) => {
   const [underline, setUnderline] = useState(false);
 
   const handleBoldClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setBold(!bold);
   };
 
   const handleItalicClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setItalic(!italic);
   };
 
   const handleUnderlineClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setUnderline(!underline);
   };
 
@@ -137,13 +137,28 @@ export const CreatePost = (props) => {
             <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
             <p className='question'>Question</p>
             <div className='icon_item'>
-              <button className='icon' onClick = {(e)=>{handleBoldClick(e)}}>
+              <button
+                className='icon'
+                onClick={(e) => {
+                  handleBoldClick(e);
+                }}
+              >
                 <BiBold />
               </button>
-              <button className='icon' onClick = {(e)=>{handleItalicClick(e)}}>
+              <button
+                className='icon'
+                onClick={(e) => {
+                  handleItalicClick(e);
+                }}
+              >
                 <BiItalic />
               </button>
-              <button className='icon' onClick = {(e)=>{handleUnderlineClick(e)}}>
+              <button
+                className='icon'
+                onClick={(e) => {
+                  handleUnderlineClick(e);
+                }}
+              >
                 <BiUnderline />
               </button>
             </div>
@@ -182,24 +197,34 @@ export const CreatePost = (props) => {
                 </button>
               </div>
             </div>
-            {/* Anonymous */}
-            <div className='anonymous mt-2 mb-2'>
-            <input type='checkbox' class='btn-check' id='btn-check' autocomplete='off' />
-            <label class='btn btn-primary' for='btn-check'>
-              Anonymous
-            </label>
-            </div>
             {/* function checkbox */}
             <div className='post-form'>
               <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                  <input
-                    type='checkbox'
-                    id='checkbox'
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor='checkbox'>I agree to the terms and conditions</label>
+                  <div className='ip_check'>
+                    <input
+                      className='check_item'
+                      type='checkbox'
+                      id='checkbox'
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                    <div>
+                      <label htmlFor='checkbox'>I agree to the terms </label>
+                    </div>
+                  </div>
+                  {/* anonymous */}
+                  <div class='form-check form-switch anonymous'>
+                    <input
+                      class='form-check-input'
+                      type='checkbox'
+                      role='switch'
+                      id='flexSwitchCheckDefault'
+                    />
+                    <label class='form-check-label' for='flexSwitchCheckDefault'>
+                      Anonymous
+                    </label>
+                  </div>
                 </div>
                 <div className='button_post'>
                   <button type='submit' disabled={!isChecked}>
