@@ -37,7 +37,7 @@ export const CreatePost = (props) => {
   // Set tag
 
   const options = [
-    { label: 'Javascripts', value: 'Javascripts' },
+    { label: 'Categories', value: 'Categories' },
 
     { label: 'ReactJs', value: 'ReactJs' },
 
@@ -152,18 +152,12 @@ export const CreatePost = (props) => {
             {/* select tag */}
             <div className='add-tag'>
               <label>
-                <div className='text'>Do you want to choose language</div>
-
                 <select value={value} onChange={handleChange}>
                   {options.map((option) => (
                     <option value={option.value}>{option.label}</option>
                   ))}
                 </select>
               </label>
-
-              <div className='tag_test'>
-                <p> {value}</p>
-              </div>
             </div>
 
             {/* function upload and download */}
@@ -184,12 +178,17 @@ export const CreatePost = (props) => {
                   <button>Upload</button>
                 </form>
                 <button className='download__button' onClick={handleUploadAndDownload}>
-                  Download as ZIP
+                  Download
                 </button>
               </div>
             </div>
-
-            <br />
+            {/* Anonymous */}
+            <div className='anonymous mt-2 mb-2'>
+            <input type='checkbox' class='btn-check' id='btn-check' autocomplete='off' />
+            <label class='btn btn-primary' for='btn-check'>
+              Anonymous
+            </label>
+            </div>
             {/* function checkbox */}
             <div className='post-form'>
               <form onSubmit={handleSubmit}>
