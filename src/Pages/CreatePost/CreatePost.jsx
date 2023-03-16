@@ -14,17 +14,17 @@ export const CreatePost = (props) => {
   const [underline, setUnderline] = useState(false);
 
   const handleBoldClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setBold(!bold);
   };
 
   const handleItalicClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setItalic(!italic);
   };
 
   const handleUnderlineClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setUnderline(!underline);
   };
 
@@ -37,7 +37,7 @@ export const CreatePost = (props) => {
   // Set tag
 
   const options = [
-    { label: 'Javascripts', value: 'Javascripts' },
+    { label: 'Categories', value: 'Categories' },
 
     { label: 'ReactJs', value: 'ReactJs' },
 
@@ -137,13 +137,28 @@ export const CreatePost = (props) => {
             <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
             <p className='question'>Question</p>
             <div className='icon_item'>
-              <button className='icon' onClick = {(e)=>{handleBoldClick(e)}}>
+              <button
+                className='icon'
+                onClick={(e) => {
+                  handleBoldClick(e);
+                }}
+              >
                 <BiBold />
               </button>
-              <button className='icon' onClick = {(e)=>{handleItalicClick(e)}}>
+              <button
+                className='icon'
+                onClick={(e) => {
+                  handleItalicClick(e);
+                }}
+              >
                 <BiItalic />
               </button>
-              <button className='icon' onClick = {(e)=>{handleUnderlineClick(e)}}>
+              <button
+                className='icon'
+                onClick={(e) => {
+                  handleUnderlineClick(e);
+                }}
+              >
                 <BiUnderline />
               </button>
             </div>
@@ -152,18 +167,12 @@ export const CreatePost = (props) => {
             {/* select tag */}
             <div className='add-tag'>
               <label>
-                <div className='text'>Do you want to choose language</div>
-
                 <select value={value} onChange={handleChange}>
                   {options.map((option) => (
                     <option value={option.value}>{option.label}</option>
                   ))}
                 </select>
               </label>
-
-              <div className='tag_test'>
-                <p> {value}</p>
-              </div>
             </div>
 
             {/* function upload and download */}
@@ -184,23 +193,38 @@ export const CreatePost = (props) => {
                   <button>Upload</button>
                 </form>
                 <button className='download__button' onClick={handleUploadAndDownload}>
-                  Download as ZIP
+                  Download
                 </button>
               </div>
             </div>
-
-            <br />
             {/* function checkbox */}
             <div className='post-form'>
               <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                  <input
-                    type='checkbox'
-                    id='checkbox'
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor='checkbox'>I agree to the terms and conditions</label>
+                  <div className='ip_check'>
+                    <input
+                      className='check_item'
+                      type='checkbox'
+                      id='checkbox'
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                    <div>
+                      <label htmlFor='checkbox'>I agree to the terms </label>
+                    </div>
+                  </div>
+                  {/* anonymous */}
+                  <div class='form-check form-switch anonymous'>
+                    <input
+                      class='form-check-input'
+                      type='checkbox'
+                      role='switch'
+                      id='flexSwitchCheckDefault'
+                    />
+                    <label class='form-check-label' for='flexSwitchCheckDefault'>
+                      Anonymous
+                    </label>
+                  </div>
                 </div>
                 <div className='button_post'>
                   <button type='submit' disabled={!isChecked}>
