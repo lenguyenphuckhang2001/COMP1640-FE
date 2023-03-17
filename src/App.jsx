@@ -24,6 +24,7 @@ import { ListPost } from './Components/ListPost/Listpost';
 import { QaManagement } from './Pages/QaManagement/QaManagement'
 import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
+import { Admin } from './Pages/Admin/Index';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
       <Route path='Qamanagement' element={<QaManagement />} />
       <Route path='QuestionDetail' element={<QuestionDetail/>} />
+      <Route path='Account/admin' element={<Admin/>} />
     </Route>,
   ),
 );

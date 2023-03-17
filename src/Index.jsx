@@ -11,7 +11,7 @@ export const Index = () => {
   console.log(params);
   return (
     <>
-      <Navbar />
+      {params['pathname'].includes('admin') ? console.log('oke') : <Navbar />}
       <main>
         <Container>
           <Row>
@@ -31,7 +31,7 @@ export const Index = () => {
           </Row>
         </Container>
       </main>
-      <Footer />
+      {params['pathname'].includes('admin') ? console.log('oke') : <Footer />}
     </>
   );
 };
