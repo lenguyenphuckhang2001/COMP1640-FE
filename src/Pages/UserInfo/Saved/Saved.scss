@@ -83,7 +83,7 @@
       .comment {
         background-color: #0c172d;
         display: flex;
-        padding-right: 180px;
+        padding-right: 100px;
         i {
           padding-right: 10px;
           padding-top: 4px;
@@ -108,7 +108,32 @@
       }
     }
   }
-  .p-2 {
+}
+.posts-1 {
+  .icon {
+    background-color: #0c172d;
+    position: absolute;
+    color: #ddfcffb0;
+    margin-left: 50px;
+    margin-right: 90%;
+    margin-top: 20px;
+    padding-left: 20px;
+    .up-icon {
+      background-color: #0c172d;
+      padding-left: 5px;
+      font-size: 32px;
+    }
+    p {
+      background-color: #0c172d;
+      margin-bottom: 0;
+    }
+    .down-icon {
+      background-color: #0c172d;
+      padding-left: 5px;
+      font-size: 32px;
+    }
+  }
+  .p-1 {
     background-color: #0c172d;
     margin-left: 50px;
     border-radius: 10px;
@@ -167,7 +192,7 @@
       .comment {
         background-color: #0c172d;
         display: flex;
-        padding-right: 180px;
+        padding-right: 100px;
         i {
           padding-right: 10px;
           padding-top: 4px;
