@@ -5,11 +5,8 @@ import { Col } from 'react-bootstrap';
 import './Department.scss';
 
 export const Department = () => {
-  const [tags, setTags] = useState([]);
 
-  function handleChange(tags) {
-    setTags(tags);
-  }
+  // crud department
   const [items, setItems] = useState([]);
   const [id, setId] = useState('');
   const [name, setName] = useState('');
@@ -62,6 +59,16 @@ export const Department = () => {
     newItems.splice(index, 1);
     setItems(newItems);
   };
+  //crud Q&A Coordinator
+
+  
+
+  //tag input
+  const [tags, setTags] = useState([]);
+
+  function handleChange(tags) {
+    setTags(tags);
+  }
 
   return (
     <div className='department'>
@@ -115,7 +122,7 @@ export const Department = () => {
       </div>
       {/* tag input */}
       <div className='col-md-12'>
-      <div className='tagInput'>
+      <div className='tag-input'>
       <TagsInput value={tags} onChange={handleChange} />
     </div>
       </div>
