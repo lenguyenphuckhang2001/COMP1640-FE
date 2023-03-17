@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-export const MainDash = () => {
+import "./Postmanage.scss"
+export const Postmanage = () => {
   return (
     <Col md={8}>
-        <p>123</p>
+        <p>345</p>
     </Col>
   );
 };

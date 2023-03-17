@@ -1,11 +1,12 @@
 import React from 'react';
-import { MainDash } from '../../Components/MainDash/MainDash';
-import { Sidebar } from '../../Components/Sidebar/Sidebar';
+import { Outlet } from 'react-router-dom';
+import { MainDash } from '../../Components/Admin/MainDash/MainDash';
+import { Sidebar } from '../../Components/Admin/Sidebar/Sidebar';
 export const Admin = () => {
   return (
     <>
         <Sidebar/>
-        <MainDash/>
+        <Outlet/>
     </>
   );
 };

@@ -7,25 +7,26 @@ import {
     UilSignOutAlt,
   } from "@iconscout/react-unicons";
   
-  // Analytics Cards imports
-  import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
-  
   export const SidebarData = [
     {
       icon: UilEstate,
       heading: "Dashboard",
+      routing: "/Account/admin",
     },
     {
       icon: UilClipboardAlt,
       heading: "Post",
+      routing: "/Account/admin/post",
     },
     {
       icon: UilUsersAlt,
       heading: "User",
+      routing: "/Account/admin/user",
     },
     {
       icon: UilChart,
-      heading: 'Analytics'
+      heading: 'Analytics',
+      routing: "/Account/admin/analytics",
     },
   ];
   
