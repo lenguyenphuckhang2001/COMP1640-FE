@@ -51,7 +51,18 @@ export const Saved = () => {
             </div>
           </div>
         </div>
-        <div className='p-2'>
+      </div>
+      <div className='posts-1'>
+        <div className='icon'>
+          <div className='up-icon'>
+            <i class='fa-solid fa-caret-up'></i>
+          </div>
+          <p>100</p>
+          <div className='down-icon'>
+            <i class='fa-solid fa-caret-down'></i>
+          </div>
+        </div>
+        <div className='p-1'>
           <div className='user'>
             <img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745' />
             <p>Khoa</p>
@@ -61,7 +72,7 @@ export const Saved = () => {
             <p>Modified At: 20/1/2021</p>
           </div>
           <div className='content'>
-            <p>The worst game ever</p>
+            <p>The Greatest game ever</p>
           </div>
           <div className='tag'>
             <p>

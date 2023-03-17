@@ -19,14 +19,14 @@ export const History = () => {
         <div className='p-1'>
           <div className='user'>
             <img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745' />
-            <p>John Handsome</p>
+            <p>Khoa</p>
           </div>
           <div className='time'>
             <p>Create at: 10/1/2021</p>
             <p>Modified At: 20/1/2021</p>
           </div>
           <div className='content'>
-            <p>The Best H game ever</p>
+            <p>The Greatest game ever</p>
           </div>
           <div className='tag'>
             <p>
@@ -65,14 +65,14 @@ export const History = () => {
         <div className='p-1'>
           <div className='user'>
             <img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745' />
-            <p>John Handsome</p>
+            <p>Khoa</p>
           </div>
           <div className='time'>
             <p>Create at: 10/1/2021</p>
             <p>Modified At: 20/1/2021</p>
           </div>
           <div className='content'>
-            <p>The Best H game ever</p>
+            <p>The Greatest game ever</p>
           </div>
           <div className='tag'>
             <p>
