@@ -59,8 +59,24 @@ export const Department = () => {
     newItems.splice(index, 1);
     setItems(newItems);
   };
-  //crud Q&A Coordinator
 
+
+  //crud Q&A Coordinator
+  const [data, setData] = useState([]);
+  const [idCounter, setIdCounter] = useState(1);
+  const [newName, setNewName] = useState('');
+  const [newDate, setNewDate] = useState('');
+
+  const addData = () => {
+    setData([...data, { id: idCounter, name: newName, date: newDate }]);
+    setIdCounter(idCounter + 1);
+    setNewName('');
+    setNewDate('');
+  };
+
+  const deleteData = (id) => {
+    setData(data.filter((item) => item.id !== id));
+  };
   
 
   //tag input
@@ -119,6 +135,59 @@ export const Department = () => {
       </div>
       <div className='col-md-6'>
         <h2>Q&A Coordinator</h2>
+        <div className="container">
+        <form className="form" onSubmit={(e) => e.preventDefault()}>
+        <label className="form-label">
+          Name:
+          <input
+            className="form-input"
+            type="text"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+          />
+        </label>
+        <label className="form-label">
+          Date:
+          <input
+            className="form-input"
+            type="date"
+            value={newDate}
+            onChange={(e) => setNewDate(e.target.value)}
+          />
+        </label>
+        <button className="button add-button" onClick={addData}>
+          Add
+        </button>
+      </form>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.date}</td>
+              <td>
+                <button
+                  className="button delete-button"
+                  onClick={() => deleteData(item.id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+     
+    </div>
       </div>
       {/* tag input */}
       <div className='col-md-12'>
