@@ -6,11 +6,12 @@ import { NavLink, Outlet } from 'react-router-dom';
 export const QaManagement = () => {
   return (
     <Col md={{ span: 12 }}>
-      <div className='QA'>
+      <div className='row QA'>
         <div className='title'>
           <h3>Q&A Management</h3>
         </div>
-        <div className='row manage '>
+        
+        <div className=' manage '>
           <div className='col-md-2 list_item'>
             <div>
               <NavLink to='department'>Department</NavLink>
@@ -33,7 +34,7 @@ export const QaManagement = () => {
             </div>
           </div>
           
-          <div className='items'>
+          <div className='col-md-10 items'>
             <main>
               <Outlet />
             </main>
