@@ -1,14 +1,21 @@
-.department {
+.categories {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #0c172d;
     
-    .item {
+    .crud_categories {
       display: flex;
       flex-direction: column;
       
-      
+      h1{
+        display: flex;
+        justify-content: center;
+        color: white;
+      }
       div {
+        label{
+          color: white;
+        }
         button {
           margin-bottom: 10px;
           padding: 5px;
@@ -20,6 +27,22 @@
     
           &:hover {
             background-color: #427acd;
+          }
+        }
+        .update{
+          button {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #427acd;
+            color: #fff;
+            cursor: pointer;
+            margin-bottom: 20px;
+      
+            &:hover {
+              background-color: #427acd;
+            }
           }
         }
     
@@ -36,6 +59,20 @@
           font-size: 16px;
           width: 100%;
           box-sizing: border-box;
+    
+          &:focus {
+            outline: none;
+            border-color: #427acd;
+          }
+        }
+        .todo-input-date {
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          width: 100%;
+          box-sizing: border-box;
+          margin-bottom: 20px;
     
           &:focus {
             outline: none;

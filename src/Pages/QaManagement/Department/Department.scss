@@ -1,0 +1,21 @@
+.department{
+    background-color:#0c172d ;
+    padding: 0px 20px 20px 20px ;
+    .title{
+        color: white;
+        display: flex;
+        justify-content: center;
+    }
+    .list{
+        color: white;
+        label{
+            margin-right: 10px;
+            padding: 10px;           
+        }
+        input{
+            border-radius: 5px;
+            padding: 4px;
+            width: 100%;
+        }
+    }
+}

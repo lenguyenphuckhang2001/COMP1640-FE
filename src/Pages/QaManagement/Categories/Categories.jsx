@@ -1,7 +1,4 @@
-import React, { createContext, useState } from 'react';
-import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css';
-import { Col } from 'react-bootstrap';
+import React, { useState } from 'react';
 import './Categories.scss';
 
 export const Categories = () => {
@@ -14,6 +11,10 @@ export const Categories = () => {
   const [showCreateForm, setShowCreateForm] = useState(false);
 
   const addTodo = () => {
+    if (!currentTodo.name) {
+      alert('Please enter name');
+      return;
+    }
     const newTodo = {
       ...currentTodo,
       id: todos.length + 1,
@@ -68,12 +69,12 @@ export const Categories = () => {
   };
 
   return (
-    <div className='department'>
-  <div className='item'>
+    <div className='categories'>
+  <div className='crud_categories'>
     <div>
-      <h1>Todo List</h1>
+      <h1>Categories</h1>
       <button onClick={() => setShowCreateForm(!showCreateForm)}>
-        Create New Todo
+        Create New Categories
       </button>
       {showCreateForm && (
         <div>
@@ -94,13 +95,13 @@ export const Categories = () => {
             name="date"
             value={currentTodo.date.toISOString().substr(0, 10)}
             onChange={event => handleDateChange(new Date(event.target.value))}
-            className="todo-input"
+            className="todo-input-date"
           />
           <br />
           {currentTodo.id !== 0 ? (
-            <button onClick={updateTodo}>Save Changes</button>
+            <button onClick={updateTodo}>Update</button>
           ) : (
-            <button onClick={addTodo}>Create New Todo</button>
+            <button onClick={addTodo}>Add Item</button>
           )}
           <button onClick={() => setShowCreateForm(false)}>Cancel</button>
         </div>
@@ -116,7 +117,7 @@ export const Categories = () => {
         </thead>
         <tbody>
           {todos.map(todo => (
-            <tr key={todo.id}>
+            <tr className='column' key={todo.id}>
               <td>{todo.id}</td>
               <td>{todo.name}</td>
               <td>{todo.date.toDateString()}</td>

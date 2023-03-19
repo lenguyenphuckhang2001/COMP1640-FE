@@ -2,18 +2,43 @@
   background-color:#0c172d ;
 .manage{
   display: flex;
-  .list_item{
 
+  .list_item{
+    background-color: rgb(43, 97, 177);
+    border-radius: 5px;
+   ul{
+    padding: 20px 20px 20px 20px ;
+    margin: 0;
+    border-style:solid;
+    li{
+      float: left;
+      list-style: none;
+      background-color: rgb(43, 97, 177);
+      margin: 10px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+      &:hover {
+        background-color: rgb(74, 120, 190);
+        border-radius: 10px;
+        cursor:pointer;
+        margin-top: 5px;
+        
+      } 
+      a{
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 17px;
+        border-radius: 5px;
+        
+        
+      }
+      
+    }
+   }
   }
 }
-
-  .title {
-    display: flex;
-    justify-content: center;
-    h3{
-      background-color: rgb(70, 102, 245);
-      padding: 5px;
-      border-radius: 5px;
-    }
-  }
 }

@@ -6,34 +6,33 @@ import { NavLink, Outlet } from 'react-router-dom';
 export const QaManagement = () => {
   return (
     <Col md={{ span: 12 }}>
-      <div className='row QA'>
-        <div className='title'>
-          <h3>Q&A Management</h3>
-        </div>
-        
-        <div className=' manage '>
+      <div className='row QA'>  
+        <div className='manage '>
           <div className='col-md-2 list_item'>
-            <div>
+            <ul>
+            <li>
               <NavLink to='department'>Department</NavLink>
-            </div>
-
-            <div>
+            </li>
+            <li>
+              <NavLink to='QaCoordinator'>Q&A Coordinator</NavLink>
+            </li>
+            <li>
               <NavLink to='categories'>Categories</NavLink>
-            </div>
+            </li>
 
-            <div>
+            <li>
               <NavLink to='downloadData'>Download Data</NavLink>
-            </div>
+            </li>
 
-            <div>
+            <li>
               <NavLink to='statistical'>Statistical</NavLink>
-            </div>
+            </li>
 
-            <div>
+            <li>
               <NavLink to='academic'>Academic Year</NavLink>
-            </div>
-          </div>
-          
+            </li>
+            </ul>
+          </div>         
           <div className='col-md-10 items'>
             <main>
               <Outlet />

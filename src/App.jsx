@@ -41,6 +41,8 @@ import { DownloadData } from './Pages/QaManagement/DownloadData/DownloadData';
 import { Statistical } from './Pages/QaManagement/Statistical/Statistical';
 import { Academic } from './Pages/QaManagement/Academic/Academic';
 
+import { QaCoordinator } from './Pages/QaManagement/QaCoordinator/QaCoordinator';
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Index />}>
@@ -57,7 +59,7 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
-      <Route path='Qamanagement' element={<QaManagement />}>
+      <Route path='QaManagement' element={<QaManagement />}>
         <Route path='department' element={<Department />} />
         <Route path='categories' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
@@ -72,6 +74,7 @@ const router = createBrowserRouter(
         <Route path='analytics' element={<Analytics />}>
           <Route path='' element={<Analyticstag />} />
           <Route path='post' element={<AnalyticsPost />} />
+          <Route path='QaCoordinator' element={<QaCoordinator />} />
         </Route>
       </Route>
     </Route>,

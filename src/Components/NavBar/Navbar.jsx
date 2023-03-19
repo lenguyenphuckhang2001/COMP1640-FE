@@ -37,7 +37,7 @@ export const Navbar = () => {
 
               <div className='col-5 col-md-6'> 
                 <div className='search'>
-                  <input placeholder='&#xf002;  Search for anything.....'></input>
+                  <input placeholder='  Search for anything.....'></input>
                 </div>
               </div>
 
