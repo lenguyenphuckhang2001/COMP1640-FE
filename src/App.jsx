@@ -34,6 +34,7 @@ import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
 import { ListPost } from './Components/ListPost/Listpost';
 import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
+
 import QaManagement from './Pages/QaManagement/QaManagement';
 import { Department } from './Pages/QaManagement/Department/Department';
 import { Categories } from './Pages/QaManagement/Categories/Categories';
@@ -42,6 +43,15 @@ import { Statistical } from './Pages/QaManagement/Statistical/Statistical';
 import { Academic } from './Pages/QaManagement/Academic/Academic';
 
 import { QaCoordinator } from './Pages/QaManagement/QaCoordinator/QaCoordinator';
+
+import Manage from './Pages/Manage/Manage';
+import { Department } from './Pages/Manage/Department/Department';
+import { Categories } from './Pages/Manage/Categories/Categories';
+import { DownloadData } from './Pages/Manage/DownloadData/DownloadData';
+import { Statistical } from './Pages/Manage/Statistical/Statistical';
+import { Academic } from './Pages/Manage/Academic/Academic';
+import { QaCoordinator } from './Pages/Manage/QaCoordinator/QaCoordinator';
+import { QaManagement } from './Pages/Manage/QaManagement/QaManagement';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -59,11 +69,12 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
-      <Route path='QaManagement' element={<QaManagement />}>
+      <Route path='Manage' element={<Manage />}>
         <Route path='department' element={<Department />} />
         <Route path='categories' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
         <Route path='statistical' element={<Statistical />} />
+
         <Route path='academic' element={<Academic />} />
       </Route>
       <Route path='QuestionDetail' element={<QuestionDetail />} />
@@ -75,6 +86,10 @@ const router = createBrowserRouter(
           <Route path='' element={<Analyticstag />} />
           <Route path='post' element={<AnalyticsPost />} />
           <Route path='QaCoordinator' element={<QaCoordinator />} />
+
+          <Route path='academic' element={<Academic />} />
+          <Route path='QaCoordinator' element={<QaCoordinator />} />
+          <Route path='QaManagement' element={<QaManagement />} />
         </Route>
       </Route>
     </Route>,

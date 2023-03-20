@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Col } from 'react-bootstrap';
-import './QaManagement.scss';
+import './Manage.scss';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export const QaManagement = () => {
@@ -10,6 +10,9 @@ export const QaManagement = () => {
         <div className='manage '>
           <div className='col-md-2 list_item'>
             <ul>
+            <li>
+              <NavLink to='QaManagement'>Q&A Management</NavLink>
+            </li>
             <li>
               <NavLink to='department'>Department</NavLink>
             </li>
