@@ -1,71 +1,130 @@
 import React, { useState } from 'react';
+import './QaCoordinator.scss';
 
 export const QaCoordinator = () => {
-  const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [column1, setColumn1] = useState("");
-  const [column2, setColumn2] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [currentTodo, setCurrentTodo] = useState({
+    id: 0,
+    name: '',
+    date: new Date(),
+  });
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
-  const handleSave = () => {
-    if (selectedItem) {
-      const updatedItems = items.map(item => {
-        if (item.id === selectedItem.id) {
-          return { ...item, column1, column2 };
-        }
-        return item;
-      });
-      setItems(updatedItems);
-      setSelectedItem(null);
-    } else {
-      const newItem = { id: new Date().getTime(), column1, column2 };
-      setItems([...items, newItem]);
+  const addTodo = () => {
+    if (!currentTodo.name) {
+      alert('Please enter name');
+      return;
     }
-    setColumn1("");
-    setColumn2("");
+    const newTodo = {
+      ...currentTodo,
+      id: todos.length + 1,
+    };
+    setTodos([...todos, newTodo]);
+    setCurrentTodo({
+      id: 0,
+      name: '',
+      date: new Date(),
+    });
+    setShowCreateForm(false);
   };
 
-  const handleDelete = (itemToDelete) => {
-    const updatedItems = items.filter(item => item.id !== itemToDelete.id);
-    setItems(updatedItems);
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
   };
+
+  const editTodo = (id) => {
+    const todoToEdit = todos.find(todo => todo.id === id);
+    if (todoToEdit) {
+      setCurrentTodo(todoToEdit);
+      setShowCreateForm(true);
+    }
+  };
+
+  const updateTodo = () => {
+    const updatedTodos = todos.map(todo =>
+      todo.id === currentTodo.id ? currentTodo : todo
+    );
+    setTodos(updatedTodos);
+    setCurrentTodo({
+      id: 0,
+      name: '',
+      date: new Date(),
+    });
+    setShowCreateForm(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCurrentTodo({
+      ...currentTodo,
+      [name]: value,
+    });
+  };
+
+  const handleDateChange = (date) => {
+    setCurrentTodo({
+      ...currentTodo,
+      date,
+    });
+  };
+
   return (
+    <div className='coordinator'>
+  <div className='crud_coordinator'>
     <div>
-      <div>
-      <div>
-        <input
-          type="text"
-          value={column1}
-          onChange={e => setColumn1(e.target.value)}
-        />
-        <input
-          type="text"
-          value={column2}
-          onChange={e => setColumn2(e.target.value)}
-        />
-        <button onClick={handleSave}>Save</button>
-      </div>
+      <h1>Q&A Coordinator</h1>
+      <button onClick={() => setShowCreateForm(!showCreateForm)}>
+        Create New Coordinator
+      </button>
+      {showCreateForm && (
+        <div>
+          <label htmlFor="name" className="todo-label">Name: </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={currentTodo.name}
+            onChange={handleInputChange}
+            className="todo-input"
+          />
+          <br />
+          <label htmlFor="date" className="todo-label">Date: </label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={currentTodo.date.toISOString().substr(0, 10)}
+            onChange={event => handleDateChange(new Date(event.target.value))}
+            className="todo-input-date"
+          />
+          <br />
+          {currentTodo.id !== 0 ? (
+            <button onClick={updateTodo}>Update</button>
+          ) : (
+            <button onClick={addTodo}>Add Item</button>
+          )}
+          <button onClick={() => setShowCreateForm(false)}>Cancel</button>
+        </div>
+      )}
       <table>
-        <thead>
-          <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map(item => (
-            <tr key={item.id}>
-              <td>{item.column1}</td>
-              <td>{item.column2}</td>
+        <tbody  >
+          {todos.map(todo => (
+            <tr  key={todo.id}>
+              <td>{todo.id}</td>
+              <td>{todo.name}</td>
+              <td>{todo.date.toDateString()}</td>
               <td>
-                <button onClick={() => setSelectedItem(item)}>Edit</button>
-                <button onClick={() => handleDelete(item)}>Delete</button>
+              <button className='edit' onClick={() => editTodo(todo.id)}>Edit</button>
+                <button className='del' onClick={() => deleteTodo(todo.id)}>Delete</button>
+                
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    </div>
-  )
-}
+  </div>
+</div>
+
+  );
+};
