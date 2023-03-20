@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { UilSignOutAlt } from '@iconscout/react-unicons';
-import { SidebarData } from '../Data/Sidebardata';
+import { SidebarData } from '../Data/data';
 import { UilBars } from '@iconscout/react-unicons';
 import './Sidebar.scss';
 import { Col } from 'react-bootstrap';
