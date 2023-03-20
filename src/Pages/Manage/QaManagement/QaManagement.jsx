@@ -72,7 +72,7 @@ export const QaManagement = () => {
     <div className='QaManagement'>
   <div className='crud_Department'>
     <div>
-      <h1>Q&A Coordinator</h1>
+      <h1>Q&A Management</h1>
       <button onClick={() => setShowCreateForm(!showCreateForm)}>
         Create Department
       </button>
