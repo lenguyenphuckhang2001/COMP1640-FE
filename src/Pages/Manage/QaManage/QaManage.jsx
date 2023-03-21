@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './QaManagement.scss';
+import './QaManage.scss';
 
-export const QaManagement = () => {
+export const QaManage = () => {
   const [todos, setTodos] = useState([]);
   const [currentTodo, setCurrentTodo] = useState({
     id: 0,
@@ -69,8 +69,8 @@ export const QaManagement = () => {
   };
 
   return (
-    <div className='QaManagement'>
-  <div className='crud_Department'>
+    <div className='QaManage'>
+  <div className='crud_QaManage'>
     <div>
       <h1>Q&A Management</h1>
       <button onClick={() => setShowCreateForm(!showCreateForm)}>
