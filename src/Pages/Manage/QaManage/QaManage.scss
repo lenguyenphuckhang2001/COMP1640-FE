@@ -16,9 +16,9 @@
         label{
           color: white;
         }
-        button {
+        .create{
           margin-bottom: 10px;
-          padding: 5px;
+          padding: 0.5rem;
           border: none;
           border-radius: 5px;
           background-color: #427acd;
@@ -28,6 +28,7 @@
           &:hover {
             background-color: #427acd;
           }
+
         }
         .update{
           button {
@@ -80,13 +81,16 @@
           }
         }
   tbody{
-    display: flex;
+     display: inline-block;
     tr{
-        width: 50%;
+      padding: 0 6%;
+      display: inline-block;
+        width: 45%;
     
       }
   }
         table {
+          display: inline-block;
           margin-top: 10px;
           border-collapse: collapse;
           width: 100%;

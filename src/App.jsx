@@ -90,6 +90,7 @@ const router = createBrowserRouter(
         <Route path='analytics' element={<Analytics />}>
           <Route path='' element={<Analyticstag />} />
           <Route path='post' element={<AnalyticsPost />} />
+          <Route path='' element={<QaManage />} />
         </Route>
       </Route>
     </Route>,

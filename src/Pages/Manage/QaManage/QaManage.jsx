@@ -73,7 +73,7 @@ export const QaManage = () => {
   <div className='crud_QaManage'>
     <div>
       <h1>Q&A Management</h1>
-      <button onClick={() => setShowCreateForm(!showCreateForm)}>
+      <button className='create' onClick={() => setShowCreateForm(!showCreateForm)}>
         Create Department
       </button>
       {showCreateForm && (

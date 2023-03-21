@@ -11,7 +11,7 @@ export const QaManagement = () => {
           <div className='col-md-2 list_item'>
             <ul>
             <li>
-              <NavLink to='QaManage'>Q&A Management</NavLink>
+              <NavLink to=''>Q&A Management</NavLink>
             </li>
             <li>
               <NavLink to='department'>Department</NavLink>
