@@ -19,8 +19,6 @@ import { Login } from './Pages/Member/Login';
 import { Logout } from './Pages/Logout/Logout';
 import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
-import { QaManagement } from './Pages/QaManagement/QaManagement';
-import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 import { Admin } from './Pages/Admin/Index';
 import { MainDash } from './Components/Admin/MainDash/MainDash';
@@ -35,26 +33,15 @@ import { ListPost } from './Components/ListPost/Listpost';
 import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 
-import QaManagement from './Pages/QaManagement/QaManagement';
-import { Department } from './Pages/QaManagement/Department/Department';
-import { Categories } from './Pages/QaManagement/Categories/Categories';
-import { DownloadData } from './Pages/QaManagement/DownloadData/DownloadData';
-import { Statistical } from './Pages/QaManagement/Statistical/Statistical';
-import { Academic } from './Pages/QaManagement/Academic/Academic';
-
-import { QaCoordinator } from './Pages/QaManagement/QaCoordinator/QaCoordinator';
 
 import Manage from './Pages/Manage/Manage';
-import { Department } from './Pages/Manage/Department/Department';
-import { Categories } from './Pages/Manage/Categories/Categories';
-import { DownloadData } from './Pages/Manage/DownloadData/DownloadData';
-import { Statistical } from './Pages/Manage/Statistical/Statistical';
-import { Academic } from './Pages/Manage/Academic/Academic';
-import { QaCoordinator } from './Pages/Manage/QaCoordinator/QaCoordinator';
-
-import { QaManagement } from './Pages/Manage/QaManagement/QaManagement';
-
-import { QaManage } from './Pages/Manage/QaManage/QaManage';
+import { Department } from './Components/Manage/Department/Department';
+import { Categories } from './Components/Manage/Categories/Categories';
+import { DownloadData } from './Components/Manage/DownloadData/DownloadData';
+import { Statistical } from './Components/Manage/Statistical/Statistical';
+import { Academic } from './Components/Manage/Academic/Academic';
+import { QaCoordinator } from './Components/Manage/QaCoordinator/QaCoordinator';
+import { QaManage } from './Components/Manage/QaManage/QaManage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -72,7 +59,8 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
-      <Route path='Manage' element={<Manage />}>
+      <Route path='QuestionDetail' element={<QuestionDetail/>} />
+      <Route path='Account/Manage' element={<Manage />}>
         <Route path='department' element={<Department />} />
         <Route path='categories' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
@@ -92,6 +80,11 @@ const router = createBrowserRouter(
           <Route path='post' element={<AnalyticsPost />} />
           <Route path='' element={<QaManage />} />
         </Route>
+      <Route path='Account/admin' element={<Admin/>}>
+        <Route path='' element={<MainDash/>} />
+        <Route path='post' element={<Postmanage/>} />
+        <Route path='user' element={<Usermanage/>} />
+        <Route path='analytics' element={<Analytics/>} />
       </Route>
     </Route>,
   ),
