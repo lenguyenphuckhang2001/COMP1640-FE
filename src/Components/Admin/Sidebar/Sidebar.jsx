@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { UilSignOutAlt } from '@iconscout/react-unicons';
-import { SidebarData } from '../Data/Sidebardata';
+import { SidebarData } from '../Data/data';
 import { UilBars } from '@iconscout/react-unicons';
+import { UilMultiply } from '@iconscout/react-unicons'
 import './Sidebar.scss';
 import { Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -16,19 +17,18 @@ export const Sidebar = () => {
       left: '0',
     },
     false: {
-      left: '-60%',
+      left: '-50%',
     },
   };
-  console.log(window.innerWidth);
   return (
     <Col md={3}>
       <>
         <div
           className='bars'
-          style={expanded ? { left: '60%' } : { left: '5%' }}
+          style={expanded ? { left: '50%' } : { left: '5%' }}
           onClick={() => setExpaned(!expanded)}
         >
-          <UilBars />
+          <span>{expanded ? (<UilMultiply/>) : (<UilBars/>)}</span>
         </div>
         <motion.div
           className='sidebar'
