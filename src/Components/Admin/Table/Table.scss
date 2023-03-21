@@ -1,0 +1,56 @@
+MuiTableRow-root {
+	>* {
+		padding: 10px;
+	}
+}
+.MuiTableRow-root.MuiTableRow-head {
+	>* {
+		font-weight: bold !important;
+        color: #fff;
+	}
+}
+.MuiTableRow-root.css-34nofg-MuiTableRow-root{
+    >* {
+        color: #fff;
+	}
+}
+.Table {
+    margin-top: 40px;
+    h3{
+        color: #fff;
+    }
+	td {
+		border: none !important;
+	}
+	&:first-child {
+		border-radius: 0.7rem !important;
+	}
+    .MuiPaper-root{
+        background-color: #144272;
+        color: #fff;
+    }
+}
+th {
+	border: none !important;
+}
+.status {
+	padding: 8px;
+	border-radius: 9px;
+}
+.Details {
+	color: #00b5ff !important;
+}
+@media screen and (max-width: 1200px) {
+	.Table {
+		width: 100%;
+		margin-top: 2rem;
+	}
+}
+@media screen and (max-width: 768px) {
+	.Table {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}

@@ -7,7 +7,6 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom';
-import { Navbar } from './Components/NavBar/Navbar';
 import { CreatePost } from './Pages/CreatePost/CreatePost';
 import { Home } from './Pages/Home/Home';
 import { UserInfo } from './Pages/UserInfo/UserInfo';
@@ -20,7 +19,6 @@ import { Login } from './Pages/Member/Login';
 import { Logout } from './Pages/Logout/Logout';
 import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
-import { ListPost } from './Components/ListPost/Listpost';
 import { QaManagement } from './Pages/QaManagement/QaManagement'
 import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';

@@ -2,11 +2,8 @@ import {
     UilEstate,
     UilClipboardAlt,
     UilUsersAlt,
-    UilPackage,
     UilChart,
-    UilSignOutAlt,
-    UilUsdSquare,
-    UilMoneyWithdrawal,
+    UilUser,
   } from "@iconscout/react-unicons";
   
   export const SidebarData = [
@@ -40,7 +37,7 @@ import {
       },
       barValue: 70,
       value: "25,970",
-      png: UilUsdSquare,
+      png: UilUser,
       series: [
         {
           name: "Users",
@@ -56,7 +53,7 @@ import {
       },
       barValue: 80,
       value: "14,270",
-      png: UilMoneyWithdrawal,
+      png: UilUsersAlt,
       series: [
         {
           name: "Q&A Account",
