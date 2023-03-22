@@ -3,6 +3,7 @@ import axiosClient1 from './AxiosSetup/axiosClient';
 const CommentApi = {
   getAll: () => {
     const url = '/comments';
+    
     return axiosClient1.get(url);
   },
 

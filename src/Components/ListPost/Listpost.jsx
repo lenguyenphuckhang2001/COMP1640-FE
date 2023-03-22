@@ -1,12 +1,21 @@
 import React from 'react';
 import './Listpost.scss';
 import { Col } from 'react-bootstrap';
-import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/Bs';
-import { CgComment } from 'react-icons/Cg';
-import { FiShare2 } from 'react-icons/Fi';
-import { MdSaveAlt } from 'react-icons/Md';
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import PostApi from '../../Api/PostApi';
 export const ListPost = () => {
+
+  const [devs, setDevs] = useState([])
+
+  const getAllDevs = async () => {
+    const data = await PostApi()
+    setDevs(data)
+  }
+  useEffect(() => {
+    getAllDevs()
+  }, [])
+  console.log(devs)
   return (
       <Col md={{ span: 6 }}>
         <div className='List-post'>
