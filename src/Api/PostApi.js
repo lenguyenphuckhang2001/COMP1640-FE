@@ -6,7 +6,7 @@ const PostApi = {
     if (query) return axiosClient1.get(url, { params: query });
     return axiosClient1.get(url);
   },
-
+  
   getOne: (id) => {
     const url = `/posts/${id}`;
     return axiosClient1.get(url);
@@ -27,5 +27,4 @@ const PostApi = {
     return axiosClient1.delete(url);
   },
 };
-
 export default PostApi;

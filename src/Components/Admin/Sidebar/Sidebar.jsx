@@ -17,7 +17,7 @@ export const Sidebar = () => {
       left: '0',
     },
     false: {
-      left: '-50%',
+      left: '-60%',
     },
   };
   return (
@@ -25,7 +25,7 @@ export const Sidebar = () => {
       <>
         <div
           className='bars'
-          style={expanded ? { left: '50%' } : { left: '5%' }}
+          style={expanded ? { left: '60%' } : { left: '5%' }}
           onClick={() => setExpaned(!expanded)}
         >
           <span>{expanded ? (<UilMultiply/>) : (<UilBars/>)}</span>

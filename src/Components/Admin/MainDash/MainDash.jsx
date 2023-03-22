@@ -5,7 +5,7 @@ import Table from "../Table/Table";
 import "./MainDash.scss"
 export const MainDash = () => {
   return (
-    <Col md={8}>
+    <Col md={9}>
         <div className='MainDash'>
           <Cards/>
           <Table/>

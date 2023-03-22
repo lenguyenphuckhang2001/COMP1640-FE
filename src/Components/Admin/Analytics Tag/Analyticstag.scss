@@ -1,0 +1,28 @@
+.Analyticstag{
+    width: 100%;
+    .Compare-department{
+    width: 100%;
+    background-color: #144272;
+    border-radius: 0.7rem;
+    padding: 3%;
+    text-align: center;
+    margin-top: 5%;
+    }
+    h4{
+        color: #fff;
+    }
+    .apexcharts-xaxis-label{
+        fill: #fff;
+    }
+    .apexcharts-yaxis-label{
+        fill: #fff;
+    }
+    .apexcharts-legend-text{
+        color: #fff !important;
+    }
+    .DetailTag{
+        display: flex;
+        gap: 10px;
+        margin-top: 5%;
+    }
+}

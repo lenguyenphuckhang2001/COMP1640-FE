@@ -27,6 +27,8 @@ import { MainDash } from './Components/Admin/MainDash/MainDash';
 import { Postmanage } from './Components/Admin/PostManage/Postmanage';
 import { Usermanage } from './Components/Admin/UserManage/Usermanage';
 import { Analytics } from './Components/Admin/Analytics/Analytics';
+import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
+import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,7 +52,10 @@ const router = createBrowserRouter(
         <Route path='' element={<MainDash/>} />
         <Route path='post' element={<Postmanage/>} />
         <Route path='user' element={<Usermanage/>} />
-        <Route path='analytics' element={<Analytics/>} />
+        <Route path='analytics' element={<Analytics/>}>
+          <Route path='' element={<Analyticstag/>} />
+          <Route path='post' element={<AnalyticsPost/>} />
+        </Route>
       </Route>
     </Route>,
   ),
