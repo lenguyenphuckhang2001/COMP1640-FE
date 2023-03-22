@@ -29,11 +29,11 @@ export const QaCoordinator = () => {
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const editTodo = (id) => {
-    const todoToEdit = todos.find(todo => todo.id === id);
+    const todoToEdit = todos.find((todo) => todo.id === id);
     if (todoToEdit) {
       setCurrentTodo(todoToEdit);
       setShowCreateForm(true);
@@ -41,9 +41,7 @@ export const QaCoordinator = () => {
   };
 
   const updateTodo = () => {
-    const updatedTodos = todos.map(todo =>
-      todo.id === currentTodo.id ? currentTodo : todo
-    );
+    const updatedTodos = todos.map((todo) => (todo.id === currentTodo.id ? currentTodo : todo));
     setTodos(updatedTodos);
     setCurrentTodo({
       id: 0,
@@ -70,61 +68,65 @@ export const QaCoordinator = () => {
 
   return (
     <div className='coordinator'>
-  <div className='crud_coordinator'>
-    <div>
-      <h1>Q&A Coordinator</h1>
-      <button onClick={() => setShowCreateForm(!showCreateForm)}>
-        Create New Coordinator
-      </button>
-      {showCreateForm && (
+      <div className='crud_coordinator'>
         <div>
-          <label htmlFor="name" className="todo-label">Name: </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={currentTodo.name}
-            onChange={handleInputChange}
-            className="todo-input"
-          />
-          <br />
-          <label htmlFor="date" className="todo-label">Date: </label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={currentTodo.date.toISOString().substr(0, 10)}
-            onChange={event => handleDateChange(new Date(event.target.value))}
-            className="todo-input-date"
-          />
-          <br />
-          {currentTodo.id !== 0 ? (
-            <button onClick={updateTodo}>Update</button>
-          ) : (
-            <button onClick={addTodo}>Add Item</button>
+          <h1>Q&A Coordinator</h1>
+          <button onClick={() => setShowCreateForm(!showCreateForm)}>Create New Coordinator</button>
+          {showCreateForm && (
+            <div>
+              <label htmlFor='name' className='todo-label'>
+                Name:{' '}
+              </label>
+              <input
+                type='text'
+                id='name'
+                name='name'
+                value={currentTodo.name}
+                onChange={handleInputChange}
+                className='todo-input'
+              />
+              <br />
+              <label htmlFor='date' className='todo-label'>
+                Date:{' '}
+              </label>
+              <input
+                type='date'
+                id='date'
+                name='date'
+                value={currentTodo.date.toISOString().substr(0, 10)}
+                onChange={(event) => handleDateChange(new Date(event.target.value))}
+                className='todo-input-date'
+              />
+              <br />
+              {currentTodo.id !== 0 ? (
+                <button onClick={updateTodo}>Update</button>
+              ) : (
+                <button onClick={addTodo}>Add Item</button>
+              )}
+              <button onClick={() => setShowCreateForm(false)}>Cancel</button>
+            </div>
           )}
-          <button onClick={() => setShowCreateForm(false)}>Cancel</button>
+          <table>
+            <tbody>
+              {todos.map((todo) => (
+                <tr key={todo.id}>
+                  <td style={{ borderRadius: '5px 0 0 5px' }}>{todo.id}</td>
+                  <td>{todo.name}</td>
+                  <td>{todo.date.toDateString()}</td>
+                  <td style={{ borderRadius: '0 5px 5px 0 ' }}>
+                    <button className='edit' onClick={() => editTodo(todo.id)}>
+                      Edit
+                    </button>
+                    <button className='del' onClick={() => deleteTodo(todo.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )}
-      <table>
-        <tbody  >
-          {todos.map(todo => (
-            <tr  key={todo.id}>
-              <td>{todo.id}</td>
-              <td>{todo.name}</td>
-              <td>{todo.date.toDateString()}</td>
-              <td>
-              <button className='edit' onClick={() => editTodo(todo.id)}>Edit</button>
-                <button className='del' onClick={() => deleteTodo(todo.id)}>Delete</button>
-                
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 };
