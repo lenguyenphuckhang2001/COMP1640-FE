@@ -8,7 +8,8 @@ export const Usermanage = () => {
   const [editing, setEditing] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
 
-  const handleAddUser = () => {
+  const handleAddUser = (e) => {
+    e.preventDefault();
     if (!editing) {
       setUsers([...users, newUser]);
       setNewUser({ name: '', email: '' });
@@ -36,7 +37,7 @@ export const Usermanage = () => {
   return (
     <Col md={8}>
       <div className='Usermanage'>
-        <h1>User Manage</h1>
+        <h1>User Manager</h1>
         <form onSubmit={handleAddUser}>
           <div className='userM'>
             <div className='add-user'>
@@ -62,19 +63,19 @@ export const Usermanage = () => {
         <table>
           <thead>
             <tr>
-              <th style={{borderRadius:'5px 0 0 5px'}}>Name</th>
+              <th>Name</th>
               <th>Email</th>
-              <th style={{borderRadius:'0 5px 5px 0'}}>Actions</th>
+              <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{marginTop: '20px'}}>
             {users.map((user, index) => (
               <tr key={index}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button onClick={() => handleEditUser(index)}>Edit</button>
-                  <button onClick={() => handleDeleteUser(index)}>Delete</button>
+                  <button className='edit' onClick={() => handleEditUser(index)}>Edit</button>
+                  <button className='delete' onClick={() => handleDeleteUser(index)}>Delete</button>
                 </td>
               </tr>
             ))}
