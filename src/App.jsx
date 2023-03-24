@@ -19,21 +19,13 @@ import { Login } from './Pages/Member/Login';
 import { Logout } from './Pages/Logout/Logout';
 import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
+import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 import { Admin } from './Pages/Admin/Index';
 import { MainDash } from './Components/Admin/MainDash/MainDash';
 import { Postmanage } from './Components/Admin/PostManage/Postmanage';
 import { Usermanage } from './Components/Admin/UserManage/Usermanage';
 import { Analytics } from './Components/Admin/Analytics/Analytics';
-
-import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
-import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
-
-import { ListPost } from './Components/ListPost/Listpost';
-import Index from './Index';
-import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
-
-
 import Manage from './Pages/Manage/Manage';
 import { Department } from './Components/Manage/Department/Department';
 import { Categories } from './Components/Manage/Categories/Categories';
@@ -59,32 +51,21 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
-      <Route path='QuestionDetail' element={<QuestionDetail/>} />
+      <Route path='QuestionDetail' element={<QuestionDetail />} />
       <Route path='Account/Manage' element={<Manage />}>
         <Route path='department' element={<Department />} />
         <Route path='categories' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
         <Route path='statistical' element={<Statistical />} />
-        <Route path='QaCoordinator' element={<QaCoordinator />} />
-        <Route path='QaManage' element={<QaManage />} />
-
         <Route path='academic' element={<Academic />} />
+        <Route path='QaCoordinator' element={<QaCoordinator />} />
+        <Route path='' element={<QaManage />} />
       </Route>
-      <Route path='QuestionDetail' element={<QuestionDetail />} />
       <Route path='Account/admin' element={<Admin />}>
         <Route path='' element={<MainDash />} />
         <Route path='post' element={<Postmanage />} />
         <Route path='user' element={<Usermanage />} />
-        <Route path='analytics' element={<Analytics />}>
-          <Route path='' element={<Analyticstag />} />
-          <Route path='post' element={<AnalyticsPost />} />
-          <Route path='' element={<QaManage />} />
-        </Route>
-      <Route path='Account/admin' element={<Admin/>}>
-        <Route path='' element={<MainDash/>} />
-        <Route path='post' element={<Postmanage/>} />
-        <Route path='user' element={<Usermanage/>} />
-        <Route path='analytics' element={<Analytics/>} />
+        <Route path='analytics' element={<Analytics />} />
       </Route>
     </Route>,
   ),
