@@ -2,110 +2,138 @@ import React, { useState } from 'react';
 import './Academic.scss';
 
 export const Academic = () => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [data, setData] = useState([]);
-  const [showForm, setShowForm] = useState(false);
-  const [editId, setEditId] = useState(null);
+  const [todos, setTodos] = useState([]);
+  const [currentTodo, setCurrentTodo] = useState({
+    id: 0,
+    name: '',
+    date: new Date(),
+  });
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
-  };
-
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (editId !== null) {
-      // Edit existing data
-      const newData = [...data];
-      const index = newData.findIndex((item) => item.id === editId);
-      newData[index] = { id: editId, startDate, endDate };
-      setData(newData);
-      setEditId(null);
-    } else {
-      // Create new data
-      const newData = {
-        id: Date.now(),
-        startDate,
-        endDate,
-      };
-      setData([...data, newData]);
+  const addTodo = () => {
+    if (!currentTodo.name) {
+      alert('Please enter name');
+      return;
     }
-    setStartDate('');
-    setEndDate('');
-    setShowForm(false);
+    const newTodo = {
+      ...currentTodo,
+      id: todos.length + 1,
+    };
+    setTodos([...todos, newTodo]);
+    setCurrentTodo({
+      id: 0,
+      name: '',
+      date: new Date(),
+    });
+    setShowCreateForm(false);
   };
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const handleShowForm = () => {
-    setShowForm(!showForm);
-    setEditId(null);
+  const editTodo = (id) => {
+    const todoToEdit = todos.find((todo) => todo.id === id);
+    if (todoToEdit) {
+      setCurrentTodo(todoToEdit);
+      setShowCreateForm(true);
+    }
   };
 
-  const handleEdit = (id) => {
-    const item = data.find((item) => item.id === id);
-    setStartDate(item.startDate);
-    setEndDate(item.endDate);
-    setEditId(id);
-    setShowForm(true);
+  const updateTodo = () => {
+    const updatedTodos = todos.map((todo) => (todo.id === currentTodo.id ? currentTodo : todo));
+    setTodos(updatedTodos);
+    setCurrentTodo({
+      id: 0,
+      name: '',
+      date: new Date(),
+    });
+    setShowCreateForm(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCurrentTodo({
+      ...currentTodo,
+      [name]: value,
+    });
+  };
+
+  const handleDateChange = (date) => {
+    setCurrentTodo({
+      ...currentTodo,
+      date,
+    });
   };
 
   return (
     <div className='academic'>
-      <div>
-        <h1>Academic Year</h1>
-        {showForm ? (
-          <form onSubmit={handleSubmit}>
-            <div className='date'>
-              <label htmlFor='startDate'>Start Date:</label>
+      <div className='crud_academic'>
+        <div>
+          <h1>Academic</h1>
+          <button onClick={() => setShowCreateForm(!showCreateForm)}>Create New Academic</button>
+          {showCreateForm && (
+            <div>
+              <label htmlFor='name' className='todo-label'>
+                Name:{' '}
+              </label>
+              <input
+                type='text'
+                id='name'
+                name='name'
+                value={currentTodo.name}
+                onChange={handleInputChange}
+                className='todo-input'
+              />
+              <br />
+              <label htmlFor='date' className='todo-label'>
+                Date:{' '}
+              </label>
               <input
                 type='date'
-                id='startDate'
-                value={startDate}
-                onChange={handleStartDateChange}
+                id='date'
+                name='date'
+                value={currentTodo.date.toISOString().substr(0, 10)}
+                onChange={(event) => handleDateChange(new Date(event.target.value))}
+                className='todo-input-date'
               />
-              <label htmlFor='endDate'>End Date:</label>
-              <input type='date' id='endDate' value={endDate} onChange={handleEndDateChange} />
+              <br />
+              {currentTodo.id !== 0 ? (
+                <button onClick={updateTodo}>Update</button>
+              ) : (
+                <button onClick={addTodo}>Add Item</button>
+              )}
+              <button onClick={() => setShowCreateForm(false)}>Cancel</button>
             </div>
-            <br />
-            <button type='submit'>{editId !== null ? 'Save Changes' : 'Submit'}</button>
-            <button type='button' onClick={handleShowForm}>
-              Cancel
-            </button>
-          </form>
-        ) : (
-          <button onClick={handleShowForm}>Create Academic</button>
-        )}
-        <table>
-          <thead>
-            <tr>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.id}>
-                <td>{item.startDate}</td>
-                <td>{item.endDate}</td>
-                <td>
-                  <button onClick={() => handleEdit(item.id)}>Edit</button>
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(item.id)}>Delete</button>
-                </td>
+          )}
+          <table>
+            <thead>
+              <tr>
+                <th style={{ borderRadius: '5px 0 0 5px' }}>ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th style={{ borderRadius: '0 5px 5px 0 ' }}>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {todos.map((todo) => (
+                <tr className='column' key={todo.id}>
+                  <td>{todo.id}</td>
+                  <td>{todo.name}</td>
+                  <td>{todo.date.toDateString()}</td>
+                  <td>
+                    <button className='edit' onClick={() => editTodo(todo.id)}>
+                      Edit
+                    </button>
+                    <button className='del' onClick={() => deleteTodo(todo.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
