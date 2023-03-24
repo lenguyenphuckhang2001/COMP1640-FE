@@ -11,11 +11,11 @@ export const Index = () => {
   console.log(params);
   return (
     <>
-<<<<<<< HEAD
-      {params['pathname'].includes('admin') ? '' : <Navbar />}
-=======
-      {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? console.log('oke') : <Navbar />}
->>>>>>> 7560dfa (fix style Qamanagement)
+      {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? (
+        console.log('oke')
+      ) : (
+        <Navbar />
+      )}
       <main>
         <Container>
           <Row>
@@ -35,11 +35,11 @@ export const Index = () => {
           </Row>
         </Container>
       </main>
-<<<<<<< HEAD
-      {params['pathname'].includes('admin') ? '' : <Footer />}
-=======
-      {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? console.log('oke') : <Footer />}
->>>>>>> 7560dfa (fix style Qamanagement)
+      {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? (
+        console.log('oke')
+      ) : (
+        <Footer />
+      )}
     </>
   );
 };
