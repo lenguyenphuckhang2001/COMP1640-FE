@@ -18,6 +18,7 @@ export const Login = () => {
     setInputs((state) => ({ ...state, [nameInput]: value }));
   };
   const [errors, setErrors] = useState({});
+  console.log(errors)
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -41,8 +42,6 @@ export const Login = () => {
       setErrors(errorSubmit);
     }
     if (xx == 1) {
-      setErrors(errorSubmit);
-      
       const data = {
         email: inputs.email,
         password: inputs.password,
@@ -57,8 +56,11 @@ export const Login = () => {
             navigate('/');	
           }
         } catch(e) {
-         console.log(e)
+          errorSubmit.faile = "" + e.response.data + "";
+          console.log(errorSubmit)
+          setErrors(errorSubmit);
         }
+
       })();
     }
     

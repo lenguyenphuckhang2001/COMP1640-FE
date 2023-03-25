@@ -32,8 +32,7 @@ export const Navbar = () => {
     }
   }
   function Logout() {
-    localStorage.removeItem('true');
-    localStorage.removeItem('information');
+    localStorage.clear();
     navigate('/login');
   }
 
