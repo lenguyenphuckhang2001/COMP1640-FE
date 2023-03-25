@@ -3,6 +3,10 @@
   padding: 0;
   border: 0;
   font-size: 100%;
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
 }
 .Login-page {
   div {
@@ -46,7 +50,7 @@
     color: #ffffff;
   }
   input {
-    background-color: rgba(12, 23, 45, 1);
+    background-color: #144272;
     color: #ffffff;
     padding: 14px 0px 14px 60.05px;
     width: 100%;
@@ -79,12 +83,12 @@
     display: block;
   }
   .forgot-password {
-    color: rgba(166, 232, 168, 1);
+    color: #ffffff;
     float: right;
     font-size: 21px;
     margin-bottom: 20px;
     a {
-      color: rgba(166, 232, 168, 1);
+      color: #ffffff
     }
   }
   .d-lg {
@@ -94,18 +98,9 @@
       color: #ffffff;
       border: 2px;
       border-radius: 15px;
-      background-color: rgba(239, 80, 95, 1);
+      background-color: #2C74B3;
       font-family: 'itim';
       font-size: 21px;
-    }
-  }
-  .register {
-    position: absolute;
-    color: white;
-    top: 98%;
-    font-size: 20px;
-    a {
-      color: rgba(166, 232, 168, 1);
     }
   }
 }

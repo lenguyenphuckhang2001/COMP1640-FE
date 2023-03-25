@@ -42,10 +42,11 @@ export const Register = () => {
               </button>
             </div>
           </div>
-        </form>
-        <p className='register'>
+          <p className='register'>
           Already have an account? <Link to='/Account/login'>Login</Link>
         </p>
+        </form>
+        
       </div>
     </div>
   );

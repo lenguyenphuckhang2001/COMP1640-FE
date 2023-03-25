@@ -4,6 +4,7 @@ import { AiFillHome, AiFillPlusCircle } from 'react-icons/Ai';
 import { IoMdNotifications } from 'react-icons/Io';
 import { NavLink } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
+import { useNavigate } from 'react-router-dom'
 import './Navbar.scss';
 
 export const Navbar = () => {
@@ -12,6 +13,29 @@ export const Navbar = () => {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+  const navigate = useNavigate();
+
+  function checkLogin() {
+    var check = localStorage.getItem('true');
+    if (check) {
+      return (
+        <NavLink className='login' onClick={Logout} to='Account/login'>
+                    logout
+        </NavLink>
+      );
+    } else {
+      return (
+        <NavLink className='login' to='Account/login'>
+                    Login
+        </NavLink>
+      );
+    }
+  }
+  function Logout() {
+    localStorage.clear();
+    navigate('/login');
+  }
+
   return (
     <header>
       <nav className='container-fluid'>
@@ -20,10 +44,12 @@ export const Navbar = () => {
             <div className='row navbar '>
               <div className='col-12 col-md-2'>
                 <div className='logo'>
-                 
-                  <a className='icon' href="#"><BsFillGearFill /></a>
-                    <a className='text' href="#">BlueFoum</a>
-                 
+                  <a className='icon' href='#'>
+                    <BsFillGearFill />
+                  </a>
+                  <a className='text' href='#'>
+                    BlueFoum
+                  </a>
                 </div>
               </div>
 
@@ -35,7 +61,7 @@ export const Navbar = () => {
                 </div>
               </div>
 
-              <div className='col-5 col-md-6'> 
+              <div className='col-5 col-md-6'>
                 <div className='search'>
                   <input placeholder='  Search for anything.....'></input>
                 </div>
@@ -50,7 +76,9 @@ export const Navbar = () => {
                   </div>
                   <div>
                     <div className='notification'>
-                      <a href="#"><IoMdNotifications /></a>
+                      <a href='#'>
+                        <IoMdNotifications />
+                      </a>
                     </div>
                   </div>
                   <div className='question'>
@@ -59,16 +87,21 @@ export const Navbar = () => {
                     </NavLink>
                   </div>
                   <div onClick={toggleDropdown} className='info'>
-                 <a href="#"> <BsPersonCircle /></a>
+                    <a href='#'>
+                      {' '}
+                      <BsPersonCircle />
+                    </a>
                   </div>
                 </div>
               </div>
-            {showDropdown && (
-              <div className="navbar__dropdown">
-                <NavLink className='user_item' to='Account/user-info'>User-Info</NavLink>
-                <NavLink className='login' to='Account/login'>Login</NavLink>
-              </div>
-            )}
+              {showDropdown && (
+                <div className='navbar__dropdown'>
+                  <NavLink className='user_item' to='Account/user-info'>
+                    User-Info
+                  </NavLink>
+                  {checkLogin()}
+                </div>
+              )}
             </div>
           </div>
         </Row>
