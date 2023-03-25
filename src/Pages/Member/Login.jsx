@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AiFillMail } from 'react-icons/Ai';
 import { RiLockPasswordLine } from 'react-icons/Ri';
 import './Login.scss';
@@ -41,21 +41,27 @@ export const Login = () => {
       setErrors(errorSubmit);
     }
     if (xx == 1) {
-      setErrors({});
+      setErrors(errorSubmit);
+      
       const data = {
         email: inputs.email,
         password: inputs.password,
       };
+
       (async () => {
-        const res = await UserApi.login(data);
-        if(res){
-          console.log(res)
-        }
-        else{
-          console.log(res.response)
+        try {
+          const res = await UserApi.login(data);
+          if(res){
+            localStorage.setItem('Information', JSON.stringify(res))
+            localStorage.setItem('true', JSON.stringify(true));
+            navigate('/');	
+          }
+        } catch(e) {
+         console.log(e)
         }
       })();
     }
+    
   };
   return (
     <div className='Login-page'>
@@ -64,7 +70,7 @@ export const Login = () => {
           <div className='Auth-form-content'>
             <h3 className='Auth-form-title'>Log In</h3>
             <div className='Error-form'>
-            <Error errors={errors}/>
+              <Error errors={errors} />
             </div>
             <div className='form-group'>
               <label className='label-login'>Email</label>
