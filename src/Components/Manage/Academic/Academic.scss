@@ -1,0 +1,134 @@
+.academic {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+
+  .crud_academic {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      display: flex;
+      justify-content: center;
+      color: white;
+    }
+    div {
+      label {
+        color: white;
+      }
+      button {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #427acd;
+        color: #fff;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #427acd;
+        }
+      }
+      .update {
+        button {
+          margin-bottom: 10px;
+          padding: 5px;
+          border: none;
+          border-radius: 5px;
+          background-color: #427acd;
+          color: #fff;
+          cursor: pointer;
+          margin-bottom: 20px;
+
+          &:hover {
+            background-color: #427acd;
+          }
+        }
+      }
+
+      .todo-label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .todo-input {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: #427acd;
+        }
+      }
+      .todo-input-date {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+
+        &:focus {
+          outline: none;
+          border-color: #427acd;
+        }
+      }
+
+      table {
+        margin-top: 10px;
+        border-collapse: collapse;
+        width: 100%;
+
+        th,
+        td {
+          text-align: left;
+          padding: 8px;
+        }
+        td {
+          color: white;
+          border: none;
+        }
+
+        th {
+          background-color: #f2f2f2;
+          color: black;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .edit {
+          font-size: 1em;
+          padding: 5px;
+          background-color: #345ed2;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-left: 5px;
+
+          &:hover {
+            background-color: #d32f2f;
+          }
+        }
+        .del {
+          font-size: 1em;
+          padding: 5px;
+          background-color: #f44336;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-left: 5px;
+
+          &:hover {
+            background-color: #d32f2f;
+          }
+        }
+      }
+    }
+  }
+}

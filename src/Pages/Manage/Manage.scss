@@ -1,0 +1,41 @@
+.QA {
+  background-color: #0a2647;
+  .manage {
+    display: flex;
+
+    .list_item {
+      background-color: rgb(43, 97, 177);
+      border-radius: 5px;
+      ul {
+        padding: auto;
+        margin: 0;
+        border-style: solid;
+        li {
+          float: left;
+          list-style: none;
+          background-color: rgb(43, 97, 177);
+          margin: 10px;
+          padding-bottom: 20px;
+          padding-top: 20px;
+          -webkit-transition: margin 0.5s ease-out;
+          -moz-transition: margin 0.5s ease-out;
+          -o-transition: margin 0.5s ease-out;
+          &:hover {
+            background-color: rgb(74, 120, 190);
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 5px;
+          }
+          a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}
