@@ -67,9 +67,9 @@ const router = createBrowserRouter(
         <Route path='' element={<MainDash />} />
         <Route path='post' element={<Postmanage />} />
         <Route path='user' element={<Usermanage />} />
-        <Route path='analytics' element={<Analytics/>}>
-          <Route path='' element={<Analyticstag/>} />
-          <Route path='post' element={<AnalyticsPost/>} />
+        <Route path='analytics' element={<Analytics />}>
+          <Route path='' element={<Analyticstag />} />
+          <Route path='post' element={<AnalyticsPost />} />
         </Route>
       </Route>
     </Route>,

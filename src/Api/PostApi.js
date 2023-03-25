@@ -3,7 +3,12 @@ import axiosClient1 from './AxiosSetup/axiosClient';
 const PostApi = {
   getAll: (query) => {
     const url = '/posts';
-    if (query) return axiosClient1.get(url, { params: query });
+    if (query)
+      return axiosClient1.get(url, {
+        params: {
+          page: query,
+        },
+      });
     return axiosClient1.get(url);
   },
   
