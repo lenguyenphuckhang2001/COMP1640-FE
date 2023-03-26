@@ -2,9 +2,9 @@
   background-color: #144272;
   color: #ffffff;
   border-radius: 10px;
-  margin-bottom: 1%;
+  margin-bottom: 2px;
   .postcontent {
-    padding: 10px 0;
+    padding-top: 10px;
     display: flex;
     .postlike {
       display: flex;
@@ -49,7 +49,6 @@
         display: flex;
         padding: 0;
         font-weight: 200;
-        margin: 0;
         li {
           margin-right: 10px;
         }
