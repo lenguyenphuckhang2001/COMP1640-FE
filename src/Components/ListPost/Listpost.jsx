@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 export const ListPost = ({ post }) => {
   return (
-    <Col>
+    <>
       <div className='List-post'>
         <div className='postcontent'>
           <div className='postlike'>
@@ -30,6 +30,6 @@ export const ListPost = ({ post }) => {
           </div>
         </div>
       </div>
-    </Col>
+    </>
   );
 };

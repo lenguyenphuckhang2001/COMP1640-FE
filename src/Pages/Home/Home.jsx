@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { FcPrevious, FcNext} from 'react-icons/Fc';
 import PostApi from '../../Api/PostApi';
 import { ListPost } from '../../Components/ListPost/Listpost';
 import ReactPaginate from 'react-paginate';
@@ -43,11 +44,11 @@ export const Home = () => {
             ))}
             <ReactPaginate
               breakLabel='...'
-              nextLabel='next >'
+              nextLabel={<FcNext/>}
               onPageChange={newPostMutation.mutate}
               pageRangeDisplayed={5}
               pageCount={data.totalPages}
-              previousLabel='< previous'
+              previousLabel={<FcPrevious/>}
               renderOnZeroPageCount={null}
               breakLinkClassName='test'
               className='test'
