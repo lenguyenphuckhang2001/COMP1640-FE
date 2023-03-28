@@ -4,8 +4,10 @@ import { AiFillHome, AiFillPlusCircle } from 'react-icons/Ai';
 import { IoMdNotifications } from 'react-icons/Io';
 import { NavLink } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import './Navbar.scss';
+import axios from 'axios';
+import UserApi from '../../Api/UserApi';
 
 export const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -19,21 +21,29 @@ export const Navbar = () => {
     var check = localStorage.getItem('true');
     if (check) {
       return (
-        <NavLink className='login' onClick={Logout} to='Account/login'>
-                    logout
+        <NavLink className='login' onClick={Logout}>
+          Logout
         </NavLink>
       );
     } else {
       return (
         <NavLink className='login' to='Account/login'>
-                    Login
+          Login
         </NavLink>
       );
     }
   }
-  function Logout() {
-    localStorage.clear();
-    navigate('/login');
+  async function Logout() {
+    try {
+      const res = await axios.post('/api/auth/logout');
+      console.log('🚀 ~ file: Navbar.jsx:36 ~ Logout ~ res:', res);
+      if (res.status == 200) {
+        localStorage.clear();
+        navigate('/Account/login');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

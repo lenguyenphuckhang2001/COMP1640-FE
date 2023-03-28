@@ -8,7 +8,6 @@ import { TagbarRight } from './Components/TagBar/Tagbar-right';
 import './index.scss';
 export const Index = () => {
   let params = useLocation();
-  console.log(params);
   return (
     <>
       {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? (
