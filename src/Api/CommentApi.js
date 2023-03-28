@@ -3,7 +3,7 @@ import axiosClient1 from './AxiosSetup/axiosClient';
 const CommentApi = {
   getAll: () => {
     const url = '/comments';
-    
+
     return axiosClient1.get(url);
   },
 
@@ -13,7 +13,7 @@ const CommentApi = {
   },
 
   create: (postId, data) => {
-    const url = `/comments/posts/${postId}`;
+    const url = `/comments/post/${postId}`;
     return axiosClient1.post(url, data);
   },
 
@@ -25,6 +25,11 @@ const CommentApi = {
   delete: (id) => {
     const url = `/comments/${id}`;
     return axiosClient1.delete(url);
+  },
+
+  getCommentsByPostId: (postId) => {
+    const url = `/comments/post/${postId}`;
+    return axiosClient1.get(url);
   },
 };
 
