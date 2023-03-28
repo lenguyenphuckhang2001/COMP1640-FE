@@ -15,7 +15,7 @@ export const ListPost = ({ post }) => {
           </div>
           <div className='user-post'>
             <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
-            <h4>{post.author?.username}</h4>
+            <h4>{post?.author?.username}</h4>
             <h2 className='title-content'>
               <Link to='/QuestionDetail'>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
