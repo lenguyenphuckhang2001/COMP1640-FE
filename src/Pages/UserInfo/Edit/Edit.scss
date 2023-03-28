@@ -1,7 +1,7 @@
 .edit-info {
   max-width: 700px;
   text-align: center;
-  background-color: #0c172d;
+  background-color: #144272;
   margin: 30px 30px 20px 60px;
   padding: 10px 50px 10px 50px;
   border-radius: 20px;
@@ -12,7 +12,7 @@
   }
   h2 {
     font-size: 36px;
-    color: #ef505f;
+    color: #fff;
     margin-bottom: 30px;
   }
   input {
@@ -24,25 +24,25 @@
     display: block;
   }
   button {
-    background-color: #ef505f;
+    background-color: rgb(244, 200, 90);
     border: none;
     border-radius: 20px;
     cursor: pointer;
     width: 40%;
   }
   button:hover {
-    background-color: #93121f;
+    background-color: rgb(255, 191, 29);
     transition: 0.5s;
     color: #ddfcff;
   }
   .change-pass {
     a {
       text-decoration: none;
-      color: #ef505f;
+      color: rgb(244, 200, 90);
       cursor: pointer;
     }
     a:hover {
-      color: #ddfcff;
+      color: #fff;
       transition: 0.3s;
     }
   }
