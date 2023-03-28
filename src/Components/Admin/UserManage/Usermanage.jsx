@@ -22,17 +22,6 @@ export const Usermanage = () => {
       setEditingIndex(null);
     }
   };
-  const handleEditUser = (index) => {
-    setNewUser(users[index]);
-    setEditing(true);
-    setEditingIndex(index);
-  };
-
-  const handleDeleteUser = (index) => {
-    const updatedUsers = [...users];
-    updatedUsers.splice(index, 1);
-    setUsers(updatedUsers);
-  };
 
   return (
     <Col md={8}>
@@ -41,46 +30,11 @@ export const Usermanage = () => {
         <form onSubmit={handleAddUser}>
           <div className='userM'>
             <div className='add-user'>
-              <label htmlFor='name'>Name</label>
-              <input
-                type='text'
-                id='name'
-                value={newUser.name}
-                onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-              />
-              <label htmlFor='email'>Email</label>
-              <input
-                type='email'
-                id='email'
-                value={newUser.email}
-                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-              />
             </div>
 
             <button type='submit'>{editing ? 'Update User' : 'Add User'}</button>
           </div>
         </form>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody style={{marginTop: '20px'}}>
-            {users.map((user, index) => (
-              <tr key={index}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                  <button className='edit' onClick={() => handleEditUser(index)}>Edit</button>
-                  <button className='delete' onClick={() => handleDeleteUser(index)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </Col>
   );

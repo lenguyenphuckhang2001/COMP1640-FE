@@ -12,29 +12,9 @@
 
     .userM {
       display: flex;
-      align-items: center;
+      justify-content: center;
 
-      .add-user {
-        display: flex;
-        margin-right: 20px;
-
-        label {
-          font-size: 14px;
-          margin-bottom: 5px;
-          color: #fff;
-          font-weight: 500;
-          margin: 5px 5px 0 10px
-        }
-
-        input {
-          height: 32px;
-          padding: 5px;
-          border-radius: 5px;
-          margin-bottom: 10px
-        }
-      }
-
-      button[type="submit"] {
+      button[type='submit'] {
         height: 32px;
         padding: 0 10px;
         margin-bottom: 12px;
@@ -44,48 +24,6 @@
         color: #fff;
         cursor: pointer;
       }
-    }
-  }
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-    background-color: #144272;
-    border-radius: 10px;
-
-    th, td {
-      padding: 10px;
-      text-align: center;
-      border: none;
-      color: #fff;
-    }
-
-    th:first-child {
-      border-radius: 5px 0 0 5px;
-    }
-
-    th:last-child, td:last-child {
-      border-radius: 0 5px 5px 0;
-    }
-
-    .edit {
-      padding: 5px 10px;
-      margin-right: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .delete {
-      padding: 5px 10px;
-      background-color: #dc3545;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
     }
   }
 }
