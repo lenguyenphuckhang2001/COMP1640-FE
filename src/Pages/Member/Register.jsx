@@ -1,35 +1,50 @@
+import { convertLength } from '@mui/material/styles/cssUtils';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import './Register.scss';
+import UserApi from '../../Api/UserApi';
+
 export const Register = () => {
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
     username: '',
-    DoB: '',
     phonenumber: '',
-    role: '',
-    avatar: '',
+    role: 'User',
   });
-  const [file, setFile] = useState();
-  const [avatar, setAvatar] = useState();
+  // const [avatar, setAvatar] = useState();
+  // const [fileAvatar, setFileAvatar] = useState();
+  const [startDate, setStartDate] = useState(new Date());
+  console.log(startDate)
+  // const handleFile = async (e) => {
+  //   const file = e.target.files[0];
+  //   setFileAvatar(e.target.files[0]);
+  //   const base64 = await convertBase64(file);
+  //   console.log(base64)
+  //   setAvatar(base64)
+  // }
+  // const convertBase64 = (file) =>{
+  //   return new Promise((resolve, reject) => {
+  //     const fileReader = new  FileReader();
+  //     fileReader.readAsDataURL(file)
+  //     fileReader.onload = () => {
+  //       resolve(fileReader.result)
+  //       console.log(resolve)
+  //     }
+  //     fileReader.onerror = (error) =>{
+  //       reject(error);
+  //     };
+  //   })
+  // }
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
     setInputs((state) => ({ ...state, [nameInput]: value }));
   };
-  function handleFile(e) {
-    setFile(e.target.files);
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      console.log(e.target.result)
-      setAvatar(e.target.reasult);
-      setFile(file[0]);
-    };
-    reader.readAsDataURL(file[0]);
-  }
-  console.log(file)
-  console.log(avatar)
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -49,32 +64,41 @@ export const Register = () => {
     if (inputs.name == '') {
       xx = 2;
     }
-    if (file == undefined) {
+    if (inputs.DoB == '') {
       xx = 2;
-    } else {
-      if (file[0].size > 1024 * 1024) {
-        alert('fail');
-      } else {
-        alert('oke');
-      }
     }
-
+    // if (fileAvatar == undefined) {
+    //   xx = 2;
+    // } else {
+    //   if (fileAvatar.size > 1024 * 1024) {
+    //     alert('fail');
+    //   } else {
+    //     alert('oke');
+    //   }
+    // }
     if (xx == 1) {
       const data = {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,
         phone: inputs.phone,
-        DoB: inputs.Dob,
-        avatar: avatar,
+        DoB: startDate,
+        // avatar: avatar,
       };
-      console.log(data);
+      (async () => {
+    
+          const res = await UserApi.register(data);
+          if(res){
+            console.log(res)
+            navigate('/Account/login');	
+          }
+      })();
     }
   };
   return (
     <div className='Login-page'>
       <div className='Auth-form-container'>
-        <form className='Auth-form' onSubmit={handleSubmit}>
+        <form className='Auth-form' onSubmit={handleSubmit} enctype='multipart/form-data'>
           <div className='Auth-form-content'>
             <h3 className='Auth-form-title'>Register</h3>
             <div className='input-group-re'>
@@ -133,26 +157,10 @@ export const Register = () => {
               <label className='user-label'>Phone number</label>
             </div>
             <div className='input-group-re'>
-              <input
-                required
-                type='date'
-                name='dob'
-                autoComplete='off'
-                className='input'
-                onChange={handleInput}
-              />
+              <DatePicker selected={startDate} dateFormat="dd/MM/yyyy" maxDate={new Date()} onChange={(date) => setStartDate(date)} />
             </div>
-            <div className='select-group-re'>
-              <lable className='role-lable'>
-                Role
-                <select name='role'>
-                  <option value={0}>User</option>
-                  <option value={1}>QA</option>
-                  <option value={2}>Admin</option>
-                </select>
-              </lable>
-            </div>
-            <div className='input-group-re'>
+
+            {/* <div className='input-group-re'>
               <input
                 required
                 type='file'
@@ -162,6 +170,17 @@ export const Register = () => {
                 className='input'
                 onChange={handleFile}
               />
+            </div> */}
+            <div className='select-group-re'>
+              <lable className='role-lable'>
+                Role
+                <select name='role' onChange={handleInput} value={inputs.role}>
+                  <option value={"user"}>User</option>
+                  <option value={"qa"}>QA</option>
+                  <option value={"qa_coordinator"}>QA Coordinator</option>
+                  <option value={"admin"}>Admin</option>
+                </select>
+              </lable>
             </div>
             <div className='sm-regis'>
               <button type='submit' className='btn btn-primary'>
