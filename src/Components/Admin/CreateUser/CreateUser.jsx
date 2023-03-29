@@ -16,7 +16,6 @@ export const CreateUser = () => {
     role: 'user',
   });
   const [startDate, setStartDate] = useState(new Date());
-
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
@@ -24,7 +23,6 @@ export const CreateUser = () => {
   };
   const mutation = useMutation({
     mutationFn: async (data) => {
-      console.log(data);
       return await UserApi.register(data);
     },
     onError: async (error) => {
@@ -39,7 +37,7 @@ export const CreateUser = () => {
     toast.success(file);
   };
   const ToastSucces = (file) => {
-    toast.success("Success create user");
+    toast.success('Success create user');
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +60,7 @@ export const CreateUser = () => {
         username: inputs.name,
         email: inputs.email,
         password: '3213123cxz',
-        role : inputs.role
+        role: inputs.role,
       };
       mutation.mutate(data);
     }
@@ -128,7 +126,7 @@ export const CreateUser = () => {
             </div>
             <div className='select-group-re'>
               <lable className='role-lable'>
-                Role : 
+                Role :
                 <select name='role' onChange={handleInput} value={inputs.role}>
                   <option value={'user'}>User</option>
                   <option value={'qa'}>QA</option>
@@ -139,7 +137,7 @@ export const CreateUser = () => {
             </div>
             <div className='sm-regis'>
               <button type='submit' className='btn btn-primary'>
-                Create
+                {mutation.isLoading ? 'isloading' : 'Create user'}
               </button>
             </div>
           </div>

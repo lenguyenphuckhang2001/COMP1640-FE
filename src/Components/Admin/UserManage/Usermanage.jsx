@@ -7,7 +7,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 export const Usermanage = () => {
   let params = useLocation();
   const [users, setUsers] = useState([]);
-  
+
   useEffect(() => {
     axios.get('http://localhost:3000/api/users').then((response) => {
       setUsers(response.data);
