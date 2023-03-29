@@ -1,3 +1,69 @@
-p{
-    color: white;
+
+.Usermanage {
+  h1 {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+  }
+  .add-user {
+    display: flex;
+    justify-content: space-around;
+
+    form {
+      label {
+        color: #fff;
+        padding-right: 10px;
+      }
+      input {
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+      button[type='submit'] {
+        background-color: blue;
+        color: white;
+        padding: 4px 5px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: rgb(0, 139, 23);
+        }
+      }
+    }
+  }
+  table {
+    background-color: #144272;
+    border-radius: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      color: #fff;
+    }
+    button {
+      background-color: red;
+      border-radius: 5px;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: darkred;
+      }
+
+      & + button {
+        margin-left: 10px;
+      }
+    }
+  }
 }
