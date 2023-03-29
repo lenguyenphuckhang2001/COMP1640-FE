@@ -53,7 +53,7 @@ const router = createBrowserRouter(
       <Route path='Account/register' element={<Register />} />
       <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
-      <Route path='QuestionDetail' element={<QuestionDetail />} />
+      <Route path='QuestionDetail/:postId' element={<QuestionDetail />} />
       <Route path='Account/Manage' element={<Manage />}>
         <Route path='department' element={<Department />} />
         <Route path='categories' element={<Categories />} />
