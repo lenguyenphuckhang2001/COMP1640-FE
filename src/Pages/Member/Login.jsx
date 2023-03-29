@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Error from '../../Components/Error/Error';
 import UserApi from '../../Api/UserApi';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import axios from 'axios';
 export const Login = () => {
   const [inputs, setInputs] = useState({
