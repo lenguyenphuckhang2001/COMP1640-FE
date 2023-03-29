@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Col } from 'react-bootstrap';
 import './Usermanage.scss';
+import { Link, Outlet } from 'react-router-dom';
 
 export const Usermanage = () => {
   const [users, setUsers] = useState([]);
@@ -15,33 +16,6 @@ export const Usermanage = () => {
       setUsers(response.data);
     });
   }, []);
-
-  const handleAddUser = (e) => {
-    e.preventDefault();
-    if (editing) {
-      axios
-        .put(`http://localhost:3000/api/users${editingUser.id}`, { name, email })
-        .then((response) => {
-          const updatedUsers = users.map((user) => {
-            if (user.id === response.data.id) {
-              return response.data;
-            }
-            return user;
-          });
-          setUsers(updatedUsers);
-          setEditing(false);
-          setEditingUser(null);
-          setName('');
-          setEmail('');
-        });
-    } else {
-      axios.post('http://localhost:3000/api/users', { name, email }).then((response) => {
-        setUsers([...users, response.data]);
-        setName('');
-        setEmail('');
-      });
-    }
-  };
 
   const handleEditUser = (user) => {
     setName(user.name);
@@ -62,19 +36,18 @@ export const Usermanage = () => {
       <div className='Usermanage'>
         <h1>User Management</h1>
         <div className='add-user'>
-          <form onSubmit={handleAddUser}>
+          <form>
             <label htmlFor='name'>Name</label>
-            <input type='text' id='name' value={name} onChange={(e) => setName(e.target.value)} />
+            <input type='text' id='name' />
             <label htmlFor='email'>Email</label>
             <input
               type='email'
-              id='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id='email'   
             />
-            <button type='submit'>{editing ? 'Update User' : 'Add User'}</button>
+            <button type='submit'><Link to='createuser'>Create User</Link></button>
           </form>
         </div>
+        <Outlet/>
         <table>
           <thead>
             <tr>
@@ -102,90 +75,3 @@ export const Usermanage = () => {
     </Col>
   );
 };
-
-// import React, { useState, useEffect } from 'react';
-// import UserApi from '../../../Api/UserApi';
-// import './Usermanage.scss';
-
-// function Useranage() {
-//   const [users, setUsers] = useState([]);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [error, setError] = useState('');
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   UserApi.getOne()
-  //     .then((response) => {
-  //       setUsers(response.data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-
-//   useEffect(() => {
-//     (async () => {
-//       const response = await UserApi.getOne();
-//       console.log('🚀 ~ file: Home.jsx:8 ~ response:', response);
-//       setData(response);
-//     })();
-//   }, []);
-
-//   const handleDelete = (userId) => {
-//     setIsLoading(true);
-//     UserApi.delete(userId)
-//       .then(() => {
-//         setUsers(users.filter((user) => user._id !== userId));
-//         setIsLoading(false);
-//       })
-//       .catch((error) => {
-//         setError(error.message);
-//         setIsLoading(false);
-//       });
-//   };
-
-//   const renderUsers = () => {
-//     if (isLoading) {
-//       return <p>Loading...</p>;
-//     }
-
-//     if (error) {
-//       return <p>{error}</p>;
-//     }
-
-//     return (
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Name</th>
-//             <th>Email</th>
-//             <th>Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {users.map((user) => (
-//             <tr key={user._id}>
-//               <td>{user.name}</td>
-//               <td>{user.email}</td>
-//               <td>
-//                 <button onClick={() => handleDelete(user._id)}>Delete</button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     );
-//   };
-
-//   return (
-//     <div>
-//       <h1>User Management</h1>
-//       <button>Add User</button>
-//       {renderUsers()}
-//     </div>
-//   );
-// }
-
-// export default Usermanage;

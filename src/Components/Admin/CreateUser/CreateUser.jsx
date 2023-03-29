@@ -1,15 +1,14 @@
 import { convertLength } from '@mui/material/styles/cssUtils';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './Register.scss';
-import UserApi from '../../Api/UserApi';
+import './CreateUser.scss';
+import UserApi from '../../../Api/UserApi';
 import { useMutation } from 'react-query';
-import Error from '../../Components/Error/Error';
+import Error from '../../../Components/Error/Error';
+import { useNavigate } from 'react-router-dom';
 
-export const Register = () => {
+export const CreateUser = () => {
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -19,6 +18,9 @@ export const Register = () => {
   });
   const [startDate, setStartDate] = useState(new Date());
   const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
+
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
@@ -30,11 +32,19 @@ export const Register = () => {
       return await UserApi.register(data)
     },
     onError: (error) => {
-      let errorSubmit = {};
-      errorSubmit.faile = '' + error.response.data.message + '';
-      console.log();
-      setErrors(errorSubmit);
+        if(error){
+            let errorSubmit = {};
+            errorSubmit.faile = '' + error.response.data.message + '';
+            console.log();
+            setErrors(errorSubmit);
+        }
+        else{
+            navigate('/Account/admin/user');
+        }
+      
     },
+
+    
   })
   
   const handleSubmit = (e) => {
@@ -72,11 +82,11 @@ export const Register = () => {
 
   };
   return (
-    <div className='Login-page'>
+    <div className='Createuser-page'>
       <div className='Auth-form-container'>
         <form className='Auth-form' onSubmit={handleSubmit} >
           <div className='Auth-form-content'>
-            <h3 className='Auth-form-title'>Register</h3>
+            <h3 className='Auth-form-title'>Form create user</h3>
             <Error errors={errors} />
             <div className='input-group-re'>
               <input
@@ -89,7 +99,7 @@ export const Register = () => {
               />
               <label className='user-label'>Name</label>
             </div>
-            <div className='input-group-re'>
+            <div className='input-group-re right'>
               <input
                 required
                 type='email'
@@ -111,7 +121,7 @@ export const Register = () => {
               />
               <label className='user-label'>Password</label>
             </div>
-            <div className='input-group-re'>
+            <div className='input-group-re right'>
               <input
                 required
                 type='phone'
@@ -138,7 +148,7 @@ export const Register = () => {
             </div>
             <div className='sm-regis'>
               <button type='submit' className='btn btn-primary'>
-                Register
+                Create
               </button>
             </div>
           </div>
