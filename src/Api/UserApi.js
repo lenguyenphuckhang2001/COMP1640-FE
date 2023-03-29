@@ -22,17 +22,17 @@ const UserApi = {
   },
 
   login: (data) => {
-    const url = '/users/login';
+    const url = '/auth/login';
     return axiosClient1.post(url, data);
   },
 
   register: (data) => {
-    const url = '/users/register';
+    const url = '/auth/register';
     return axiosClient1.post(url, data);
   },
 
   logout: () => {
-    const url = '/users/logout';
+    const url = '/auth/logout';
     return axiosClient1.post(url);
   },
 };

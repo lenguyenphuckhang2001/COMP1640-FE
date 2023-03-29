@@ -50,4 +50,37 @@
       background-color: #2c74b3;
     }
   }
+  .previous {
+    a {
+      background-color: #144272;
+      padding: 6px;
+      border-radius: 10px;
+      svg {
+        polygon {
+          fill: #fff;
+        }
+      }
+    }
+  }
+  .next {
+    a {
+      background-color: #144272;
+      padding: 6px;
+      border-radius: 10px;
+      svg {
+        polygon {
+          fill: #fff;
+        }
+      }
+    }
+  }
+  .disabled {
+    opacity: 0.5;
+  }
+  .selected {
+    a {
+      color: antiquewhite !important;
+      background-color: #2c74b3;
+    }
+  }
 }

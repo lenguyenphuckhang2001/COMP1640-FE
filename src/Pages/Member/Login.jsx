@@ -7,6 +7,8 @@ import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Error from '../../Components/Error/Error';
 import UserApi from '../../Api/UserApi';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 export const Login = () => {
   const [inputs, setInputs] = useState({
     email: '',
@@ -18,10 +20,9 @@ export const Login = () => {
     setInputs((state) => ({ ...state, [nameInput]: value }));
   };
   const [errors, setErrors] = useState({});
-  console.log(errors)
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let errorSubmit = {};
@@ -47,23 +48,20 @@ export const Login = () => {
         password: inputs.password,
       };
 
-      (async () => {
-        try {
-          const res = await UserApi.login(data);
-          if(res){
-            localStorage.setItem('Information', JSON.stringify(res))
-            localStorage.setItem('true', JSON.stringify(true));
-            navigate('/');	
-          }
-        } catch(e) {
-          errorSubmit.faile = "" + e.response.data + "";
-          console.log(errorSubmit)
-          setErrors(errorSubmit);
+      try {
+        const res = await axios.post('/api/auth/login', data);
+        if (res) {
+          localStorage.setItem('Information', JSON.stringify(res));
+          localStorage.setItem('true', JSON.stringify(true));
+          navigate('/');
         }
-
-      })();
+        return res;
+      } catch (e) {
+        errorSubmit.faile = '' + e.response.data + '';
+        console.log(e);
+        setErrors(errorSubmit);
+      }
     }
-    
   };
   return (
     <div className='Login-page'>
