@@ -36,6 +36,7 @@ import { QaCoordinator } from './Components/Manage/QaCoordinator/QaCoordinator';
 import { QaManage } from './Components/Manage/QaManage/QaManage';
 import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
 import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
+import { CreateUser } from './Components/Admin/CreateUser/CreateUser';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,7 +67,9 @@ const router = createBrowserRouter(
       <Route path='Account/admin' element={<Admin />}>
         <Route path='' element={<MainDash />} />
         <Route path='post' element={<Postmanage />} />
-        <Route path='user' element={<Usermanage />} />
+        <Route path='user' element={<Usermanage />}>
+        <Route path='createuser' element={<CreateUser />} />
+        </Route>
         <Route path='analytics' element={<Analytics />}>
           <Route path='' element={<Analyticstag />} />
           <Route path='post' element={<AnalyticsPost />} />

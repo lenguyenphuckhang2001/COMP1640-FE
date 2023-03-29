@@ -2,7 +2,7 @@
   position: relative;
   .input {
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: rgba(12, 23, 45, 1);
+    background-color: #144272;
     color: #ffffff;
     padding: 14px 0px 14px 60.05px;
     width: 100%;
@@ -29,13 +29,13 @@
   input:valid {
     outline: none;
     border: 3px solid white;
-    background-color: #212121;
+    background-color: #0A2647;
   }
 
   .input:focus ~ label,
   input:valid ~ label {
     transform: translateY(-30%) scale(0.8);
-    background-color: #212121;
+    background-color: #0A2647;
     padding: 0 0.2em;
     color: #ffffff;
   }
@@ -51,5 +51,19 @@
     font-family: 'itim';
     font-size: 21px;
     margin-top: 20px;
+  }
+}
+.select-group-re{
+  float: right;
+  .role-lable{
+    color: #fff;
+    font-size: 18px;
+    select{
+      margin: 15px 0px 15px 15px;
+      option {
+        color: #fff;
+        background-color: #205295;
+      }
+    }
   }
 }
