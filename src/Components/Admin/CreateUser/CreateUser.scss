@@ -1,3 +1,7 @@
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+$gradient: linear-gradient(35deg, red, purple);
+$option: rgb(12, 23, 45);
 .Createuser-page{
     width: 100%;
     div {
@@ -85,9 +89,6 @@
           font-size: 21px;
         }
       }
-    // .input-group-re.right{
-    //     margin-left: 5%;
-    // }
     .input-group-re {
     position: relative;
     display: inline-block;
@@ -150,17 +151,40 @@
     }
   }
   .select-group-re{
-    float: right;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
     .role-lable{
       color: #fff;
-      font-size: 18px;
-      select{
-        margin: 15px 0px 15px 15px;
-        option {
-          color: #fff;
-          background-color: #205295;
-        }
+      font-size: 21px;
+      select {
+      margin-left: 3%;
+      text-align: center;
+      appearance: none;
+      border: 0;
+      outline: 0;
+      font: inherit;
+      width: 30%;
+      height: 100%;
+      padding: 0 4em 0 1em;
+      background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+          no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, $glass-icon 3em, $glass 3em);
+      color: white;
+      border-radius: 0.25em;
+      box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      option {
+        color: inherit;
+        background-color: $option;
       }
+      &:focus {
+        outline: none;
+      }
+      &::-ms-expand {
+        display: none;
+      }
+    }
     }
   }
 }

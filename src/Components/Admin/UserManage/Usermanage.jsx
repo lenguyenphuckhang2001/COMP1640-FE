@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Col } from 'react-bootstrap';
 import './Usermanage.scss';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 export const Usermanage = () => {
+  let params = useLocation();
   const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [editing, setEditing] = useState(false);
-  const [editingUser, setEditingUser] = useState(null);
-
+  
   useEffect(() => {
     axios.get('http://localhost:3000/api/users').then((response) => {
       setUsers(response.data);
@@ -36,16 +33,13 @@ export const Usermanage = () => {
       <div className='Usermanage'>
         <h1>User Management</h1>
         <div className='add-user'>
-          <form>
-            <label htmlFor='name'>Name</label>
-            <input type='text' id='name' />
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              id='email'   
-            />
-            <button type='submit'><Link to='createuser'>Create User</Link></button>
-          </form>
+            <button type='submit'>
+            {params['pathname'].includes('createuser')  ? (
+            <Link to='/Account/admin/user/'>Final create user</Link>
+            ) : (
+              <Link to='createuser'>Create User</Link>
+            )} 
+            </button>
         </div>
         <Outlet/>
         <table>
