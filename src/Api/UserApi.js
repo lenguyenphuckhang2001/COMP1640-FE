@@ -35,6 +35,10 @@ const UserApi = {
     const url = '/auth/logout';
     return axiosClient1.post(url);
   },
+  uploadAvatar: (userId, data) => {
+    const url = `/users/avatar/${userId}`;
+    return axiosClient1.post(url, data);
+  },
 };
 
 export default UserApi;

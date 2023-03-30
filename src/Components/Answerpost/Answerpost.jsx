@@ -1,36 +1,50 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './Answerpost.scss';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useMutation, useQueryClient } from 'react-query';
 import CommentApi from '../../Api/CommentApi';
+import UserApi from '../../Api/UserApi';
 
 export const Answerpost = ({ postId }) => {
   const answer = useRef(null);
   const queryClient = useQueryClient();
+  const [userId, setUserId] = useState('');
+  console.log('🚀 ~ file: Answerpost.jsx:12 ~ Answerpost ~ userId:', userId);
 
+  useEffect(() => {
+    const user = localStorage.getItem('Information');
+    if (user) {
+      const userObj = JSON.parse(user);
+      const { userId: id } = userObj.data.user;
+      setUserId(id);
+    }
+  }, []);
   const createAnswer = async (data) => {
     const res = await CommentApi.create(postId, data);
-    console.log('🚀 ~ file: Answerpost.jsx:13 ~ createAnswer ~ res:', res);
     return res;
   };
   const createAnswerMutation = useMutation({
     mutationFn: createAnswer,
     retry: false,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries(['posts', postId]);
-      console.log('ok');
+    onSuccess: async (data) => {
+      await queryClient.invalidateQueries(['posts', postId]);
     },
   });
+
   const handleSummit = () => {
     console.log(answer.current.value);
     createAnswerMutation.mutate({
       content: answer.current.value,
-      author: '641b315f45798c1fe8f35414',
+      author: userId,
     });
   };
 
   if (createAnswerMutation.isError)
-    return <h1 className='load-screen'>{createAnswerMutation.error.message}</h1>;
+    return (
+      <h1 className='load-screen'>
+        {createAnswerMutation.error.response.data.message || createAnswerMutation.error.message}
+      </h1>
+    );
 
   return (
     <div className='answer-form'>
