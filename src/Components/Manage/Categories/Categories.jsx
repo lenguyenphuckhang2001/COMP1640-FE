@@ -1,69 +1,98 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import './Categories.scss';
-
+import TagApi from '../../../Api/TagApi';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 export const Categories = () => {
   const [todos, setTodos] = useState([]);
-  const [currentTodo, setCurrentTodo] = useState({
-    id: 0,
-    name: '',
-    date: new Date(),
-  });
   const [showCreateForm, setShowCreateForm] = useState(false);
-
-  const addTodo = () => {
-    if (!currentTodo.name) {
-      alert('Please enter name');
-      return;
-    }
-    const newTodo = {
-      ...currentTodo,
-      id: todos.length + 1,
-    };
-    setTodos([...todos, newTodo]);
-    setCurrentTodo({
-      id: 0,
-      name: '',
-      date: new Date(),
-    });
-    setShowCreateForm(false);
+  const [inputs, setInputs] = useState({
+    name: '',
+    description: '',
+  });
+  const [currentTodo, setCurrentTodo] = useState({
+    _id:'',
+    name: '',
+    description: '',
+  });
+  useEffect(() => {
+    (async () => {
+      const res = await TagApi.getAll();
+      setTodos(res);
+    })();
+  }, []);
+  const handleInput = (e) => {
+    const nameInput = e.target.name;
+    const value = e.target.value;
+    setInputs((state) => ({ ...state, [nameInput]: value }));
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let xx = 1;
+    console.log(inputs)
+    console.log(currentTodo._id)
+    if (inputs.name == '') {
+      if(currentTodo.name !== ''){
+        inputs.name = currentTodo.name
+      }
+      else{
+        xx = 2;
+      }
+      
+    }
+    if (inputs.description == '') {
+      if(currentTodo.description !== ''){
+        inputs.description = currentTodo.description
+      }
+      else{
+        xx = 2;
+      }
+    }
+    if (xx == 1) {
+      if(currentTodo._id !== ''){
+        const id = currentTodo._id
+        const data = {
+        name: inputs.name,
+        description: inputs.description,
+        };
+        const res = await TagApi.update(id, data);
+        console.log(res);
+      }
+      else{
+        const data = {
+          name: inputs.name,
+          description: inputs.description,
+          };
+          const res = await TagApi.create(data);
+          console.log(res);
+      }
+      
+    }
   };
 
-  const editTodo = (id) => {
-    const todoToEdit = todos.find((todo) => todo.id === id);
-    if (todoToEdit) {
-      setCurrentTodo(todoToEdit);
-      setShowCreateForm(true);
+  // const deleteTodo = (id) => {
+  //   setTodos(todos.filter((todo) => todo.id !== id));
+  // };
+
+  const handleEdit = (e) => {
+    const todoToEdit = todos.find((todo) => todo._id === e.target.id);
+    if(todoToEdit){
+       setCurrentTodo(todoToEdit)
+       setShowCreateForm(true);
     }
+   
   };
 
   const updateTodo = () => {
-    const updatedTodos = todos.map((todo) => (todo.id === currentTodo.id ? currentTodo : todo));
-    setTodos(updatedTodos);
-    setCurrentTodo({
-      id: 0,
-      name: '',
-      date: new Date(),
-    });
-    setShowCreateForm(false);
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setCurrentTodo({
-      ...currentTodo,
-      [name]: value,
-    });
-  };
-
-  const handleDateChange = (date) => {
-    setCurrentTodo({
-      ...currentTodo,
-      date,
-    });
+    // const updatedTodos = todos.map((todo) => (todo.id === currentTodo.id ? currentTodo : todo));
+    // setTodos(updatedTodos);
+    // setCurrentTodo({
+    //   id: 0,
+    //   name: '',
+    //   date: new Date(),
+    // });
+    // setShowCreateForm(false);
   };
 
   return (
@@ -74,58 +103,52 @@ export const Categories = () => {
           <button onClick={() => setShowCreateForm(!showCreateForm)}>Create New Categories</button>
           {showCreateForm && (
             <div>
-              <label htmlFor='name' className='todo-label'>
-                Name:{' '}
-              </label>
-              <input
-                type='text'
-                id='name'
-                name='name'
-                value={currentTodo.name}
-                onChange={handleInputChange}
-                className='todo-input'
-              />
-              <br />
-              <label htmlFor='date' className='todo-label'>
-                Date:{' '}
-              </label>
-              <input
-                type='date'
-                id='date'
-                name='date'
-                value={currentTodo.date.toISOString().substr(0, 10)}
-                onChange={(event) => handleDateChange(new Date(event.target.value))}
-                className='todo-input-date'
-              />
-              <br />
-              {currentTodo.id !== 0 ? (
-                <button onClick={updateTodo}>Update</button>
-              ) : (
-                <button onClick={addTodo}>Add Item</button>
-              )}
-              <button onClick={() => setShowCreateForm(false)}>Cancel</button>
+              <form onSubmit={handleSubmit}>
+                <label htmlFor='name' className='todo-label'>
+                  Name categories:{' '}
+                </label>
+                <input
+                  type='text'
+                  id='name'
+                  name='name'
+                  onChange={handleInput}
+                  className='todo-input'
+                  defaultValue={currentTodo.name}
+                />
+                <br />
+                <label htmlFor='name' className='todo-label'>
+                  Description categories
+                </label>
+                <textarea name='description' onChange={handleInput} defaultValue={currentTodo.description} />
+                <br />
+                {currentTodo._id !== '' ? (<button type='submit'>Update</button>) : (<button type='submit'>Add categories</button>)}
+              </form>
             </div>
           )}
           <table>
             <thead>
               <tr>
-                <th style={{ borderRadius: '5px 0 0 5px' }}>ID</th>
+                <th style={{ borderRadius: '5px 0 0 5px' }}>Number</th>
                 <th>Name</th>
                 <th>Date</th>
                 <th style={{ borderRadius: '0 5px 5px 0 ' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {todos.map((todo) => (
-                <tr className='column' key={todo.id}>
-                  <td>{todo.id}</td>
+              {todos.map((todo, key) => (
+                <tr className='column'>
+                  <td>{key + 1}</td>
                   <td>{todo.name}</td>
-                  <td>{todo.date.toDateString()}</td>
+                  <td>{todo.updatedAt.substring(0, 10)}</td>
                   <td>
-                    <button className='edit' onClick={() => editTodo(todo.id)}>
+                    <button className='edit' onClick={handleEdit} id={todo._id}>
                       Edit
                     </button>
-                    <button className='del' onClick={() => deleteTodo(todo.id)}>
+                    <button
+                      className='del'
+                      // onClick={() =>
+                      //   (todo.id)}
+                    >
                       Delete
                     </button>
                   </td>

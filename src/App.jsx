@@ -29,8 +29,6 @@ import { Department } from './Components/Manage/Department/Department';
 import { Categories } from './Components/Manage/Categories/Categories';
 import { DownloadData } from './Components/Manage/DownloadData/DownloadData';
 import { Statistical } from './Components/Manage/Statistical/Statistical';
-import { Academic } from './Components/Manage/Academic/Academic';
-import { QaCoordinator } from './Components/Manage/QaCoordinator/QaCoordinator';
 import { QaManage } from './Components/Manage/QaManage/QaManage';
 import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
 import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
@@ -56,8 +54,6 @@ const router = createBrowserRouter(
         <Route path='categories' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
         <Route path='statistical' element={<Statistical />} />
-        <Route path='academic' element={<Academic />} />
-        <Route path='QaCoordinator' element={<QaCoordinator />} />
         <Route path='' element={<QaManage />} />
       </Route>
       <Route path='Account/admin' element={<Admin />}>
