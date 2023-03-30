@@ -14,23 +14,24 @@ export const QuestionDetail = () => {
     const res = await PostApi.getOne(postId);
     return res;
   };
-  const { data, isLoading, isError, error } = useQuery({
+  const test = useQuery({
     queryKey: ['posts', postId],
     queryFn: getPostById,
+    refetchOnWindowFocus: true,
   });
 
   return (
     <Col md={{ span: 6 }}>
-      {isLoading ? (
+      {test.isLoading ? (
         <h1 className='load-screen'>Loading...</h1>
-      ) : isError ? (
-        <h1 className='load-screen'>{error.message}</h1>
+      ) : test.isError ? (
+        <h1 className='load-screen'>{test.error.message}</h1>
       ) : (
         <>
-          <PostDetail post={data} />
-          <Sort commentsNumber={data?.comments?.length} />
+          <PostDetail post={test.data} />
+          <Sort commentsNumber={test.data?.comments?.length} />
           <Answerpost postId={postId} />
-          <Answer comments={data?.comments} />
+          <Answer comments={test.data?.comments} />
         </>
       )}
     </Col>
