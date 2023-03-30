@@ -7,9 +7,6 @@ import PostApi from '../../Api/PostApi';
 import ReactPaginate from 'react-paginate';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-// TODO 1. Get all comments of post use http://localhost:3000/api/comments/post/6419734483db3492d0d1edbf insted of this way
-// TODO 2. Add pagination to comments or infinite scroll
-
 export const ListPost = () => {
   const queryClient = useQueryClient();
   const handlePageClick = async (data) => {
@@ -32,6 +29,7 @@ export const ListPost = () => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: 'posts',
     queryFn: fetchPosts,
+    refetchInterval: 1000 * 7,
   });
   if (isLoading) {
     return <h1 className='load-screen'>Loading...</h1>;
@@ -68,8 +66,9 @@ export const ListPost = () => {
               </h2>
               <h2 className='title-content'>{post?.content}</h2>
               <ul className='tag-content'>
-                <li>#reactjs</li>
-                <li>#java</li>
+                {post?.tags.map((tag) => (
+                  <li>#{tag?.name}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -83,8 +82,8 @@ export const ListPost = () => {
         pageCount={data?.totalPages}
         previousLabel={<FcPrevious />}
         renderOnZeroPageCount={null}
-        breakLinkClassName='test'
-        className='test'
+        breakLinkClassName='paginate-link'
+        className='paginate-link'
       />
     </Col>
   );

@@ -20,7 +20,7 @@ export const Answer = ({ comments }) => {
   //             setSortedComments([...comments].sort((a, b) => a.votes - b.votes));
   //         }
   //     }, [sort, comments]);
-  const newest = comments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const newest = comments?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const [itemOffset, setItemOffset] = useState(0);
   const [itemLimit, setItemLimit] = useState(5);

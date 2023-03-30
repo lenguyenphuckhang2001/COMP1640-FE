@@ -3,13 +3,12 @@ import './Answerpost.scss';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useMutation, useQueryClient } from 'react-query';
 import CommentApi from '../../Api/CommentApi';
-import UserApi from '../../Api/UserApi';
+import { toast } from 'react-toastify';
 
 export const Answerpost = ({ postId }) => {
   const answer = useRef(null);
   const queryClient = useQueryClient();
   const [userId, setUserId] = useState('');
-  console.log('🚀 ~ file: Answerpost.jsx:12 ~ Answerpost ~ userId:', userId);
 
   useEffect(() => {
     const user = localStorage.getItem('Information');
@@ -25,8 +24,9 @@ export const Answerpost = ({ postId }) => {
   };
   const createAnswerMutation = useMutation({
     mutationFn: createAnswer,
-    retry: false,
+    retry: 3,
     onSuccess: async (data) => {
+      toast.info('🥳 Create answer successfully');
       await queryClient.invalidateQueries(['posts', postId]);
     },
   });

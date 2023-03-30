@@ -54,12 +54,12 @@ export const Navbar = () => {
             <div className='row navbar '>
               <div className='col-12 col-md-2'>
                 <div className='logo'>
-                  <a className='icon' href='#'>
+                  <i className='icon' href=''>
                     <BsFillGearFill />
-                  </a>
-                  <a className='text' href='#'>
+                  </i>
+                  <NavLink className='text' to='/'>
                     BlueFoum
-                  </a>
+                  </NavLink>
                 </div>
               </div>
 

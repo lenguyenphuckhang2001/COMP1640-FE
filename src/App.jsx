@@ -17,7 +17,7 @@ import { ChangePassword } from './Pages/UserInfo/Edit/ChangePassword/ChangePassw
 import { Question } from './Pages/Question/Question';
 import { Login } from './Pages/Member/Login';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
-import Index from './Index';  
+import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 import { Admin } from './Pages/Admin/Index';
 import { MainDash } from './Components/Admin/MainDash/MainDash';
@@ -33,6 +33,7 @@ import { QaManage } from './Components/Manage/QaManage/QaManage';
 import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
 import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
 import { CreateUser } from './Components/Admin/CreateUser/CreateUser';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,7 +61,7 @@ const router = createBrowserRouter(
         <Route path='' element={<MainDash />} />
         <Route path='post' element={<Postmanage />} />
         <Route path='user' element={<Usermanage />}>
-        <Route path='createuser' element={<CreateUser />} />
+          <Route path='createuser' element={<CreateUser />} />
         </Route>
         <Route path='analytics' element={<Analytics />}>
           <Route path='' element={<Analyticstag />} />
@@ -72,7 +73,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
+  );
 }
 
 export default App;
