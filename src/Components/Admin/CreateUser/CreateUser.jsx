@@ -1,26 +1,21 @@
 import { convertLength } from '@mui/material/styles/cssUtils';
 import React, { useState } from 'react';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './CreateUser.scss';
 import UserApi from '../../../Api/UserApi';
 import { useMutation } from 'react-query';
-import Error from '../../../Components/Error/Error';
-import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CreateUser = () => {
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
-    username: '',
-    phonenumber: '',
+    name: '',
     role: 'user',
   });
   const [startDate, setStartDate] = useState(new Date());
-  const [errors, setErrors] = useState({});
-
-  const navigate = useNavigate();
-
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
@@ -28,25 +23,22 @@ export const CreateUser = () => {
   };
   const mutation = useMutation({
     mutationFn: async (data) => {
-      console.log(data)
-      return await UserApi.register(data)
+      return await UserApi.register(data);
     },
-    onError: (error) => {
-        if(error){
-            let errorSubmit = {};
-            errorSubmit.faile = '' + error.response.data.message + '';
-            console.log();
-            setErrors(errorSubmit);
-        }
-        else{
-            navigate('/Account/admin/user');
-        }
-      
+    onError: async (error) => {
+      const errorSubmit = {};
+      const toastError = await ToastError(error.response.data.message);
     },
-
-    
-  })
-  
+    onSuccess: async () => {
+      const toastSuccess = await ToastSucces();
+    },
+  });
+  const ToastError = (file) => {
+    toast.success(file);
+  };
+  const ToastSucces = (file) => {
+    toast.success('Success create user');
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -57,12 +49,6 @@ export const CreateUser = () => {
     if (inputs.password == '') {
       xx = 2;
     }
-    if (inputs.phone == '') {
-      xx = 2;
-    }
-    if (inputs.address == '') {
-      xx = 2;
-    }
     if (inputs.name == '') {
       xx = 2;
     }
@@ -71,23 +57,32 @@ export const CreateUser = () => {
     }
     if (xx == 1) {
       const data = {
-        name: inputs.name,
+        username: inputs.name,
         email: inputs.email,
-        password: inputs.password,
-        phone: inputs.phone,
-        DoB: startDate,
+        password: '3213123cxz',
+        role: inputs.role,
       };
-      mutation.mutate(data) 
+      mutation.mutate(data);
     }
-
   };
   return (
     <div className='Createuser-page'>
       <div className='Auth-form-container'>
-        <form className='Auth-form' onSubmit={handleSubmit} >
+        <ToastContainer
+          position='top-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='light'
+        />
+        <form className='Auth-form' onSubmit={handleSubmit}>
           <div className='Auth-form-content'>
             <h3 className='Auth-form-title'>Form create user</h3>
-            <Error errors={errors} />
             <div className='input-group-re'>
               <input
                 required
@@ -121,34 +116,28 @@ export const CreateUser = () => {
               />
               <label className='user-label'>Password</label>
             </div>
-            <div className='input-group-re right'>
-              <input
-                required
-                type='phone'
-                name='phone'
-                autoComplete='off'
-                className='input'
-                onChange={handleInput}
-              />
-              <label className='user-label'>Phone number</label>
-            </div>
             <div className='input-group-re'>
-              <DatePicker selected={startDate} dateFormat="dd/MM/yyyy" maxDate={new Date()} onChange={(date) => setStartDate(date)} />
+              <DatePicker
+                selected={startDate}
+                dateFormat='dd/MM/yyyy'
+                maxDate={new Date()}
+                onChange={(date) => setStartDate(date)}
+              />
             </div>
             <div className='select-group-re'>
               <lable className='role-lable'>
-                Role
+                Role :
                 <select name='role' onChange={handleInput} value={inputs.role}>
-                  <option value={"user"}>User</option>
-                  <option value={"qa"}>QA</option>
-                  <option value={"qa_coordinator"}>QA Coordinator</option>
-                  <option value={"admin"}>Admin</option>
+                  <option value={'user'}>User</option>
+                  <option value={'qa'}>QA</option>
+                  <option value={'qa_coordinator'}>QA Coordinator</option>
+                  <option value={'admin'}>Admin</option>
                 </select>
               </lable>
             </div>
             <div className='sm-regis'>
               <button type='submit' className='btn btn-primary'>
-                Create
+                {mutation.isLoading ? 'isloading' : 'Create user'}
               </button>
             </div>
           </div>

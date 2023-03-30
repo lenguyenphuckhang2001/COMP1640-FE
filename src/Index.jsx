@@ -11,7 +11,7 @@ export const Index = () => {
   return (
     <>
       {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? (
-        console.log('oke')
+        ''
       ) : (
         <Navbar />
       )}
@@ -35,7 +35,7 @@ export const Index = () => {
         </Container>
       </main>
       {params['pathname'].includes('admin') || params['pathname'].includes('Manage') ? (
-        console.log('oke')
+        ''
       ) : (
         <Footer />
       )}

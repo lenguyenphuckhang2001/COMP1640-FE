@@ -16,10 +16,8 @@ import { Edit } from './Pages/UserInfo/Edit/Edit';
 import { ChangePassword } from './Pages/UserInfo/Edit/ChangePassword/ChangePassword';
 import { Question } from './Pages/Question/Question';
 import { Login } from './Pages/Member/Login';
-import { Logout } from './Pages/Logout/Logout';
-import { Register } from './Pages/Member/Register';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
-import Index from './Index';
+import Index from './Index';  
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 import { Admin } from './Pages/Admin/Index';
 import { MainDash } from './Components/Admin/MainDash/MainDash';
@@ -51,8 +49,6 @@ const router = createBrowserRouter(
       </Route>
       <Route path='change-password' element={<ChangePassword />} />
       <Route path='Account/login' element={<Login />} />
-      <Route path='Account/register' element={<Register />} />
-      <Route path='logout' element={<Logout />} />
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
       <Route path='QuestionDetail/:postId' element={<QuestionDetail />} />
       <Route path='Account/Manage' element={<Manage />}>
