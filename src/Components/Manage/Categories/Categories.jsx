@@ -1,131 +1,168 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import './Categories.scss';
+import TagApi from '../../../Api/TagApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Categories = () => {
   const [todos, setTodos] = useState([]);
-  const [currentTodo, setCurrentTodo] = useState({
-    id: 0,
-    name: '',
-    date: new Date(),
-  });
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [inputs, setInputs] = useState({
+    name: '',
+    description: '',
+  });
 
-  const addTodo = () => {
-    if (!currentTodo.name) {
-      alert('Please enter name');
-      return;
+  useEffect(() => {
+    (async () => {
+      const res = await TagApi.getAll();
+      setTodos(res);
+    })();
+  }, [todos]);
+  
+  const handleInput = (e) => {
+    const nameInput = e.target.name;
+    const value = e.target.value;
+    setInputs((state) => ({ ...state, [nameInput]: value }));
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let xx = 1;
+    console.log(inputs)
+    if (inputs.name == '') {
+        xx = 2;   
+        const file = await ToastNotice("Please enter name") 
     }
-    const newTodo = {
-      ...currentTodo,
-      id: todos.length + 1,
+    if (inputs.description == '') {
+        xx = 2;
+        const file = await ToastNotice("Please enter description") 
+    }
+    if (xx == 1) {
+      const file = await ToastNotice("Success create tag") 
+      if(inputs._id !== undefined){
+        const id = inputs._id
+        const data = {
+        name: inputs.name,
+        description: inputs.description,
+        };
+        const res = await TagApi.update(id, data);
+        console.log(res);
+        console.log(inputs)
+      }
+      else{
+        const data = {
+          name: inputs.name,
+          description: inputs.description,
+          };
+          const res = await TagApi.create(data);
+          console.log(res);
+      }
+    }
+  };
+
+  const deleteTodo = async (e) => {
+    const todoToDelete = todos.find((todo) => todo._id === e.target.id);
+    if(todoToDelete){
+      const id = todoToDelete._id
+      try {
+        const res = await TagApi.delete(id);
+        const file = await ToastNotice(res.message) 
+      } catch (res) { 
+        const file = await ToastNotice(res.response.data.error.message) 
+        // setError(res.response.data.error.message)
+      }
+    }
+      const file = await ToastNotice()  
     };
-    setTodos([...todos, newTodo]);
-    setCurrentTodo({
-      id: 0,
-      name: '',
-      date: new Date(),
-    });
-    setShowCreateForm(false);
-  };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const ToastNotice = (file) => {
+    toast.success(file);
   };
-
-  const editTodo = (id) => {
-    const todoToEdit = todos.find((todo) => todo.id === id);
-    if (todoToEdit) {
-      setCurrentTodo(todoToEdit);
-      setShowCreateForm(true);
+  // const ToastSucces = (file) => {
+  //   toast.success('Success create tag');
+  // };
+  const handleEdit = (e) => {
+    const todoToEdit = todos.find((todo) => todo._id === e.target.id);
+    if(todoToEdit){
+       setInputs(todoToEdit)
+       setShowCreateForm(true);
     }
   };
-
-  const updateTodo = () => {
-    const updatedTodos = todos.map((todo) => (todo.id === currentTodo.id ? currentTodo : todo));
-    setTodos(updatedTodos);
-    setCurrentTodo({
-      id: 0,
-      name: '',
-      date: new Date(),
-    });
-    setShowCreateForm(false);
+  const handleReturn = (e) => {
+    if(inputs){
+      setInputs({})
+      setShowCreateForm(false)
+    }
   };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setCurrentTodo({
-      ...currentTodo,
-      [name]: value,
-    });
-  };
-
-  const handleDateChange = (date) => {
-    setCurrentTodo({
-      ...currentTodo,
-      date,
-    });
-  };
-
   return (
     <div className='categories'>
       <div className='crud_categories'>
+      <ToastContainer
+          position='top-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='dark'
+        />
         <div>
           <h1>Categories</h1>
           <button onClick={() => setShowCreateForm(!showCreateForm)}>Create New Categories</button>
           {showCreateForm && (
             <div>
-              <label htmlFor='name' className='todo-label'>
-                Name:{' '}
-              </label>
-              <input
-                type='text'
-                id='name'
-                name='name'
-                value={currentTodo.name}
-                onChange={handleInputChange}
-                className='todo-input'
-              />
-              <br />
-              <label htmlFor='date' className='todo-label'>
-                Date:{' '}
-              </label>
-              <input
-                type='date'
-                id='date'
-                name='date'
-                value={currentTodo.date.toISOString().substr(0, 10)}
-                onChange={(event) => handleDateChange(new Date(event.target.value))}
-                className='todo-input-date'
-              />
-              <br />
-              {currentTodo.id !== 0 ? (
-                <button onClick={updateTodo}>Update</button>
-              ) : (
-                <button onClick={addTodo}>Add Item</button>
-              )}
-              <button onClick={() => setShowCreateForm(false)}>Cancel</button>
+              <form onSubmit={handleSubmit}>
+                <label htmlFor='name' className='todo-label'>
+                  Name categories:{' '}
+                </label>
+                <input
+                  type='text'
+                  id='name'
+                  name='name'
+                  onChange={handleInput}
+                  className='todo-input'
+                  value={inputs.name}
+                />
+                <br />
+                <label htmlFor='name' className='todo-label'>
+                  Description categories
+                </label>
+                <textarea name='description' onChange={handleInput} value={inputs.description} />
+                <br />
+                <button type='submit'>
+                {inputs._id !== undefined ? ('Update Categories') : ('Add categories')}
+                </button>
+                <button onClick={handleReturn}>Cancel</button>
+              </form>
             </div>
           )}
           <table>
             <thead>
               <tr>
-                <th style={{ borderRadius: '5px 0 0 5px' }}>ID</th>
+                <th style={{ borderRadius: '5px 0 0 5px' }}>Number</th>
                 <th>Name</th>
                 <th>Date</th>
                 <th style={{ borderRadius: '0 5px 5px 0 ' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {todos.map((todo) => (
-                <tr className='column' key={todo.id}>
-                  <td>{todo.id}</td>
+              {todos.map((todo, key) => (
+                <tr className='column'>
+                  <td>{key + 1}</td>
                   <td>{todo.name}</td>
-                  <td>{todo.date.toDateString()}</td>
+                  <td>{todo.updatedAt.substring(0, 10)}</td>
                   <td>
-                    <button className='edit' onClick={() => editTodo(todo.id)}>
+                    <button className='edit' onClick={handleEdit} id={todo._id}>
                       Edit
                     </button>
-                    <button className='del' onClick={() => deleteTodo(todo.id)}>
+                    <button
+                      className='del'
+                      id={todo._id}
+                      onClick={deleteTodo}>
                       Delete
                     </button>
                   </td>

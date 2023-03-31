@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Col } from 'react-bootstrap';
-
 import ReactPaginate from 'react-paginate';
 import { useQuery } from 'react-query';
 import UserApi from '../../../Api/UserApi';
 import { FcPrevious, FcNext } from 'react-icons/Fc';
-
 import './Usermanage.scss';
-import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 export const Usermanage = () => {
   let params = useLocation();

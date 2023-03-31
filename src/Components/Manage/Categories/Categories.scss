@@ -5,7 +5,9 @@
   .crud_categories {
     display: flex;
     flex-direction: column;
-
+    textarea{
+      width: 100%;
+    }
     h1 {
       display: flex;
       justify-content: center;

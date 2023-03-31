@@ -26,7 +26,6 @@ export const CreateUser = () => {
       return await UserApi.register(data);
     },
     onError: async (error) => {
-      const errorSubmit = {};
       const toastError = await ToastError(error.response.data.message);
     },
     onSuccess: async () => {
