@@ -12,13 +12,14 @@ export const Categories = () => {
     name: '',
     description: '',
   });
+
   useEffect(() => {
     (async () => {
       const res = await TagApi.getAll();
-      
       setTodos(res);
     })();
   }, [todos]);
+  
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
