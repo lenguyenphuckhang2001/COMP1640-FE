@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './Categories.scss';
 import TagApi from '../../../Api/TagApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Categories = () => {
   const [todos, setTodos] = useState([]);
@@ -13,28 +15,31 @@ export const Categories = () => {
   useEffect(() => {
     (async () => {
       const res = await TagApi.getAll();
+      
       setTodos(res);
     })();
   }, [todos]);
-
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
     setInputs((state) => ({ ...state, [nameInput]: value }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     let xx = 1;
     console.log(inputs)
     if (inputs.name == '') {
         xx = 2;   
+        const file = await ToastNotice("Please enter name") 
     }
     if (inputs.description == '') {
         xx = 2;
+        const file = await ToastNotice("Please enter description") 
     }
     if (xx == 1) {
-      if(inputs._id !== ''){
+      const file = await ToastNotice("Success create tag") 
+      if(inputs._id !== undefined){
         const id = inputs._id
         const data = {
         name: inputs.name,
@@ -42,6 +47,7 @@ export const Categories = () => {
         };
         const res = await TagApi.update(id, data);
         console.log(res);
+        console.log(inputs)
       }
       else{
         const data = {
@@ -51,7 +57,6 @@ export const Categories = () => {
           const res = await TagApi.create(data);
           console.log(res);
       }
-      
     }
   };
 
@@ -59,11 +64,23 @@ export const Categories = () => {
     const todoToDelete = todos.find((todo) => todo._id === e.target.id);
     if(todoToDelete){
       const id = todoToDelete._id
-      const res = await TagApi.delete(id);
-      console.log(res);
+      try {
+        const res = await TagApi.delete(id);
+        const file = await ToastNotice(res.message) 
+      } catch (res) { 
+        const file = await ToastNotice(res.response.data.error.message) 
+        // setError(res.response.data.error.message)
+      }
     }
-  };
+      const file = await ToastNotice()  
+    };
 
+  const ToastNotice = (file) => {
+    toast.success(file);
+  };
+  // const ToastSucces = (file) => {
+  //   toast.success('Success create tag');
+  // };
   const handleEdit = (e) => {
     const todoToEdit = todos.find((todo) => todo._id === e.target.id);
     if(todoToEdit){
@@ -71,9 +88,27 @@ export const Categories = () => {
        setShowCreateForm(true);
     }
   };
+  const handleReturn = (e) => {
+    if(inputs){
+      setInputs({})
+      setShowCreateForm(false)
+    }
+  };
   return (
     <div className='categories'>
       <div className='crud_categories'>
+      <ToastContainer
+          position='top-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='dark'
+        />
         <div>
           <h1>Categories</h1>
           <button onClick={() => setShowCreateForm(!showCreateForm)}>Create New Categories</button>
@@ -100,8 +135,8 @@ export const Categories = () => {
                 <button type='submit'>
                 {inputs._id !== undefined ? ('Update Categories') : ('Add categories')}
                 </button>
-        
-              </form>tt
+                <button onClick={handleReturn}>Cancel</button>
+              </form>
             </div>
           )}
           <table>
