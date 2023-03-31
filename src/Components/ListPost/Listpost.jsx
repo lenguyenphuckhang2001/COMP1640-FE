@@ -11,9 +11,18 @@ export const ListPost = () => {
   const queryClient = useQueryClient();
   const handlePageClick = async (data) => {
     const res = await PostApi.getAll(data.selected + 1);
-    console.log('🚀 ~ file: Listpost.jsx:14 ~ handlePageClick ~ res:', res);
     return res;
   };
+  const updateViewMutation = useMutation({
+    mutationFn: async (data) => {
+      const res = await PostApi.update(data.id, { views: data.views });
+      return res;
+    },
+    onSuccess: async (data) => {
+      console.log(data);
+      await queryClient.invalidateQueries('posts');
+    },
+  });
 
   const newPostMutation = useMutation({
     mutationFn: handlePageClick,
@@ -29,7 +38,6 @@ export const ListPost = () => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: 'posts',
     queryFn: fetchPosts,
-    refetchInterval: 1000 * 7,
   });
   if (isLoading) {
     return <h1 className='load-screen'>Loading...</h1>;
@@ -46,19 +54,22 @@ export const ListPost = () => {
           <div className='postcontent'>
             <div className='postlike'>
               <span>{post.votes} Vote</span>
-              <span>200 view</span>
+              <span>{post.views} view</span>
               <span className='downvote'>{post?.comments.length} Comment</span>
             </div>
             <div className='user-post'>
               <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
-              <h4>Hihi</h4>
+              <h4>{post.isAnonymous ? 'Anonymous' : post.author.username}</h4>
               <h2 className='title-content'>
                 <Link
                   to={{
                     pathname: `/QuestionDetail/${post?._id}`,
-                    state: {
-                      post: post,
-                    },
+                  }}
+                  onClick={() => {
+                    updateViewMutation.mutate({
+                      id: post?._id,
+                      views: post?.views + 1,
+                    });
                   }}
                 >
                   {post?.title}

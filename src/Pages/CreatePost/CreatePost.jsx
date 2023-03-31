@@ -6,12 +6,14 @@ import { BiItalic } from 'react-icons/Bi';
 import { BiBold } from 'react-icons/Bi';
 import './CreatePost.scss';
 import {
+  Checkbox,
   FormControl,
   FormLabel,
   HStack,
   Input,
   Select,
   Spinner,
+  Stack,
   Switch,
   Tag,
   TagCloseButton,
@@ -32,10 +34,12 @@ export const CreatePost = () => {
   const [tagId, settagId] = useState([]);
   const [department, setDepartment] = useState(null);
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [term, setTerm] = useState(false);
+
   const title = useRef(null);
   const content = useRef(null);
   const queryClient = useQueryClient();
-  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     const user = localStorage.getItem('Information');
@@ -153,18 +157,29 @@ export const CreatePost = () => {
 
           <Button>Upload</Button>
         </FormControl>
-        <Button
-          style={{
-            marginTop: '10px',
-          }}
-          colorScheme='blue'
-          type='submit'
-          disabled={createPostMutation.isLoading}
-        >
-          {createPostMutation.isLoading ? <Spinner /> : 'Create Post'}
-        </Button>
+        <Stack spacing={5} direction='column'>
+          <Checkbox
+            colorScheme='red'
+            color={'white'}
+            onChange={(e) => {
+              setTerm(e.target.checked);
+            }}
+          >
+            Accep Term
+          </Checkbox>
+          <Button
+            style={{
+              marginTop: '10px',
+            }}
+            colorScheme='blue'
+            type='submit'
+            disabled={!term || createPostMutation.isLoading}
+          >
+            {term ? 'Create Post' : 'Please accept term'}
+            {createPostMutation.isLoading ? <Spinner /> : ''}
+          </Button>
+        </Stack>
       </form>
-      <ToastContainer />
     </Col>
   );
 };

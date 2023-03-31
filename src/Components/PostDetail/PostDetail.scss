@@ -11,6 +11,13 @@
     margin-left: 7%;
     padding-top: 2%;
   }
+  .postdost .disblely {
+    opacity: 0.5;
+    cursor: default;
+    &:hover {
+      color: #ffffff;
+    }
+  }
   .postdost {
     position: absolute;
     display: flex;
@@ -19,6 +26,10 @@
     top: 8%;
     span {
       margin-bottom: 3px;
+      cursor: pointer;
+      &:hover {
+        color: #20304a;
+      }
       svg {
         width: 25px;
         height: 25px;
@@ -36,11 +47,11 @@
     padding: 0 8%;
     font-size: 20px;
     display: inline-block;
-    .file{
-        width: 100%;
-        text-align: center;
+    .file {
+      width: 100%;
+      text-align: center;
     }
-    p{
+    p {
       font-size: 18px;
       line-height: normal;
       font-family: 'Courier New', Courier, monospace;
@@ -54,10 +65,10 @@
         padding-right: 3%;
       }
     }
-    .user-post{
+    .user-post {
       display: inline-flex;
       float: right;
-      img{
+      img {
         width: 35px;
         height: 35px;
         margin-right: 10px;

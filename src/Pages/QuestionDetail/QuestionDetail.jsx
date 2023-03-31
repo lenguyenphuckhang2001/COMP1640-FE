@@ -19,7 +19,7 @@ export const QuestionDetail = () => {
   const test = useQuery({
     queryKey: ['posts', postId],
     queryFn: getPostById,
-    refetchInterval: 1000 * 6,
+    refetchInterval: 1000 * 7,
   });
 
   return (
@@ -30,11 +30,10 @@ export const QuestionDetail = () => {
         <h1 className='load-screen'>{test.error.message}</h1>
       ) : (
         <>
-          <PostDetail post={test.data} />
+          <PostDetail post={test.data} postId={postId} />
           <Sort commentsNumber={test.data?.comments?.length} />
           <Answerpost postId={postId} />
           <Answer comments={test.data?.comments} />
-          <ToastContainer theme='dark' />
         </>
       )}
     </Col>

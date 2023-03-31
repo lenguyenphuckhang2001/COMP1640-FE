@@ -36,7 +36,6 @@ export const Navbar = () => {
   async function Logout() {
     try {
       const res = await axios.post('/api/auth/logout');
-      console.log('🚀 ~ file: Navbar.jsx:36 ~ Logout ~ res:', res);
       if (res.status == 200) {
         localStorage.clear();
         navigate('/Account/login');

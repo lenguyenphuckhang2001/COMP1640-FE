@@ -11,7 +11,7 @@ const PostApi = {
       });
     return axiosClient1.get(url);
   },
-  
+
   getOne: (id) => {
     const url = `/posts/${id}`;
     return axiosClient1.get(url);
@@ -30,6 +30,11 @@ const PostApi = {
   delete: (id) => {
     const url = `/posts/${id}`;
     return axiosClient1.delete(url);
+  },
+
+  userPosts: (userId) => {
+    const url = `/posts/user/${userId}`;
+    return axiosClient1.get(url);
   },
 };
 export default PostApi;
