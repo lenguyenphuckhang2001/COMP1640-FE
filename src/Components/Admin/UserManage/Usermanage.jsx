@@ -8,7 +8,7 @@ import UserApi from '../../../Api/UserApi';
 import { FcPrevious, FcNext } from 'react-icons/Fc';
 
 import './Usermanage.scss';
-import { useState } from 'react';
+
 import { Link, Outlet, useLocation } from 'react-router-dom';
 export const Usermanage = () => {
   let params = useLocation();
