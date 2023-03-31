@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './Categories.scss';
 import TagApi from '../../../Api/TagApi';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+
 export const Categories = () => {
   const [todos, setTodos] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [inputs, setInputs] = useState({
-    name: '',
-    description: '',
-  });
-  const [currentTodo, setCurrentTodo] = useState({
-    _id:'',
     name: '',
     description: '',
   });
@@ -20,7 +15,8 @@ export const Categories = () => {
       const res = await TagApi.getAll();
       setTodos(res);
     })();
-  }, []);
+  }, [todos]);
+
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
@@ -31,27 +27,15 @@ export const Categories = () => {
     e.preventDefault();
     let xx = 1;
     console.log(inputs)
-    console.log(currentTodo._id)
     if (inputs.name == '') {
-      if(currentTodo.name !== ''){
-        inputs.name = currentTodo.name
-      }
-      else{
-        xx = 2;
-      }
-      
+        xx = 2;   
     }
     if (inputs.description == '') {
-      if(currentTodo.description !== ''){
-        inputs.description = currentTodo.description
-      }
-      else{
         xx = 2;
-      }
     }
     if (xx == 1) {
-      if(currentTodo._id !== ''){
-        const id = currentTodo._id
+      if(inputs._id !== ''){
+        const id = inputs._id
         const data = {
         name: inputs.name,
         description: inputs.description,
@@ -71,30 +55,22 @@ export const Categories = () => {
     }
   };
 
-  // const deleteTodo = (id) => {
-  //   setTodos(todos.filter((todo) => todo.id !== id));
-  // };
+  const deleteTodo = async (e) => {
+    const todoToDelete = todos.find((todo) => todo._id === e.target.id);
+    if(todoToDelete){
+      const id = todoToDelete._id
+      const res = await TagApi.delete(id);
+      console.log(res);
+    }
+  };
 
   const handleEdit = (e) => {
     const todoToEdit = todos.find((todo) => todo._id === e.target.id);
     if(todoToEdit){
-       setCurrentTodo(todoToEdit)
+       setInputs(todoToEdit)
        setShowCreateForm(true);
     }
-   
   };
-
-  const updateTodo = () => {
-    // const updatedTodos = todos.map((todo) => (todo.id === currentTodo.id ? currentTodo : todo));
-    // setTodos(updatedTodos);
-    // setCurrentTodo({
-    //   id: 0,
-    //   name: '',
-    //   date: new Date(),
-    // });
-    // setShowCreateForm(false);
-  };
-
   return (
     <div className='categories'>
       <div className='crud_categories'>
@@ -113,16 +89,19 @@ export const Categories = () => {
                   name='name'
                   onChange={handleInput}
                   className='todo-input'
-                  defaultValue={currentTodo.name}
+                  value={inputs.name}
                 />
                 <br />
                 <label htmlFor='name' className='todo-label'>
                   Description categories
                 </label>
-                <textarea name='description' onChange={handleInput} defaultValue={currentTodo.description} />
+                <textarea name='description' onChange={handleInput} value={inputs.description} />
                 <br />
-                {currentTodo._id !== '' ? (<button type='submit'>Update</button>) : (<button type='submit'>Add categories</button>)}
-              </form>
+                <button type='submit'>
+                {inputs._id !== undefined ? ('Update Categories') : ('Add categories')}
+                </button>
+        
+              </form>tt
             </div>
           )}
           <table>
@@ -146,9 +125,8 @@ export const Categories = () => {
                     </button>
                     <button
                       className='del'
-                      // onClick={() =>
-                      //   (todo.id)}
-                    >
+                      id={todo._id}
+                      onClick={deleteTodo}>
                       Delete
                     </button>
                   </td>
