@@ -36,7 +36,6 @@ export const Navbar = () => {
   async function Logout() {
     try {
       const res = await axios.post('/api/auth/logout');
-      console.log('🚀 ~ file: Navbar.jsx:36 ~ Logout ~ res:', res);
       if (res.status == 200) {
         localStorage.clear();
         navigate('/Account/login');
@@ -54,12 +53,12 @@ export const Navbar = () => {
             <div className='row navbar '>
               <div className='col-12 col-md-2'>
                 <div className='logo'>
-                  <a className='icon' href='#'>
+                  <i className='icon' href=''>
                     <BsFillGearFill />
-                  </a>
-                  <a className='text' href='#'>
+                  </i>
+                  <NavLink className='text' to='/'>
                     BlueFoum
-                  </a>
+                  </NavLink>
                 </div>
               </div>
 

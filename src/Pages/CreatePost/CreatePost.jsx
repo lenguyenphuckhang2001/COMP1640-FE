@@ -1,241 +1,185 @@
 import React from 'react';
-import JSZip from 'jszip';
 import { useState } from 'react';
-import { Col } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import { BiUnderline } from 'react-icons/Bi';
 import { BiItalic } from 'react-icons/Bi';
 import { BiBold } from 'react-icons/Bi';
 import './CreatePost.scss';
+import {
+  Checkbox,
+  FormControl,
+  FormLabel,
+  HStack,
+  Input,
+  Select,
+  Spinner,
+  Stack,
+  Switch,
+  Tag,
+  TagCloseButton,
+  TagLabel,
+  Textarea,
+} from '@chakra-ui/react';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import TagApi from '../../Api/TagApi';
+import DepartmentApi from '../../Api/DepartmentApi';
+import { useRef } from 'react';
+import { useEffect } from 'react';
+import PostApi from '../../Api/PostApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const CreatePost = (props) => {
-  //set keybroard
-  const [bold, setBold] = useState(false);
-  const [italic, setItalic] = useState(false);
-  const [underline, setUnderline] = useState(false);
+export const CreatePost = () => {
+  const [tagss, setTagss] = useState([]);
+  const [tagId, settagId] = useState([]);
+  const [department, setDepartment] = useState(null);
+  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [term, setTerm] = useState(false);
 
-  const handleBoldClick = (e) => {
-    e.preventDefault();
-    setBold(!bold);
-  };
+  const title = useRef(null);
+  const content = useRef(null);
+  const queryClient = useQueryClient();
 
-  const handleItalicClick = (e) => {
-    e.preventDefault();
-    setItalic(!italic);
-  };
-
-  const handleUnderlineClick = (e) => {
-    e.preventDefault();
-    setUnderline(!underline);
-  };
-
-  const textStyle = {
-    fontWeight: bold ? 'bold' : 'normal',
-    fontStyle: italic ? 'italic' : 'normal',
-    textDecoration: underline ? 'underline' : 'none',
-  };
-
-  // Set tag
-
-  const options = [
-    { label: 'Categories', value: 'Categories' },
-
-    { label: 'ReactJs', value: 'ReactJs' },
-
-    { label: 'Bootraps', value: 'Bootraps' },
-
-    { label: 'Html', value: 'Html' },
-
-    { label: 'Scss', value: 'Scss' },
-  ];
-
-  const [value, setValue] = React.useState('Language');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  //Set FileUpload
-  const [file, setFile] = useState(null);
-
-  function handleUpload() {
-    const formData = new FormData();
-    formData.append('file', file);
-    fetch('url', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log('success', result);
-      })
-      .catch((error) => {
-        console.error('Error', error);
-      });
-  }
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const handleUploadAndDownload = () => {
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      fetch('/upload', {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response) => response.blob())
-        .then((blob) => {
-          const zip = new JSZip();
-          zip.file(file.name, blob);
-          zip.generateAsync({ type: 'blob' }).then((content) => {
-            const url = window.URL.createObjectURL(content);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', `${file.name}.zip`);
-            document.body.appendChild(link);
-            link.click();
-          });
-        });
-    } else {
-      alert('Please choose a file first');
+  useEffect(() => {
+    const user = localStorage.getItem('Information');
+    if (user) {
+      const userObj = JSON.parse(user);
+      const { userId: id } = userObj.data.user;
+      setUserId(id);
     }
-  };
+  }, []);
 
-  //Set checkbox
+  const createPostMutation = useMutation({
+    mutationFn: async (post) => {
+      return await PostApi.create(post);
+    },
+    retry: 3,
+    onSuccess: async (data) => {
+      toast.success('🥳 Create post successfully');
+      await queryClient.invalidateQueries(['posts']);
+    },
+  });
 
-  const [isChecked, setIsChecked] = useState(false);
-  const [postText, setPostText] = useState('');
+  const tags = useQuery({
+    queryKey: 'tags',
+    queryFn: async () => {
+      return await TagApi.getAll();
+    },
+    staleTime: 1000 * 60,
+  });
+  const fetchAllDepartment = useQuery({
+    queryKey: 'departments',
+    queryFn: async () => {
+      return await DepartmentApi.getAll();
+    },
+    staleTime: 1000 * 60,
+  });
 
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
-  };
+  const handleSummit = (e) => {
+    e.preventDefault();
 
-  const handlePostTextChange = (event) => {
-    setPostText(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (isChecked) {
-      // Send the post to a server-side endpoint
-      console.log(`Submitting post: ${postText}`);
-    } else {
-      console.log('Checkbox must be checked to submit post');
-    }
+    const data = {
+      title: title.current.value,
+      content: content.current.value,
+      tags: tagId,
+      department: department,
+      author: userId,
+      isAnonymous: isAnonymous,
+    };
+    createPostMutation.mutate(data);
   };
 
   return (
     <Col md={{ span: 6 }}>
-      {/* createpost content */}
-      <div className='createpost'>
-        <div className='center'>
-          <form>
-            <p className='title'> Create a post</p>
-            <input className='ip_title' type='text' id='fname' name='fname' placeholder='Title' />
-            <p className='question'>Question</p>
-            <div className='icon_item'>
-              <button
-                className='icon'
-                onClick={(e) => {
-                  handleBoldClick(e);
-                }}
-              >
-                <BiBold />
-              </button>
-              <button
-                className='icon'
-                onClick={(e) => {
-                  handleItalicClick(e);
-                }}
-              >
-                <BiItalic />
-              </button>
-              <button
-                className='icon'
-                onClick={(e) => {
-                  handleUnderlineClick(e);
-                }}
-              >
-                <BiUnderline />
-              </button>
-            </div>
-            <input className='ip_question' style={textStyle} placeholder=' Write description....' />
-
-            {/* select tag */}
-            <div className='add-tag'>
-              <label>
-                <select value={value} onChange={handleChange}>
-                  {options.map((option) => (
-                    <option value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            {/* function upload and download */}
-            <div className='file-upload-and-download'>
-              <label htmlFor='file-input' className='file-upload-and-download__label'>
-                <input
-                  type='file'
-                  id='file-input'
-                  className='file-upload-and-download__input'
-                  onChange={handleFileChange}
+      <form onSubmit={handleSummit}>
+        <FormControl isRequired>
+          <FormLabel color={'white'}>Title</FormLabel>
+          <Input placeholder='Title' color={'white'} ref={title} />
+          <FormLabel color={'white'}>Content</FormLabel>
+          <Textarea placeholder='Content' color={'white'} size='md' ref={content} />
+          <FormLabel color={'white'}>Tags</FormLabel>
+          <Select
+            placeholder='Select tags'
+            color={'blueviolet'}
+            onChange={(e) => {
+              const filter = e.target.value.split(',');
+              if (filter[0] === '') return;
+              if (!tagss.includes(filter[0])) {
+                setTagss([...tagss, filter[0]]);
+                settagId([...tagId, filter[1]]);
+              }
+            }}
+          >
+            {tags.data?.map((tag) => {
+              return <option value={[tag.name, tag._id]}>{tag.name}</option>;
+            })}
+          </Select>
+          <HStack spacing={4}>
+            {tagss.map((tag, index) => (
+              <Tag size='md' key={index} borderRadius='full' variant='solid' colorScheme='green'>
+                <TagLabel>{tag}</TagLabel>
+                <TagCloseButton
+                  onClick={() => {
+                    setTagss(tagss.filter((t) => t !== tag));
+                    settagId(tagId.filter((t) => t !== tagId[index]));
+                  }}
                 />
-                <span className='file-upload-and-download__text'>
-                  {file ? file.name : 'Choose file'}
-                </span>
-              </label>
-              <div className='file-up-and-down'>
-                <form className='upload__form' onSubmit={handleUpload}>
-                  <button>Upload</button>
-                </form>
-                <button className='download__button' onClick={handleUploadAndDownload}>
-                  Download
-                </button>
-              </div>
-            </div>
-            {/* function checkbox */}
-            <div className='post-form'>
-              <form onSubmit={handleSubmit}>
-                <div className='form-group'>
-                  <div className='ip_check'>
-                    <input
-                      className='check_item'
-                      type='checkbox'
-                      id='checkbox'
-                      checked={isChecked}
-                      onChange={handleCheckboxChange}
-                    />
-                    <div>
-                      <label htmlFor='checkbox'>I agree to the terms </label>
-                    </div>
-                  </div>
-                  {/* anonymous */}
-                  <div class='form-check form-switch anonymous'>
-                    <input
-                      class='form-check-input'
-                      type='checkbox'
-                      role='switch'
-                      id='flexSwitchCheckDefault'
-                    />
-                    <label class='form-check-label' for='flexSwitchCheckDefault'>
-                      Anonymous
-                    </label>
-                  </div>
-                </div>
-                <div className='button_post'>
-                  <button type='submit' disabled={!isChecked}>
-                    Post
-                  </button>
-                </div>
-              </form>
-            </div>
-          </form>
-        </div>
-      </div>
+              </Tag>
+            ))}
+          </HStack>
+          <FormLabel color={'white'}>Departments</FormLabel>
+          <Select
+            placeholder='Select departments'
+            color={'blueviolet'}
+            onChange={(e) => {
+              setDepartment(e.target.value);
+            }}
+          >
+            {fetchAllDepartment.data?.map((department) => {
+              return <option value={department._id}>{department.name}</option>;
+            })}
+          </Select>
+        </FormControl>
+
+        <FormControl display='flex' alignItems='center' justifyContent='space-between'>
+          <FormControl display='flex' alignItems='center'>
+            <FormLabel htmlFor='email-alerts' mb='0' color={'white'}>
+              post anonymously
+            </FormLabel>
+            <Switch
+              id='email-alerts'
+              onChange={(e) => {
+                setIsAnonymous(e.target.checked);
+              }}
+            />
+          </FormControl>
+
+          <Button>Upload</Button>
+        </FormControl>
+        <Stack spacing={5} direction='column'>
+          <Checkbox
+            colorScheme='red'
+            color={'white'}
+            onChange={(e) => {
+              setTerm(e.target.checked);
+            }}
+          >
+            Accep Term
+          </Checkbox>
+          <Button
+            style={{
+              marginTop: '10px',
+            }}
+            colorScheme='blue'
+            type='submit'
+            disabled={!term || createPostMutation.isLoading}
+          >
+            {term ? 'Create Post' : 'Please accept term'}
+            {createPostMutation.isLoading ? <Spinner /> : ''}
+          </Button>
+        </Stack>
+      </form>
     </Col>
   );
 };

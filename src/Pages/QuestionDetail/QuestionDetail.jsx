@@ -7,6 +7,8 @@ import { Answer } from '../../Components/Answer/Answer';
 import { Answerpost } from '../../Components/Answerpost/Answerpost';
 import { PostDetail } from '../../Components/PostDetail/PostDetail';
 import { Sort } from '../../Components/Sort/Sort';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const QuestionDetail = () => {
   const { postId } = useParams();
@@ -17,7 +19,7 @@ export const QuestionDetail = () => {
   const test = useQuery({
     queryKey: ['posts', postId],
     queryFn: getPostById,
-    refetchOnWindowFocus: true,
+    refetchInterval: 1000 * 7,
   });
 
   return (
@@ -28,7 +30,7 @@ export const QuestionDetail = () => {
         <h1 className='load-screen'>{test.error.message}</h1>
       ) : (
         <>
-          <PostDetail post={test.data} />
+          <PostDetail post={test.data} postId={postId} />
           <Sort commentsNumber={test.data?.comments?.length} />
           <Answerpost postId={postId} />
           <Answer comments={test.data?.comments} />

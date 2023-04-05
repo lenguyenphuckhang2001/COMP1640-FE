@@ -17,7 +17,7 @@ import { ChangePassword } from './Pages/UserInfo/Edit/ChangePassword/ChangePassw
 import { Question } from './Pages/Question/Question';
 import { Login } from './Pages/Member/Login';
 import { Forgotpassword } from './Pages/Member/Forgotpassword';
-import Index from './Index';  
+import Index from './Index';
 import { QuestionDetail } from './Pages/QuestionDetail/QuestionDetail';
 import { Admin } from './Pages/Admin/Index';
 import { MainDash } from './Components/Admin/MainDash/MainDash';
@@ -33,17 +33,24 @@ import { QaManage } from './Components/Manage/QaManage/QaManage';
 import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
 import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
 import { CreateUser } from './Components/Admin/CreateUser/CreateUser';
+import { ToastContainer } from 'react-toastify';
+import ProtectedRoute from './Pages/Protected/ProtectedRoute';
+import ChakaraProvi from './Pages/Protected/ChakaraProvi';
+import AdminProtectedRoute from './Pages/Protected/AdminProtectedRoute';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Index />}>
-      <Route path='/' element={<Home />} />
-      <Route path='create-post' element={<CreatePost />} />
-      <Route path='question' element={<Question />} />
-      <Route path='Account/user-info' element={<UserInfo />}>
-        <Route path='saved' element={<Saved />} />
-        <Route path='history' element={<History />} />
-        <Route path='edit' element={<Edit />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path='/' element={<Home />} />
+        <Route element={<ChakaraProvi />}>
+          <Route path='create-post' element={<CreatePost />} />
+        </Route>
+        <Route path='question' element={<Question />} />
+        <Route path='Account/user-info' element={<UserInfo />}>
+          <Route path='my-post' element={<Saved />} />
+          <Route path='edit' element={<Edit />} />
+        </Route>
       </Route>
       <Route path='change-password' element={<ChangePassword />} />
       <Route path='Account/login' element={<Login />} />
@@ -56,15 +63,17 @@ const router = createBrowserRouter(
         <Route path='statistical' element={<Statistical />} />
         <Route path='' element={<QaManage />} />
       </Route>
-      <Route path='Account/admin' element={<Admin />}>
-        <Route path='' element={<MainDash />} />
-        <Route path='post' element={<Postmanage />} />
-        <Route path='user' element={<Usermanage />}>
-        <Route path='createuser' element={<CreateUser />} />
-        </Route>
-        <Route path='analytics' element={<Analytics />}>
-          <Route path='' element={<Analyticstag />} />
-          <Route path='post' element={<AnalyticsPost />} />
+      <Route element={<AdminProtectedRoute />}>
+        <Route path='Account/admin' element={<Admin />}>
+          <Route path='' element={<MainDash />} />
+          <Route path='post' element={<Postmanage />} />
+          <Route path='user' element={<Usermanage />}>
+            <Route path='createuser' element={<CreateUser />} />
+          </Route>
+          <Route path='analytics' element={<Analytics />}>
+            <Route path='' element={<Analyticstag />} />
+            <Route path='post' element={<AnalyticsPost />} />
+          </Route>
         </Route>
       </Route>
     </Route>,
@@ -72,7 +81,12 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer theme='dark' />
+    </>
+  );
 }
 
 export default App;
