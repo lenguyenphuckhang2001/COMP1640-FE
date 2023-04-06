@@ -25,13 +25,13 @@ import { Postmanage } from './Components/Admin/PostManage/Postmanage';
 import { Usermanage } from './Components/Admin/UserManage/Usermanage';
 import { Analytics } from './Components/Admin/Analytics/Analytics';
 import Manage from './Pages/Manage/Manage';
-import { Department } from './Components/Manage/Department/Department';
 import { Categories } from './Components/Manage/Categories/Categories';
 import { DownloadData } from './Components/Manage/DownloadData/DownloadData';
 import { Statistical } from './Components/Manage/Statistical/Statistical';
-import { QaManage } from './Components/Manage/QaManage/QaManage';
 import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
 import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
+import { StatisticalTag } from './Components/Manage/StatisticalTag/StatisticalTag';
+import { StatisticalPost } from './Components/Manage/StatisticalPost/StatisticalPost';
 import { CreateUser } from './Components/Admin/CreateUser/CreateUser';
 
 const router = createBrowserRouter(
@@ -50,11 +50,12 @@ const router = createBrowserRouter(
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
       <Route path='QuestionDetail/:postId' element={<QuestionDetail />} />
       <Route path='Account/Manage' element={<Manage />}>
-        <Route path='department' element={<Department />} />
-        <Route path='categories' element={<Categories />} />
+        <Route path='' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
-        <Route path='statistical' element={<Statistical />} />
-        <Route path='' element={<QaManage />} />
+        <Route path='statistical' element={<Statistical />}>
+          <Route path='' element={<StatisticalTag />} />
+          <Route path='post' element={<StatisticalPost />} />
+        </Route>
       </Route>
       <Route path='Account/admin' element={<Admin />}>
         <Route path='' element={<MainDash />} />

@@ -6,18 +6,10 @@ import { Sidebar } from '../../Components/Manage/Sidebar/Sidebar';
 
 export const QaManagement = () => {
   return (
-    <Col md={{ span: 12 }}>
-      <div className='row QA'>
-        <div className='manage '>
-          <Sidebar/>
-          <div className='col-md-9 items'>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        </div>
-      </div>
-    </Col>
+    <>
+        <Sidebar/>
+        <Outlet />
+    </>
   );
 };
 export default QaManagement;

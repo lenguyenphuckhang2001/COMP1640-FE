@@ -1,49 +1,21 @@
-.academic {
-  h1 {
-    margin-bottom: 20px;
+.Main-Analytics {
+  width: 100%;
+  gap: 10px;
+  display: flex;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    width: 50%;
+    display: inline-block;
+    background-color: #144272;
+    padding: 3%;
+    text-align: center;
+    border-radius: 0.7rem;
+    font-size: 18px;
+    font-weight: bold;
   }
-
-  form {
-    display: block;
-    label {
-      margin-right: 10px;
-    }
-
-    input[type='date'] {
-      margin-bottom: 10px;
-    }
-
-    button[type='submit'],
-    button[type='button'] {
-      margin-top: 10px;
-    }
-  }
-
-  button {
-    margin-bottom: 20px;
-  }
-
-  table {
-    border-collapse: collapse;
-    margin-top: 20px;
-
-    th,
-    td {
-      padding: 10px;
-      border: 1px solid black;
-    }
-
-    th {
-      background-color: gray;
-      color: white;
-    }
-
-    td {
-      text-align: center;
-    }
-
-    button {
-      margin: 0 5px;
-    }
+  a:hover {
+    color: #fff;
   }
 }
