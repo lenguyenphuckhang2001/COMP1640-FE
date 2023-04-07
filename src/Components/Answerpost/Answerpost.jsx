@@ -9,6 +9,7 @@ export const Answerpost = ({ postId }) => {
   const answer = useRef(null);
   const queryClient = useQueryClient();
   const [userId, setUserId] = useState('');
+  const [isAnonymous, setIsAnonymous] = useState(false);
 
   useEffect(() => {
     const user = localStorage.getItem('Information');
@@ -32,10 +33,10 @@ export const Answerpost = ({ postId }) => {
   });
 
   const handleSummit = () => {
-    console.log(answer.current.value);
     createAnswerMutation.mutate({
       content: answer.current.value,
       author: userId,
+      isAnonymous: isAnonymous,
     });
   };
 
@@ -61,6 +62,14 @@ export const Answerpost = ({ postId }) => {
           placeholder='Leave a answer here'
           style={{ height: '100px', backgroundColor: '#2267a7', color: 'white', border: 'none' }}
           ref={answer}
+        />
+        <Form.Check
+          type='switch'
+          id='custom-switch'
+          label='Anonymous Answer'
+          onChange={(e) => {
+            setIsAnonymous(e.target.checked);
+          }}
         />
       </FloatingLabel>
       <Button

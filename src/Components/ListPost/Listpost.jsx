@@ -55,7 +55,7 @@ export const ListPost = () => {
           <div className='postcontent'>
             <div className='user-post'>
               <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
-              <h4>{post.isAnonymous ? 'Anonymous' : post.author.username}</h4>
+              <h4>{post.isAnonymous ? 'Anonymous' : post?.author?.username}</h4>
               <h2 className='title-content'>
                 <Link
                   to={{

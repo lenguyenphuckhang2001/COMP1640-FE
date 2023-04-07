@@ -1,6 +1,6 @@
 import axiosClient1 from './AxiosSetup/axiosClient';
 
-const CommentApi = {
+const DepartmentApi = {
   getAll: () => {
     const url = '/departments';
 
@@ -33,4 +33,4 @@ const CommentApi = {
   },
 };
 
-export default CommentApi;
+export default DepartmentApi;

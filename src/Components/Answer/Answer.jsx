@@ -26,6 +26,7 @@ export const Answer = ({ comments }) => {
   const [itemLimit, setItemLimit] = useState(5);
 
   const currentItems = newest.slice(itemOffset, itemOffset + itemLimit);
+  console.log('🚀 ~ file: Answer.jsx:29 ~ Answer ~ currentItems:', currentItems);
   const pageCout = Math.ceil(comments.length / itemLimit);
 
   const handlePageClick = (e) => {
@@ -58,7 +59,7 @@ export const Answer = ({ comments }) => {
               </div>
               <div className='user-answer'>
                 <img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745' />
-                <p>{comment.author.username}</p>
+                <p>{comment.isAnonymous ? 'Anonymous' : comment.author.username}</p>
               </div>
             </div>
           </div>

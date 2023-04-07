@@ -36,6 +36,7 @@ import { ToastContainer } from 'react-toastify';
 import ProtectedRoute from './Pages/Protected/ProtectedRoute';
 import ChakaraProvi from './Pages/Protected/ChakaraProvi';
 import AdminProtectedRoute from './Pages/Protected/AdminProtectedRoute';
+import CreateDepartment from './Components/Manage/Department/CreateDepartment';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,7 +67,13 @@ const router = createBrowserRouter(
         <Route path='Account/admin' element={<Admin />}>
           <Route path='' element={<MainDash />} />
           <Route path='post' element={<Postmanage />} />
-          <Route path='user' element={<Usermanage />} />
+          <Route path='user' element={<Usermanage />}>
+            <Route path='createuser' element={<CreateUser />} />
+          </Route>
+          <Route path='departments' element={<Department />} />
+          <Route element={<ChakaraProvi />}>
+            <Route path='create-department' element={<CreateDepartment />} />
+          </Route>
           <Route path='analytics' element={<Analytics />}>
             <Route path='' element={<Analyticstag />} />
             <Route path='post' element={<AnalyticsPost />} />
