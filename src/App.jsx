@@ -37,6 +37,7 @@ import ProtectedRoute from './Pages/Protected/ProtectedRoute';
 import ChakaraProvi from './Pages/Protected/ChakaraProvi';
 import AdminProtectedRoute from './Pages/Protected/AdminProtectedRoute';
 import CreateDepartment from './Components/Manage/Department/CreateDepartment';
+import DepartmentDetail from './Components/DepartmentDetail/DepartmentDetail';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -70,9 +71,10 @@ const router = createBrowserRouter(
           <Route path='user' element={<Usermanage />}>
             <Route path='createuser' element={<CreateUser />} />
           </Route>
-          <Route path='departments' element={<Department />} />
           <Route element={<ChakaraProvi />}>
+            <Route path='departments' element={<Department />} />
             <Route path='create-department' element={<CreateDepartment />} />
+            <Route path='department/:departmentId' element={<DepartmentDetail />} />
           </Route>
           <Route path='analytics' element={<Analytics />}>
             <Route path='' element={<Analyticstag />} />

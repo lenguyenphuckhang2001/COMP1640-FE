@@ -54,10 +54,6 @@ const CreateDepartment = () => {
       toast.error('🥺 Create department failed');
     },
   });
-  console.log(
-    '🚀 ~ file: CreateDepartment.jsx:56 ~ CreateDepartment ~ createDepartmentMutation:',
-    createDepartmentMutation,
-  );
 
   const handleSummit = (e) => {
     e.preventDefault();

@@ -29,7 +29,11 @@ const DepartmentApi = {
 
   deleteMember: (id, memberId, data) => {
     const url = `/departments/${id}/members/${memberId}`;
-    return axiosClient1.patch(url, data);
+    return axiosClient1.delete(url, data);
+  },
+  addMember: (id, data) => {
+    const url = `/departments/${id}/members`;
+    return axiosClient1.post(url, data);
   },
 };
 
