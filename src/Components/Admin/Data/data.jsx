@@ -19,6 +19,11 @@ export const SidebarData = [
     routing: '/Account/admin/post',
   },
   {
+    icon: UilClipboardAlt,
+    heading: 'Close Date',
+    routing: '/Account/admin/academic',
+  },
+  {
     icon: UilUsersAlt,
     heading: 'User',
     routing: '/Account/admin/user',

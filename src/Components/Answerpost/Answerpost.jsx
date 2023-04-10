@@ -25,10 +25,17 @@ export const Answerpost = ({ postId }) => {
   };
   const createAnswerMutation = useMutation({
     mutationFn: createAnswer,
-    retry: 3,
     onSuccess: async (data) => {
       toast.info('🥳 Create answer successfully');
       await queryClient.invalidateQueries(['posts', postId]);
+    },
+    onError: async (error) => {
+      if (
+        error.response.status === 400 &&
+        error.response.data.error === "Final close date is active so can't create Comment"
+      ) {
+        return toast.error(`🥺 ${error.response.data.error}`);
+      }
     },
   });
 
@@ -39,13 +46,6 @@ export const Answerpost = ({ postId }) => {
       isAnonymous: isAnonymous,
     });
   };
-
-  if (createAnswerMutation.isError)
-    return (
-      <h1 className='load-screen'>
-        {createAnswerMutation.error.response.data.message || createAnswerMutation.error.message}
-      </h1>
-    );
 
   return (
     <div className='answer-form'>

@@ -38,6 +38,8 @@ import ChakaraProvi from './Pages/Protected/ChakaraProvi';
 import AdminProtectedRoute from './Pages/Protected/AdminProtectedRoute';
 import CreateDepartment from './Components/Manage/Department/CreateDepartment';
 import DepartmentDetail from './Components/DepartmentDetail/DepartmentDetail';
+import Academic from './Components/Academic/Academic';
+import CreateAcademic from './Components/Academic/CreateAcademic';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -72,6 +74,8 @@ const router = createBrowserRouter(
             <Route path='createuser' element={<CreateUser />} />
           </Route>
           <Route element={<ChakaraProvi />}>
+            <Route path='academic' element={<Academic />} />
+            <Route path='create-academic' element={<CreateAcademic />} />
             <Route path='departments' element={<Department />} />
             <Route path='create-department' element={<CreateDepartment />} />
             <Route path='department/:departmentId' element={<DepartmentDetail />} />
