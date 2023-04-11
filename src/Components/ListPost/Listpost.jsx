@@ -53,11 +53,6 @@ export const ListPost = () => {
       {data?.docs.map((post) => (
         <div className='List-post'>
           <div className='postcontent'>
-            <div className='postlike'>
-              <span>{post.votes} Vote</span>
-              <span>{post.views} view</span>
-              <span className='downvote'>{post?.comments.length} Comment</span>
-            </div>
             <div className='user-post'>
               <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
               <h4>{post.isAnonymous ? 'Anonymous' : post.author.username}</h4>

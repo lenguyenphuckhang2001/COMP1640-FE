@@ -30,11 +30,7 @@
     "react-datalist-input": "^3.2.1",
     "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-hook-form": "^7.43.8",
-=======
     "react-hook-form": "^7.43.9",
->>>>>>> a9f48fc (responsive navbar and footer)
     "react-icons": "^4.7.1",
     "react-paginate": "^8.1.4",
     "react-query": "^3.39.3",
