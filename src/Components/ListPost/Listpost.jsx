@@ -53,14 +53,11 @@ export const ListPost = () => {
       {data?.docs.map((post) => (
         <div className='List-post'>
           <div className='postcontent'>
-<<<<<<< HEAD
             <div className='postlike'>
               <span>{post.votes} Vote</span>
               <span>{post.views} view</span>
               <span className='downvote'>{post?.comments.length} Comment</span>
             </div>
-=======
->>>>>>> 00976ac (responsive list-post)
             <div className='user-post'>
               <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' />
               <h4>{post.isAnonymous ? 'Anonymous' : post.author.username}</h4>
@@ -80,14 +77,6 @@ export const ListPost = () => {
                 </Link>
               </h2>
               <h2 className='title-content'>{post?.content}</h2>
-<<<<<<< HEAD
-              <ul className='tag-content'>
-                {post?.tags.map((tag) => (
-                  <li>#{tag?.name}</li>
-                ))}
-              </ul>
-=======
->>>>>>> 00976ac (responsive list-post)
             </div>
           </div>
           <div className='postlike'>
