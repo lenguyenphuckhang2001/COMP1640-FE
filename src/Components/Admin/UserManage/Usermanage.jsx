@@ -4,14 +4,13 @@ import { Col } from 'react-bootstrap';
 import { useQuery } from 'react-query';
 import UserApi from '../../../Api/UserApi';
 import './Usermanage.scss';
-import { Link, Outlet, useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useMutation } from 'react-query';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 export const Usermanage = () => {
-  let params = useLocation();
   const [users, setUsers] = useState([]);
   const [inputs, setInputs] = useState({
     email: '',
@@ -19,15 +18,13 @@ export const Usermanage = () => {
     name: '',
     role: 'user',
   });
+  const [refreshKey, setRefreshKey] = useState(0);
   useEffect(() => {
     (async () => {
       const res = await UserApi.getAll();
-      setUsers(res)
-      console.log(res)
+      setUsers(res);
     })();
-  }, []);
-  
-  const [startDate, setStartDate] = useState(new Date());
+  }, [refreshKey]);
   const handleInput = (e) => {
     const nameInput = e.target.name;
     const value = e.target.value;
@@ -76,90 +73,98 @@ export const Usermanage = () => {
       mutation.mutate(data);
     }
   };
-
+  const handleDelete = async (e) => {
+    const todoToDelete = users.find((users) => users._id === e.target.id);
+    const id = todoToDelete._id;
+    try {
+      const res = await UserApi.delete(id);
+      console.log(res)
+      setRefreshKey(oldKey => oldKey +1)
+      const file = await ToastNotice("Dellete success");
+    } catch (res) {
+      const file = await ToastNotice("Dellete error");
+    }
+  }
+  const ToastNotice = (file) => {
+    toast.success(file);
+  }; 
   return (
     <Col md={9}>
       <div className='Usermanage'>
         <h1>User Management</h1>
         <div className='Createuser-page'>
-      <div className='Auth-form-container'>
-        <ToastContainer
-          position='top-right'
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme='light'
-        />
-        <form className='Auth-form' onSubmit={handleSubmit}>
-          <div className='Auth-form-content'>
-            <h3 className='Auth-form-title'>Form create user</h3>
-            <div className='input-group-re'>
-              <input
-                required
-                type='text'
-                name='name'
-                autoComplete='off'
-                className='input'
-                onChange={handleInput}
-              />
-              <label className='user-label'>Name</label>
-            </div>
-            <div className='input-group-re right'>
-              <input
-                required
-                type='email'
-                name='email'
-                autoComplete='off'
-                className='input'
-                onChange={handleInput}
-              />
-              <label className='user-label'>Email</label>
-            </div>
-            <div className='input-group-re'>
-              <input
-                required
-                type='password'
-                name='password'
-                autoComplete='off'
-                className='input'
-                onChange={handleInput}
-              />
-              <label className='user-label'>Password</label>
-            </div>
-            <div className='input-group-re'>
-              <DatePicker
-                selected={startDate}
-                dateFormat='dd/MM/yyyy'
-                maxDate={new Date()}
-                onChange={(date) => setStartDate(date)}
-              />
-            </div>
-            <div className='select-group-re'>
-              <lable className='role-lable'>
-                Role :
-                <select name='role' onChange={handleInput} value={inputs.role}>
-                  <option value={'user'}>User</option>
-                  <option value={'qa'}>QA</option>
-                  <option value={'qa_coordinator'}>QA Coordinator</option>
-                  <option value={'admin'}>Admin</option>
-                </select>
-              </lable>
-            </div>
-            <div className='sm-regis'>
-              <button type='submit' className='btn btn-primary'>
-                {mutation.isLoading ? 'isloading' : 'Create user'}
-              </button>
-            </div>
+          <ToastContainer
+            position='top-right'
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='light'
+          />
+          <div className='Auth-form-container'>
+            <form className='Auth-form' onSubmit={handleSubmit}>
+              <div className='Auth-form-content'>
+                <h3 className='Auth-form-title'>Form create user</h3>
+                <div className='input-group-re'>
+                  <input
+                    required
+                    type='text'
+                    name='name'
+                    autoComplete='off'
+                    className='input'
+                    onChange={handleInput}
+                    value={inputs.username}
+                  />
+                  <label className='user-label'>Name</label>
+                </div>
+                <div className='input-group-re right'>
+                  <input
+                    required
+                    type='email'
+                    name='email'
+                    autoComplete='off'
+                    className='input'
+                    onChange={handleInput}
+                    value={inputs.email}
+                  />
+                  <label className='user-label'>Email</label>
+                </div>
+                <div className='input-group-re'>
+                  <input
+                    required
+                    type='password'
+                    name='password'
+                    autoComplete='off'
+                    className='input'
+                    onChange={handleInput}
+                    value={inputs.password}
+                  />
+                  <label className='user-label'>Password</label>
+                </div>
+                <div className='select-group-re'>
+                  <lable className='role-lable'>
+                    Role :
+                    <select name='role' onChange={handleInput} value={inputs.role}>
+                      <option value={'user'}>User</option>
+                      <option value={'qa'}>QA</option>
+                      <option value={'qa_coordinator'}>QA Coordinator</option>
+                      <option value={'admin'}>Admin</option>
+                    </select>
+                  </lable>
+                </div>
+                <div className='sm-regis'>
+                <button type='submit'>
+                    {mutation.isLoading ? 'isloading' : inputs._id !== undefined ? 'Update User' : 'Add User'}
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-    </div>
-        <Outlet />
+        </div>
         <table>
           <thead>
             <tr>
@@ -176,8 +181,7 @@ export const Usermanage = () => {
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button onClick={() => handleEditUser(user)}>Edit</button>
-                  <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                  <button onClick={handleDelete} id={user._id}>Delete</button>
                 </td>
               </tr>
             ))}

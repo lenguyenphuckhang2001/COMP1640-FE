@@ -1,27 +1,8 @@
-
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+$gradient: linear-gradient(35deg, red, purple);
+$option: rgb(12, 23, 45);
 .Usermanage {
-  .add-user{
-    width: 100%;
-    display: inline-block;
-    text-align: center;
-      button[type='submit'] {
-        background-color: #144272;
-        color: white;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        padding: 15px;
-        &:hover {
-          background-color: #2C74B3;
-        }
-        a{
-          color: #fff;
-          text-decoration: none;
-        }
-
-    }
-  }
   h1 {
     color: #fff;
     font-size: 36px;
@@ -33,6 +14,7 @@
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
+    color: #fff;
     th,
     td {
       padding: 10px;
@@ -61,10 +43,6 @@
     }
   }
 }
-$glass: rgba(255, 255, 255, 0.2);
-$glass-icon: rgba(255, 255, 255, 0.3);
-$gradient: linear-gradient(35deg, red, purple);
-$option: rgb(12, 23, 45);
 .Createuser-page{
     width: 100%;
     div {
