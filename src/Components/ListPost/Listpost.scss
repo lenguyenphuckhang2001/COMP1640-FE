@@ -5,18 +5,12 @@
 .List-post {
   background-color: #144272;
   color: #ffffff;
-  border-radius: 10px;
-  margin-bottom: 2px;
+  border-radius: 5px;
+  margin-bottom: 2%;
   .postcontent {
+    margin-left: 2%;
     padding-top: 10px;
     display: flex;
-    .postlike {
-      display: flex;
-      flex-direction: column;
-      text-align: right;
-      width: 15%;
-      padding-right: 1%;
-    }
     .user-post {
       display: inline-block;
       width: 80%;
@@ -56,6 +50,35 @@
         li {
           margin-right: 10px;
         }
+      }
+    }
+  }
+  .postlike {
+    color: #ddfcffb0;
+    display: flex;
+    margin-left: 2.5%;
+    padding-bottom: 2%;
+    .vote {
+      margin-right: 5%;
+      display: flex;
+      i {
+        padding-right: 10px;
+        padding-top: 4px;
+      }
+    }
+    .comment {
+      display: flex;
+      margin-right: 5%;
+      i {
+        padding-right: 10px;
+        padding-top: 4px;
+      }
+    }
+    .view {
+      display: flex;
+      i {
+        padding-right: 10px;
+        padding-top: 4px;
       }
     }
   }
