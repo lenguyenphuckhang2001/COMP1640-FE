@@ -48,7 +48,7 @@ export const Categories = () => {
           description: inputs.description,
         };
         const res = await TagApi.update(id, data);
-        setRefreshKey(oldKey => oldKey +1)
+        setRefreshKey((oldKey) => oldKey + 1);
         console.log(res);
         console.log(inputs);
       } else {
@@ -57,7 +57,7 @@ export const Categories = () => {
           description: inputs.description,
         };
         const res = await TagApi.create(data);
-        setRefreshKey(oldKey => oldKey +1)
+        setRefreshKey((oldKey) => oldKey + 1);
         console.log(res);
       }
     }
@@ -69,7 +69,7 @@ export const Categories = () => {
       const id = todoToDelete._id;
       try {
         const res = await TagApi.delete(id);
-        setRefreshKey(oldKey => oldKey +1)
+        setRefreshKey((oldKey) => oldKey + 1);
         const file = await ToastNotice(res.message);
       } catch (res) {
         const file = await ToastNotice(res.response.data.error.message);
