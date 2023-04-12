@@ -16,6 +16,7 @@ export const Usermanage = () => {
     email: '',
     password: '',
     name: '',
+    phonenumber:'',
     role: 'user',
   });
   const [refreshKey, setRefreshKey] = useState(0);
@@ -60,14 +61,15 @@ export const Usermanage = () => {
     if (inputs.name == '') {
       xx = 2;
     }
-    if (inputs.DoB == '') {
+    if (inputs.phonenumber == '') {
       xx = 2;
     }
     if (xx == 1) {
       const data = {
         username: inputs.name,
         email: inputs.email,
-        password: '3213123cxz',
+        password: inputs.password,
+        phonenumber: inputs.phonenumber,
         role: inputs.role,
       };
       mutation.mutate(data);
@@ -117,7 +119,6 @@ export const Usermanage = () => {
                     autoComplete='off'
                     className='input'
                     onChange={handleInput}
-                    value={inputs.username}
                   />
                   <label className='user-label'>Name</label>
                 </div>
@@ -129,7 +130,6 @@ export const Usermanage = () => {
                     autoComplete='off'
                     className='input'
                     onChange={handleInput}
-                    value={inputs.email}
                   />
                   <label className='user-label'>Email</label>
                 </div>
@@ -141,9 +141,19 @@ export const Usermanage = () => {
                     autoComplete='off'
                     className='input'
                     onChange={handleInput}
-                    value={inputs.password}
                   />
                   <label className='user-label'>Password</label>
+                </div>
+                <div className='input-group-re'>
+                  <input
+                    required
+                    type='text'
+                    name='phonenumber'
+                    autoComplete='off'
+                    className='input'
+                    onChange={handleInput}
+                  />
+                  <label className='user-label'>Phone Number</label>
                 </div>
                 <div className='select-group-re'>
                   <lable className='role-lable'>
