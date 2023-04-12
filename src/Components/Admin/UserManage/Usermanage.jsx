@@ -16,7 +16,7 @@ export const Usermanage = () => {
     email: '',
     password: '',
     name: '',
-    phonenumber:'',
+    phonenumber: '',
     role: 'user',
   });
   const [refreshKey, setRefreshKey] = useState(0);
@@ -80,16 +80,16 @@ export const Usermanage = () => {
     const id = todoToDelete._id;
     try {
       const res = await UserApi.delete(id);
-      console.log(res)
-      setRefreshKey(oldKey => oldKey +1)
-      const file = await ToastNotice("Dellete success");
+      console.log(res);
+      setRefreshKey((oldKey) => oldKey + 1);
+      const file = await ToastNotice('Dellete success');
     } catch (res) {
-      const file = await ToastNotice("Dellete error");
+      const file = await ToastNotice('Dellete error');
     }
-  }
+  };
   const ToastNotice = (file) => {
     toast.success(file);
-  }; 
+  };
   return (
     <Col md={9}>
       <div className='Usermanage'>
@@ -167,8 +167,12 @@ export const Usermanage = () => {
                   </lable>
                 </div>
                 <div className='sm-regis'>
-                <button type='submit'>
-                    {mutation.isLoading ? 'isloading' : inputs._id !== undefined ? 'Update User' : 'Add User'}
+                  <button type='submit'>
+                    {mutation.isLoading
+                      ? 'isloading'
+                      : inputs._id !== undefined
+                      ? 'Update User'
+                      : 'Add User'}
                   </button>
                 </div>
               </div>
@@ -191,7 +195,9 @@ export const Usermanage = () => {
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button onClick={handleDelete} id={user._id}>Delete</button>
+                  <button onClick={handleDelete} id={user._id}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
