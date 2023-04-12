@@ -70,9 +70,8 @@ const router = createBrowserRouter(
         <Route path='Account/admin' element={<Admin />}>
           <Route path='' element={<MainDash />} />
           <Route path='post' element={<Postmanage />} />
-          <Route path='user' element={<Usermanage />}>
-            <Route path='createuser' element={<CreateUser />} />
-          </Route>
+          <Route path='user' element={<Usermanage />} />
+
           <Route element={<ChakaraProvi />}>
             <Route path='academic' element={<Academic />} />
             <Route path='create-academic' element={<CreateAcademic />} />
