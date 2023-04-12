@@ -32,7 +32,6 @@ const DepartmentDetail = () => {
     mutationFn: async (memberId) => {
       return await DepartmentApi.deleteMember(departmentId, memberId);
     },
-    retry: 3,
     onSuccess: (data) => {
       queryClient.invalidateQueries(['department', departmentId]);
       if (data) {

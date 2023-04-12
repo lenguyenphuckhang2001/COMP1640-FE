@@ -1,13 +1,15 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import AcademicApi from '../../Api/AcademicApi';
 import { Button, Card, CardBody, CardHeader, Heading, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const Academic = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const fetchAllDate = useQuery({
     queryKey: 'closeDate',
@@ -16,6 +18,23 @@ const Academic = () => {
       return res;
     },
   });
+  const deleteDate = useMutation({
+    mutationFn: async (id) => {
+      const res = await AcademicApi.delete(id);
+      return res;
+    },
+    onSuccess: (data) => {
+      toast.success('🥳 Delete date successfully');
+      queryClient.invalidateQueries('closeDate');
+    },
+    onError: async (error) => {
+      if (error.response.status === 500) {
+        return toast.error('🥺 Date already exists');
+      }
+      toast.error('🥺 Delete date failed');
+    },
+  });
+
   return (
     <Col md={8}>
       <h1
@@ -48,7 +67,14 @@ const Academic = () => {
                   startDate: {moment(date.startDate).format('DD/MM/YYYY HH:mm')}
                 </Heading>
               </CardHeader>
-              <Button colorScheme='red'>Delete</Button>
+              <Button
+                colorScheme='red'
+                onClick={() => {
+                  deleteDate.mutate(date._id);
+                }}
+              >
+                Delete
+              </Button>
             </Card>
           ))}
       </Stack>
