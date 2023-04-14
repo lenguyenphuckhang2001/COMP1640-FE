@@ -54,10 +54,13 @@ export const CreatePost = () => {
     mutationFn: async (post) => {
       return await PostApi.create(post);
     },
-    retry: 3,
-    onSuccess: async (data) => {
+    onSuccess: (data) => {
       toast.success('🥳 Create post successfully');
-      await queryClient.invalidateQueries(['posts']);
+    },
+    onError: async (error) => {
+      if (error.response.status === 400 && error.response.data.error) {
+        return toast.error('🥺 ' + error.response.data.error);
+      }
     },
   });
 

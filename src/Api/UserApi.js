@@ -6,6 +6,16 @@ const UserApi = {
     return axiosClient1.get(url);
   },
 
+  getAllNormalUser: () => {
+    const url = '/users/normal-user';
+    return axiosClient1.get(url);
+  },
+
+  getAllQaCoordinator: () => {
+    const url = '/users/qa-coordinator';
+    return axiosClient1.get(url);
+  },
+
   getOne: (userId) => {
     const url = `/users/${userId}`;
     return axiosClient1.get(url);

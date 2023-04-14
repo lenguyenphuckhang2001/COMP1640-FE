@@ -1,6 +1,6 @@
 import axiosClient1 from './AxiosSetup/axiosClient';
 
-const CommentApi = {
+const DepartmentApi = {
   getAll: () => {
     const url = '/departments';
 
@@ -29,8 +29,12 @@ const CommentApi = {
 
   deleteMember: (id, memberId, data) => {
     const url = `/departments/${id}/members/${memberId}`;
-    return axiosClient1.patch(url, data);
+    return axiosClient1.delete(url, data);
+  },
+  addMember: (id, data) => {
+    const url = `/departments/${id}/members`;
+    return axiosClient1.post(url, data);
   },
 };
 
-export default CommentApi;
+export default DepartmentApi;

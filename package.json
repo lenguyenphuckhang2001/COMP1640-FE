@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.18",
     "@chakra-ui/react": "^2.5.4",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -22,6 +23,7 @@
     "jszip": "^3.10.1",
     "mdb-react-ui-kit": "^6.0.0",
     "newsletter": "^4.0.1",
+    "moment": "^2.29.4",
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",

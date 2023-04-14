@@ -26,8 +26,6 @@ export const QuestionDetail = () => {
     <Col md={{ span: 6 }}>
       {test.isLoading ? (
         <h1 className='load-screen'>Loading...</h1>
-      ) : test.isError ? (
-        <h1 className='load-screen'>{test.error.message}</h1>
       ) : (
         <>
           <PostDetail post={test.data} postId={postId} />

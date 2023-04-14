@@ -50,9 +50,16 @@ export const Login = () => {
 
       try {
         const res = await axios.post('/api/auth/login', data);
+        console.log('🚀 ~ file: Login.jsx:53 ~ handleSubmit ~ res:', res);
         if (res) {
           localStorage.setItem('Information', JSON.stringify(res));
           localStorage.setItem('true', JSON.stringify(true));
+          if (res.data.user.role == 'admin') {
+            return navigate('/Account/admin');
+          }
+          if (res.data.user.role == 'qa') {
+            return navigate('Account/Manage');
+          }
           navigate('/');
         }
         return res;

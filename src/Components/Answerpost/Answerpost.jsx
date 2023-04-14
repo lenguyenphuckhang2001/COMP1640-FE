@@ -9,6 +9,7 @@ export const Answerpost = ({ postId }) => {
   const answer = useRef(null);
   const queryClient = useQueryClient();
   const [userId, setUserId] = useState('');
+  const [isAnonymous, setIsAnonymous] = useState(false);
 
   useEffect(() => {
     const user = localStorage.getItem('Information');
@@ -24,27 +25,27 @@ export const Answerpost = ({ postId }) => {
   };
   const createAnswerMutation = useMutation({
     mutationFn: createAnswer,
-    retry: 3,
     onSuccess: async (data) => {
       toast.info('🥳 Create answer successfully');
       await queryClient.invalidateQueries(['posts', postId]);
     },
+    onError: async (error) => {
+      if (
+        error.response.status === 400 &&
+        error.response.data.error === "Final close date is active so can't create Comment"
+      ) {
+        return toast.error(`🥺 ${error.response.data.error}`);
+      }
+    },
   });
 
   const handleSummit = () => {
-    console.log(answer.current.value);
     createAnswerMutation.mutate({
       content: answer.current.value,
       author: userId,
+      isAnonymous: isAnonymous,
     });
   };
-
-  if (createAnswerMutation.isError)
-    return (
-      <h1 className='load-screen'>
-        {createAnswerMutation.error.response.data.message || createAnswerMutation.error.message}
-      </h1>
-    );
 
   return (
     <div className='answer-form'>
@@ -61,6 +62,14 @@ export const Answerpost = ({ postId }) => {
           placeholder='Leave a answer here'
           style={{ height: '100px', backgroundColor: '#2267a7', color: 'white', border: 'none' }}
           ref={answer}
+        />
+        <Form.Check
+          type='switch'
+          id='custom-switch'
+          label='Anonymous Answer'
+          onChange={(e) => {
+            setIsAnonymous(e.target.checked);
+          }}
         />
       </FloatingLabel>
       <Button

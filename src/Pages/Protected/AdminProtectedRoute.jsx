@@ -1,16 +1,13 @@
-import React from 'react';
 import { useEffect } from 'react';
-import { Outlet, redirect } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const AdminProtectedRoute = () => {
-  //check if user is admin or not
-  //if not admin, redirect to home page
-  //if admin, render the component
+  const navigate = useNavigate();
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('Information'));
-    const adminRole = localData?.data.user.role;
+    const adminRole = localData?.data?.user?.role;
     if (adminRole !== 'admin') {
-      return redirect('/');
+      navigate('/');
     }
   }, []);
 
