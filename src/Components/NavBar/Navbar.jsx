@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import React from 'react';
 import './Navbar.scss';
 
 function NavScroll() {
+  const navigate = useNavigate();
   function checkLogin() {
     var check = localStorage.getItem('true');
     if (check) {

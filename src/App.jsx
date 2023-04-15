@@ -51,7 +51,7 @@ const router = createBrowserRouter(
         </Route>
         <Route path='question' element={<Question />} />
         <Route path='Account/user-info' element={<UserInfo />}>
-          <Route path='my-post' element={<Saved />} />
+          <Route path='' element={<Saved />} />
           <Route path='edit' element={<Edit />} />
         </Route>
       </Route>
