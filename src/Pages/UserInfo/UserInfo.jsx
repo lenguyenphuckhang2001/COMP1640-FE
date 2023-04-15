@@ -39,7 +39,7 @@ export const UserInfo = () => {
           <div className='col-md-8 pb'>
             <div className='post-bar'>
               <NavLink to='/Account/user-info/edit'>Edit</NavLink>
-              <NavLink to='/Account/user-info/my-post'>My Post</NavLink>
+              <NavLink to='/Account/user-info'>My Post</NavLink>
             </div>
             <main>
               <Outlet />
