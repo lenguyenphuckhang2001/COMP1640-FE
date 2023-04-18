@@ -40,6 +40,7 @@ export const Usermanage = () => {
     },
     onSuccess: async () => {
       const toastSuccess = await ToastSucces();
+      setRefreshKey((oldKey) => oldKey + 1);
     },
   });
   const ToastError = (file) => {
