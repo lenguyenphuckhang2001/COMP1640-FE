@@ -60,18 +60,15 @@ const router = createBrowserRouter(
       <Route path='Account/forgotpass' element={<Forgotpassword />} />
       <Route path='QuestionDetail/:postId' element={<QuestionDetail />} />
       <Route path='Account/Manage' element={<Manage />}>
-        <Route path='department' element={<Department />} />
-        <Route path='categories' element={<Categories />} />
+        <Route path='' element={<Categories />} />
         <Route path='downloadData' element={<DownloadData />} />
         <Route path='statistical' element={<Statistical />} />
-        <Route path='' element={<QaManage />} />
       </Route>
       <Route element={<AdminProtectedRoute />}>
         <Route path='Account/admin' element={<Admin />}>
           <Route path='' element={<MainDash />} />
           <Route path='post' element={<Postmanage />} />
           <Route path='user' element={<Usermanage />} />
-
           <Route element={<ChakaraProvi />}>
             <Route path='academic' element={<Academic />} />
             <Route path='create-academic' element={<CreateAcademic />} />

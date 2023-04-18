@@ -37,6 +37,10 @@
 	gap: 2rem;
     color: #fff;
 	.menuItem {
+		a{
+			color: #fff;
+			text-decoration: none;
+		}
 		&:last-child {
 			// position: absolute;
 			// bottom: 2.3rem;
