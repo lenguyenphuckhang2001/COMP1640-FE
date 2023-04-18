@@ -20,14 +20,13 @@ export const Answerpost = ({ postId }) => {
     }
   }, []);
   const createAnswer = async (data) => {
-    const res = await CommentApi.create(postId, data);
-    return res;
+    return await CommentApi.create(postId, data);
   };
   const createAnswerMutation = useMutation({
     mutationFn: createAnswer,
-    onSuccess: async (data) => {
+    onSuccess: (data) => {
       toast.info('🥳 Create answer successfully');
-      await queryClient.invalidateQueries(['posts', postId]);
+      queryClient.invalidateQueries(['posts', postId]);
     },
     onError: async (error) => {
       if (

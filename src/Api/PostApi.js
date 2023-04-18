@@ -36,11 +36,18 @@ const PostApi = {
     const url = `/posts/user/${userId}`;
     return axiosClient1.get(url);
   },
+
   anonymousPosts: () => {
     const url = `/posts/anonymous`;
     return axiosClient1.get(url);
   },
+
   allPostsTag: (tagId) => {
+    const url = `/posts/tag/${tagId}`;
+    return axiosClient1.get(url);
+  },
+
+  allPostByTag: (tagId) => {
     const url = `/posts/tag/${tagId}`;
     return axiosClient1.get(url);
   },
