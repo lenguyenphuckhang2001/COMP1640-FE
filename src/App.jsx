@@ -29,7 +29,6 @@ import { Department } from './Components/Manage/Department/Department';
 import { Categories } from './Components/Manage/Categories/Categories';
 import { DownloadData } from './Components/Manage/DownloadData/DownloadData';
 import { Statistical } from './Components/Manage/Statistical/Statistical';
-import { QaManage } from './Components/Manage/QaManage/QaManage';
 import { Analyticstag } from './Components/Admin/Analytics Tag/Analyticstag';
 import { AnalyticsPost } from './Components/Admin/AnalyticsPost/AnalyticsPost';
 import { ToastContainer } from 'react-toastify';
