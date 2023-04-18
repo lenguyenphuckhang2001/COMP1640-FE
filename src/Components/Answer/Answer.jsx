@@ -39,18 +39,7 @@ export const Answer = ({ comments }) => {
       {currentItems.map((comment) => (
         <div className='MainAnswer'>
           <div className='answerpost'>
-            <div className='answerdost'>
-              <span className='upvote'>
-                <BsFillCaretUpFill />
-              </span>
-              <span>200</span>
-              <span className='downvote'>
-                <BsFillCaretDownFill />
-              </span>
-              <span>
-                <BsBookmark />
-              </span>
-            </div>
+            <div className='answerdost'></div>
             <div className='answer'>
               <p>{comment.content}</p>
               <div className='infoanswer'>
