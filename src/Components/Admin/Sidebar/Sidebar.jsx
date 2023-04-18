@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { UilSignOutAlt } from '@iconscout/react-unicons';
 import { SidebarData } from '../Data/data';
 import { UilBars } from '@iconscout/react-unicons';
-import { UilMultiply } from '@iconscout/react-unicons'
+import { UilMultiply } from '@iconscout/react-unicons';
 import './Sidebar.scss';
 import { Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -28,21 +28,13 @@ export const Sidebar = () => {
           style={expanded ? { left: '60%' } : { left: '5%' }}
           onClick={() => setExpaned(!expanded)}
         >
-          <span>{expanded ? (<UilMultiply/>) : (<UilBars/>)}</span>
+          <span>{expanded ? <UilMultiply /> : <UilBars />}</span>
         </div>
         <motion.div
           className='sidebar'
           variants={sidebarVariants}
           animate={window.innerWidth <= 768 ? `${expanded}` : ''}
         >
-          {/* logo */}
-          {/* <div className="logo">
-        <img src={Logo} alt="logo" />
-        <span>
-          Sh<span>o</span>ps
-        </span>
-      </div> */}
-
           <div className='menu'>
             {SidebarData.map((item, index) => {
               return (
@@ -59,7 +51,9 @@ export const Sidebar = () => {
               );
             })}
             <div className='menuItem'>
-              <UilSignOutAlt />
+              <Link to='/'>
+                <UilSignOutAlt /> Back homepage
+              </Link>
             </div>
           </div>
         </motion.div>
