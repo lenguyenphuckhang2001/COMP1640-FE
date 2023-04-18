@@ -30,27 +30,27 @@ export const Categories = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let xx = 1;
-    console.log(inputs);
-    if (inputs.name == '') {
+    console.log(inputs)
+    if (inputs.name == undefined) {
       xx = 2;
       const file = await ToastNotice('Please enter name');
     }
-    if (inputs.description == '') {
+    if (inputs.description == undefined) {
       xx = 2;
       const file = await ToastNotice('Please enter description');
     }
     if (xx == 1) {
-      const file = await ToastNotice('Success create tag');
       if (inputs._id !== undefined) {
         const id = inputs._id;
+        console.log(id)
         const data = {
           name: inputs.name,
           description: inputs.description,
         };
         const res = await TagApi.update(id, data);
+        const file = await ToastNotice('Update successfully');
+        console.log(res)
         setRefreshKey((oldKey) => oldKey + 1);
-        console.log(res);
-        console.log(inputs);
       } else {
         const data = {
           name: inputs.name,
@@ -58,7 +58,7 @@ export const Categories = () => {
         };
         const res = await TagApi.create(data);
         setRefreshKey((oldKey) => oldKey + 1);
-        console.log(res);
+        const file = await ToastNotice('Create successfully');
       }
     }
   };
@@ -80,6 +80,7 @@ export const Categories = () => {
 
   const ToastNotice = (file) => {
     toast.success(file);
+    setRefreshKey((oldKey) => oldKey + 1);
   };
 
   const handleEdit = (e) => {
@@ -100,18 +101,6 @@ export const Categories = () => {
       {' '}
       <div className='categories'>
         <div className='crud_categories'>
-          <ToastContainer
-            position='top-right'
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='dark'
-          />
           <div>
             <h1>Categories</h1>
             <button onClick={() => setShowCreateForm(!showCreateForm)}>

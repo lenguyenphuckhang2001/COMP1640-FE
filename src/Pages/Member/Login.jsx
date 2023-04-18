@@ -58,7 +58,7 @@ export const Login = () => {
             return navigate('/Account/admin');
           }
           if (res.data.user.role == 'qa') {
-            return navigate('Account/Manage');
+            return navigate('/Account/Manage');
           }
           navigate('/');
         }
